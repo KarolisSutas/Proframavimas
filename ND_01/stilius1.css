@@ -1,0 +1,11 @@
+.bodis{
+    background-image: url(Img/jura2.png);
+    background-size: cover;
+}
+h1{
+    color: #FFFF00;
+    background-image: url(Img/a1.png);
+    width: 200px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
