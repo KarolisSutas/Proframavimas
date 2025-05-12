@@ -1,11 +1,30 @@
 .bodis{
-    background-image: url(Img/jura2.png);
+    background-image: url(Img/jura4.png);
     background-size: cover;
 }
 h1{
     color: #FFFF00;
     background-image: url(Img/a1.png);
-    width: 200px;
+    width: 250px;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+    padding-right: 25px;
+    text-align: right;
+}
+li a:link{
+    color: #0ff1db !important;
+}
+li a:visited{
+    color: #e01316;
+}
+li a:hover {
+    color: #ebf705;
+}
+li a:active{
+    color: #ff8c00;
+}
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

@@ -1,0 +1,17 @@
+body{
+    background-image: url(Img/jura4.png);
+    background-size: cover;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+nav a:visited{
+    color: #e01316;
+}
+nav a:hover {
+    color: #ebf705;
+}
+nav a:active{
+    color: #ff8c00;
+}
+p{
+    font-size: 5mm;
+}
