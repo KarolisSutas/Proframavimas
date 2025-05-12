@@ -1,0 +1,14 @@
+h1{
+    color:#008b8b;
+    letter-spacing: 3px;
+    background-color: brown;
+}
+.briedzio-spalva{
+    color: aqua;
+    font-size: 20px;
+    border: 20px dotted lawngreen;
+    padding: 15px;
+}
+body{
+    background-color: blueviolet;
+}
