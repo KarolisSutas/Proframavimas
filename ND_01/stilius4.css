@@ -1,0 +1,6 @@
+body{
+    background-image: url(Img/salos1.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(3px);
+}

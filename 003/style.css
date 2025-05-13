@@ -1,0 +1,57 @@
+.pirmas {
+    color:#74df0c;
+    font-size: 30px;
+    font-weight: 400;
+    font-family: "Oswald", sans-serif;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.antras{
+    color:#74df0c;
+    font-size: 30px;
+    font-weight: 400;
+    font-family: "Slabo 27px", serif;
+} 
+
+.rudas {
+    color: brown;
+}
+.rudas {
+    color: black;
+}
+a span {
+    color: #74df0c;
+}
+span {
+    color: crimson;
+}
+.senelis {
+    color: crimson;
+}
+.senelis {
+    color: green;
+}
+.senelis div {
+    color: crimson;
+}
+.senelis div div{
+    color: rgb(70, 36, 157);
+}
+body .senelis div.tevas.brolis div div {
+    color: yellow;
+}
+
+div p {
+    color: red;
+}
+p {
+    color: blue;
+}
+
+u {
+    text-decoration: none;
+}
+i{
+    font-style: normal;
+}
