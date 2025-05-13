@@ -1,0 +1,38 @@
+body{
+    background-image: url(Img/jura3.png);
+    background-size: cover;
+}
+
+img{
+    border-radius: 50px;
+}
+
+.pirmas{
+    background-image: url(Img/jura4.png);
+    border-radius: 25%; 
+}
+
+.salos{
+    border-top-style:ridge;
+    border-left-style:ridge;
+    border-right-style: ridge;
+    border-bottom-style: unset;
+    width: 290px;
+    background-image: url(Img/a1.png);
+    border-width: 10px;
+    border-color: #678bcf50;
+    margin-bottom:0px;
+    color: rgb(197, 164, 227);
+}
+
+ul{
+    border-top-style:unset;
+    border-left-style:ridge;
+    border-right-style: ridge;
+    border-bottom-style: ridge;
+    width: 250px;
+    background-image: url(Img/jura2.png);
+    border-width: 10px;
+    border-color: rgb(103, 139, 207);
+    margin-top: 0px;
+}
