@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="selektoriupratimai.css">
+    <title>Selektoriu pratimai</title>
+</head>
+<body>
+    <section>
+        <h2>Stiliaus pirmumo taisyklės:(4 didžiausiaspirmumas-1 mažiausias)</h2>
+        <ol>Čia chocolate spalva, nes uždėta ant viso list'o "ol".
+            <li>"Tag'o default nustatymai." Čia Cateblue spalva, nes uždėta ant "li".</li>
+            <li style="color: darkgreen;">"Pirmumą gauna tas stilius, kuris yra arčiau taikinio."<i>Teksto spalva Darkgreen, nes udéta pačiam HTML file'e.</i></li>
+            <li>"Dar aukštesnį pirmumą gauna paskutinis stilius."<br>
+                Sis tekstas turi dvi spalvas (Cadetblue ir Peru) uzdetas ant "li". Spalva Cadetblue dominuoja, nes yra paskutiné.</1i>
+            <li>"Didziausia pirmuma gauna tas stilius, kurio selektorius yra tiksliausias". Cia Cadetblue spalva, nes uzdeta ant "li".
+                <ol>Sis tekstas nors ir "li" vaikas, bet Olivedrab spalva, nes nes selektorius iesko "li ol li".
+                    <li>Sis tekstas nors in "ol" vaikas, bet Plum spalva, nes uideta ant "li".</li>
+                    <li><span>Sio teksto spalva yra Brown, nes selectorius iesko"span".</span> O sio teksto spalva yra Plum, nes selektorius suranda "li ol li".</li>
+                    <li><span><span>Sito teksto spalva yra Darkmagenta, nes selectorius iesko "span span"</span></span></li>
+                    <li><span><span><span>Sio teksto spalva yra Goldenrod, nes selectorius iesko "li span".</span></span></span></1i>
+                    <li><span><div>Sio teksto spalva yra Slateblue, nes selectorius iesko "span div".</div></span></1i>
+                </ol>
+            </li>
+        </ol>
+    </section>
+</body>
+</html>

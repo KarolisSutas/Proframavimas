@@ -1,0 +1,30 @@
+ol {
+    color: chocolate;
+}
+
+li {
+    color: peru;
+}
+
+li {
+    color: cadetblue;
+}
+
+li ol {
+    color: olivedrab;
+}
+li ol li {
+    color: plum;
+}
+span {
+    color: brown;
+}
+span span {
+    color: darkmagenta;
+}
+span  span span {
+    color:goldenrod;
+}
+span div {
+    color: slateblue;
+}
