@@ -1,6 +1,10 @@
-body{
+
+.konteineris {
     background-image: url(Img/salos1.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
-    filter: blur(3px);
+}
+.blokas h1{
+    color: rgb(125, 43, 43);
+    filter: blur(2px);
 }

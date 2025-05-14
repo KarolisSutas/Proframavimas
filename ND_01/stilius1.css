@@ -1,6 +1,8 @@
-.bodis{
+
+body {
     background-image: url(Img/jura4.png);
     background-size: cover;
+    font-family: "Oswald", sans-serif;
 }
 h1{
     color: #FFFF00;
@@ -12,9 +14,10 @@ h1{
     border-top-left-radius: 30px;
     padding-right: 25px;
     text-align: right;
+    font-size: 40px;
 }
 li a:link{
-    color: #0ff1db !important;
+    color: #0ff1db;
 }
 li a:visited{
     color: #e01316;
@@ -25,6 +28,26 @@ li a:hover {
 li a:active{
     color: #ff8c00;
 }
-body{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+
+.blokai {
+    height: 250px;
+    width: 33.3333%;
+    min-width: 400px;
+    max-width: 400px;
+    padding: 40px;
+    font-size: 16px;
+    border: 3px solid orange;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.konteineris {
+    display:flexbox;
+    width: 100%;
+    font-size: 0;
+    
+}
+h2 {
+    text-align: center;
 }
