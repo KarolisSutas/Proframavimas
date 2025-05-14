@@ -1,0 +1,52 @@
+body {
+    background-color: black;
+    color: white;
+    margin: 20px;
+    
+}
+
+#tomas {
+    background-color: darkolivegreen;
+}
+
+
+.kvadratas {
+    background-color: cadetblue;
+    height: 200px;
+    width: 33.3333%;
+    min-width: 300px;
+    max-width: 400px;
+    padding: 50px;
+    font-size: 40px;
+    border: 10px dashed saddlebrown;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+[data-my-digit="521"] {
+    background-color: blueviolet;
+}
+
+.bin {
+    width: 100%;
+    text-align: center;
+    font-size: 0;
+}
+
+section p {
+    color: skyblue;
+}
+section > p {
+    color: coral;
+}
+section ~ p {
+    color: rgb(238, 144, 194);
+}
+
+section + p {
+    color: lawngreen;
+}
+i,u {
+    padding: 20px;
+    font-size: 30px;
+}
