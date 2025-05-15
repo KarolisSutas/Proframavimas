@@ -1,0 +1,85 @@
+section {
+    margin-top: 100px;
+    display: inline-block;
+    border: 10px solid greenyellow;
+    position: relative;
+}
+
+html {
+    border: 0px solid green;
+}
+
+section div {
+    width: 200px;
+    height: 200px;
+    left: 50px;
+}
+
+.one {
+    background-color: #a52a2a60;
+    position: relative;
+    bottom: -30px;
+    left: 100px;
+    display: none;
+}
+.two {
+    background-color: #19765760;
+    position: relative;
+    bottom: 120px;
+    left: 50px;
+    display: none;
+}
+.three {
+    background-color: #a52a2a60;
+    position: absolute;
+    top: 50px;
+    left: 80px;
+    display: none;
+    
+}
+.four {
+    background-color: #19765760;
+    position: absolute;
+    top: 50px;
+    left: 80px;
+}
+.base {
+    background-color: violet;
+}
+
+section:hover .three {
+    display: block;
+}
+section:hover .one {
+    display: block;
+}
+
+h1 {
+    font-size: 80px;
+    position: relative;
+    display: inline-block;
+}
+
+svg {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    bottom: 40px;
+    right: 55px;
+}
+
+h1 span {
+    font-size: 20px;
+    padding: 20px;
+    background-color: crimson;
+    color: white;
+    position: absolute;
+    display: none;
+    right: -100px;
+    bottom: 70px;
+
+}
+
+h1:hover span {
+    display: block;
+}
