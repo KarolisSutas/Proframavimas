@@ -1,0 +1,86 @@
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 15px 45px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.twitter {
+    background-color: rgb(59, 190, 234);
+    color: white;
+    font-weight: bold;
+    border-radius: 30px;
+    font-family: sans-serif;
+}
+
+.twitter:hover {
+    background-color:rgb(26, 132, 132);
+    transform: scale(1.05);
+}
+
+.youtube {
+    background-color: rgb(223, 18, 18);
+    color: white;
+    font-weight: bold;
+}
+.youtube:hover {
+    background-color: rgb(174, 21, 21);
+    box-shadow: 0 0 10px rgb(223, 18, 18);
+}
+
+.linkedin {
+    background-color: rgb(36, 134, 166);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.linkedin:hover {
+    background-color: rgb(20, 94, 118);
+    letter-spacing: 1px;
+    border-radius: 30px;
+}
+
+.github {
+    background-color: rgb(27, 26, 26);
+    color: white;
+    font-weight: 600;
+}
+.github:hover {
+    background-color: black;
+    rotate: -2deg;
+}
+
+.outline {
+    background-color: transparent;
+    border: 2px solid rgb(174, 21, 174);
+    color: rgb(174, 21, 174);
+}
+.outline:hover {
+    background-color: rgb(174, 21, 174);
+    color: white;
+}
+
+.gradient {
+    background: linear-gradient(45deg, #ea4b07, rgb(255, 225, 0));
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+}
+
+.gradient:hover {
+    background-color:rgb(144, 130, 28);
+    transform: scale(1.05);
+}
