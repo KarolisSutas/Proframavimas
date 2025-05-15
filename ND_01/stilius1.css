@@ -4,6 +4,44 @@ body {
     background-size: cover;
     font-family: "Oswald", sans-serif;
 }
+
+.konteineris-2 {
+    height: 40px;
+    display: flex;
+    align-items: left;
+    gap: 5px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+a:link{
+    color: rgb(235, 247, 5);
+    background-image: url(Img/a1.png);
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+}
+a:link:hover {
+    background-color: rgba(235, 247, 5, 0.612);
+    transform: scale(1.50);
+}
+
+a:visited{
+    color: rgb(235, 247, 5);
+    text-decoration: none;
+}
+a:hover {
+    color: rgb(235, 247, 5);
+    text-decoration: none;
+}
+a:active{
+    color: #ff8c00;
+    text-decoration: none;
+}
+
 h1{
     color: #FFFF00;
     background-image: url(Img/a1.png);
@@ -15,33 +53,11 @@ h1{
     padding-right: 25px;
     text-align: right;   
 }
-a:link{
-    color: rgb(224, 19, 22);
-    background-color: rgb(32, 53, 242);
-    padding: 10px 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 5px;
-}
-a:link:hover {
-    background-color: rgb(17, 32, 172);
-    box-shadow: 0 0 20px rgb(32, 53, 242);
-}
 
-a:visited{
-    color: rgb(224, 19, 22);
-    text-decoration: none;
+.konteineris {
+    width: 100%;
+    font-size: 0;
 }
-a:hover {
-    color: #ebf705;
-    text-decoration: none;
-}
-a:active{
-    color: #ff8c00;
-    text-decoration: none;
-}
-
 
 .blokai {
     height: 250px;
@@ -55,20 +71,8 @@ a:active{
     display: inline-block;
 }
 
-.konteineris {
-    width: 100%;
-    font-size: 0;
-    
-}
 h2 {
     text-align: center;
 }
 
-.konteineris-2 {
-    height: 40px;
-    display: flex;
-    align-items: left;
-    gap: 5px;
-    font-size: 15px;
-    font-weight: bold;
-}
+
