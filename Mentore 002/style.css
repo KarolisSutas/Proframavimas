@@ -1,0 +1,77 @@
+body {
+  background-image: url(Img/hehhee_PPPP.PNG);
+  max-block-size: 100%;
+  background-repeat: no-repeat;
+  background-position-y: 20%;
+  color: rgb(0, 0, 0);
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+nav {
+  border-bottom: 1px solid rgb(0, 0, 0);
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+  padding: 10px 35px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.left {
+  
+}
+.mid {
+  align-self: center;
+  position: relative;
+  left: -90px
+}
+.right {
+  width: 120px;
+  padding: 15px;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  position: relative;
+  left: -55px;
+  top: 7px;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+}
+
+.poland {
+  font-size: 120px;
+  position: relative;
+  top: -150px
+}
+
+.Lorem {
+  position: absolute;
+  top: 380px
+}
+
+.takeMe {
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+}
+.findOutMore {
+  background-color: white;
+  color: black;
+  border-style: solid;
+  border-radius: 5px;
+}
+
+.bottom {
+  position: absolute;
+  top: 420px;
+}
+
+
