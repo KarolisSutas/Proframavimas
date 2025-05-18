@@ -6,53 +6,68 @@ body {
 }
 
 .konteineris-2 {
+    display: inline-block;
     height: 40px;
-    display: flex;
-    align-items: left;
     gap: 5px;
-    font-size: 15px;
+    font-size: large;
     font-weight: bold;
 }
 
 
-a:link{
+.mygtukai{
+    background-image: url(Img/a1.png);
+    padding: 10px 15px;
+    text-align: center;
+    border-radius: 5px;
+    position: absolute;
+    top: 8px;
+    left: 102px;
+    display: none;
+}
+nav:hover .mygtukai{
+    display: block;
+}
+
+a:link {
+    color: #FFFF00;
+    text-decoration: none;
+}
+a:visited {
+    color: #FFFF00;
+}
+
+a:hover {
+    color: rgb(253, 56, 56);
+}
+
+.meniu {
     color: rgb(235, 247, 5);
     background-image: url(Img/a1.png);
     padding: 10px 25px;
+    font-size: large;
+    font-weight: bold;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     border-radius: 5px;
+    border: none;
+    font-family: "Oswald", sans-serif;
+    cursor: pointer;
+    position: relative;
 }
-a:link:hover {
-    background-color: rgba(235, 247, 5, 0.612);
-    transform: scale(1.50);
-}
-
-a:visited{
-    color: rgb(235, 247, 5);
-    text-decoration: none;
-}
-a:hover {
-    color: rgb(235, 247, 5);
-    text-decoration: none;
-}
-a:active{
-    color: #ff8c00;
-    text-decoration: none;
+.meniu:hover {
+    background-color: rgb(199, 206, 63);
+    box-shadow: 0 0 30px;   
 }
 
 h1{
     color: #FFFF00;
     background-image: url(Img/a1.png);
     width: 250px;
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-    border-bottom-left-radius: 30px;
-    border-top-left-radius: 30px;
-    padding-right: 25px;
+    border-radius: 5px;
+    padding-right: 50px;
     text-align: right;   
 }
+
 
 .konteineris {
     width: 100%;
@@ -73,6 +88,72 @@ h1{
 
 h2 {
     text-align: center;
+    position: relative;
 }
+.madeira {
+    display: none;
+    position:absolute;
+    top: 30px;
+    left: 350px;
+}
+h2:hover .madeira{
+   display: block;
+}
+.azorai {
+    display: none;
+    position:absolute;
+    top: 150px;
+    left: 0px;
+}
+h2:hover .azorai{
+   display: block;
+}
+.azorai {
+    display: none;
+    position:absolute;
+    top: 150px;
+    left: 0px;
+}
+h2:hover .azorai{
+   display: block;
+}
+.azorai {
+    display: none;
+    position:absolute;
+    top: 150px;
+    left: 0px;
+}
+h2:hover .azorai{
+   display: block;
+}
+.azorai {
+    display: none;
+    position:absolute;
+    top: 150px;
+    left: 0px;
+}
+h2:hover .azorai{
+   display: block;
+}
+
+.lapalma {
+    display: none;
+    position:absolute;
+    top: 150px;
+    right: 200px;
+}
+h2:hover .lapalma{
+    display: block;
+ }
+ .cape {
+    display: none;
+    position:absolute;
+    left: 350px;
+    top: -100px;
+}
+h2:hover .cape{
+    display: block;
+ }
+
 
 
