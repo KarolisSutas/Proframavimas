@@ -1,9 +1,13 @@
 
-.konteineris {
+body {
     background-image: url(Img/276.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
+    z-index: 3px;
+    filter:blur(0px);
 }
 .blokas h1{
     color: rgb(125, 43, 43);
 }
+

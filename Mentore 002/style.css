@@ -47,7 +47,9 @@ nav {
 }
 
 .poland {
-  font-size: 120px;
+  font-size: 250px;
+  font-weight:900;
+  
   position: relative;
   bottom: 0px;
 }

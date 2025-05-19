@@ -72,6 +72,7 @@ h1{
 .konteineris {
     width: 100%;
     font-size: 0;
+    min-width: 320px;
 }
 
 .blokai {
