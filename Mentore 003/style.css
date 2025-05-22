@@ -1,3 +1,4 @@
+
 body {
     background: url("Img/hummingbird.png") no-repeat fixed;
     background-size: cover;
@@ -57,5 +58,94 @@ body {
 
 .login {
     background-color: rgb(151, 79, 219);
-    color: black; 
+    color: black;
+    margin-right: 2rem; 
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 70vh;
+    text-align: center;
+}
+
+.headline {
+    font-size: 3rem;
+    letter-spacing: 2px;
+    color: rgb(114, 33, 189);
+    margin: 0 auto;
+}
+
+.subhead {
+    font-size: 1.2rem;
+    color: rgb(42, 41, 41);
+    font-family: sans-serif;
+    font-weight:100;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 45px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.primary {
+    background-color: rgb(114, 33, 189);
+    color: white;
+    border: none;
+    font-size: 16px;
+}
+
+.primary:hover {
+    background-color: rgb(151, 79, 219);
+    color: white;
+}
+
+.secondary {
+    background-color: transparent;
+    border: 1px solid rgb(114, 33, 189);
+    color: rgb(114, 33, 189);
+}
+
+.secondary:hover {
+    background-color: blueviolet;
+    color: white;
+}
+
+.subscribe {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+
+}
+
+.subscribe-form input[type="email"] {
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 20px;
+    width: 20%;
+}
+
+.subscribe-form button {
+    padding: 0.7rem 1rem;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(114, 33, 189);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.subscribe-form button:hover {
+    background-color: rgb(62, 11, 109);
 }

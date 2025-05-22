@@ -1,7 +1,7 @@
 body {
     background-color: #ffffff;
     height: 955.5vh;
-    width: 100%;
+    width: 1600px;
     margin: 0;
     font-family: "Mulish", sans-serif;
     border: 2px solid black;
@@ -12,10 +12,22 @@ body {
 }
 
 .navbar{
-    height: 15%;
+    height: 100px;
+    margin-top: 10px;
     display: flex;
     justify-content: space-between;
+    align-content: center;
+    align-items: center;
 }
+
+.topleft {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    margin-left: 13rem;
+}
+
 .logo {
     background-color: #458FF6;
     color: white;
@@ -26,8 +38,6 @@ body {
     height: 41px;
     width: 41px;
     border-radius: 50%;
-    position: relative;
-    left: 241px;
 }
 
 .trafalgar {
@@ -35,25 +45,34 @@ body {
     font-size: 24px;
     font-weight: bold;
     width: 30%;
-    position: absolute;
-    left: 294px;
-    top: 6px;
 
 }
 
 .navbar ul{
+    width: 545px;
+    height: 23px;
+    margin-right: 180px;
     display: flex;
     list-style: none;
     text-decoration: none;
+    color: #1f1534;
     gap: 2rem;
 }
 
-.navbar ul li{
+.navbar li a{
+    color: #1F1534;
     text-decoration: none;
+    font-size: 18px;
+    opacity: 0.5;
+}
+
+.navbar li a:hover {
+    font-weight: bold;
+    opacity: 1;
 }
 
 .container-header {
-    height: 60vh;
+    height: auto;
     padding: 20px;
     display: flex;
     justify-content: space-between;
@@ -63,28 +82,28 @@ body {
 .trafalgar-header-image {
     width: 693px;
     height: 598px;
-    top: 177px;
-    left: 744px;
+    margin-right: 150px;
     background:url(Img/e7c8a652b4ff26a094731214f377e182c2504450.png);
     background-repeat: no-repeat;
     background-color: #ffffff;
-    border: 1px solid green;
+    border: 1px solid crimson;
 }
 
 .header-text {
     font-family: "Mulish", sans-serif;
     width: 445px;
     height: 338px;
-    padding: 1rem;
+    margin-left: 14rem;
+    margin-top: 6rem;
     justify-content: center;
     align-items: center;
-    border: 1px solid red;
 }
 
 .virtual {
     font-family: "Mulish", sans-serif;
     width: 427px;
     height: 112px;
+    margin-top: 0;
     font-size: 48px;
     font-weight: 700;
     line-height: 56px;
@@ -95,6 +114,7 @@ body {
     color: #7D7987;
     width: 445px;
     height: 96px;
+    margin-bottom: 2.5rem;
     font-size: 21px;
     font-weight: 300;
     line-height: 32px;
