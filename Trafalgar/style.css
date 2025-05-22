@@ -7,10 +7,6 @@ body {
     border: 2px solid black;
 }
 
-.container {
-    height: 100%;
-}
-
 .navbar{
     height: 100px;
     margin-top: 10px;
