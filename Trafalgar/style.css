@@ -1,0 +1,117 @@
+body {
+    background-color: #ffffff;
+    height: 955.5vh;
+    width: 100%;
+    margin: 0;
+    font-family: "Mulish", sans-serif;
+    border: 2px solid black;
+}
+
+.container {
+    height: 100%;
+}
+
+.navbar{
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+}
+.logo {
+    background-color: #458FF6;
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+    align-content: center;
+    text-align:center;
+    height: 41px;
+    width: 41px;
+    border-radius: 50%;
+    position: relative;
+    left: 241px;
+}
+
+.trafalgar {
+    color: #233348;
+    font-size: 24px;
+    font-weight: bold;
+    width: 30%;
+    position: absolute;
+    left: 294px;
+    top: 6px;
+
+}
+
+.navbar ul{
+    display: flex;
+    list-style: none;
+    text-decoration: none;
+    gap: 2rem;
+}
+
+.navbar ul li{
+    text-decoration: none;
+}
+
+.container-header {
+    height: 60vh;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+}
+
+.trafalgar-header-image {
+    width: 693px;
+    height: 598px;
+    top: 177px;
+    left: 744px;
+    background:url(Img/e7c8a652b4ff26a094731214f377e182c2504450.png);
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+    border: 1px solid green;
+}
+
+.header-text {
+    font-family: "Mulish", sans-serif;
+    width: 445px;
+    height: 338px;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+}
+
+.virtual {
+    font-family: "Mulish", sans-serif;
+    width: 427px;
+    height: 112px;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56px;
+}
+
+.pheader {
+    font-family: "Mulish", sans-serif;
+    color: #7D7987;
+    width: 445px;
+    height: 96px;
+    font-size: 21px;
+    font-weight: 300;
+    line-height: 32px;
+    letter-spacing: 0%;
+}
+
+.consult-today {
+    font-family: "Mulish", sans-serif;
+    background-color: #458FF6;
+    color: #ffffff;
+    text-align:center;
+    border: 0;
+    font-weight:500;
+    font-size: 18px;
+    letter-spacing: 0.4px;
+    width: 200px;
+    height: 56px;
+    border-radius: 55px;
+    cursor: pointer;
+}

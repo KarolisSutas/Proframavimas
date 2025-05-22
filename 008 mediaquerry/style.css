@@ -1,0 +1,43 @@
+h1 {
+    color: crimson;
+}
+ 
+  body {
+    background-color: lightskyblue;
+  }
+ 
+ 
+@media (min-width: 700px) {
+  body {
+    background-color: lightgreen;
+  }
+}
+ 
+@media (min-width: 900px) {
+  body {
+    background-color: lightcoral;
+  }
+}
+ 
+ 
+ 
+ 
+h1 {
+    font-size: 300px;
+}
+ 
+ 
+@media (max-width: 600px) {
+  h1 {
+    font-size: 200px;
+  }
+}
+ 
+ 
+@media (max-width: 500px) {
+  h1 {
+    font-size: 100px;
+  }
+}
+ 
+ 
