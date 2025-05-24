@@ -137,6 +137,8 @@ body {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
 }
 
 .services-text {
@@ -170,36 +172,37 @@ body {
 }
 
 .services {
-    height: 967px;
     display: flex;
     flex-wrap: wrap;
     justify-content:center;
     gap:40px;
     margin: 0 auto;
+    padding-left: 5.1rem;
+    padding-right: 7rem;
 }
 
 .blokas {
-    background: rgba(255, 255, 255, 1);
-    width: 30%;
+    background: transparent;
+    width: 30.3333%;
     min-width: 250px;
-    padding: 20px;
     max-width: 350px;
     height: 354px;
+    padding: 0;
     border-radius: 20px;
-    box-shadow: rgba(229, 233, 246, 0.4);
-    filter: blur();
-    border: 1px solid red;
+    box-shadow: 20px 20px 25px 10px rgba(228, 230, 233, 0.3);
     text-align: left;
     align-content: center;
-
 }
 
 .search-doctor, .online-pharmacy, .consultation, .details-info, .emergency-core, .tracking {
-    padding: 2.4rem;
-    margin-left: 0.8rem;
+    padding: 2rem;
 }
 
-.services h2 {
+.tracking {
+    padding-bottom: 3rem;
+}
+
+.services h3 {
     color: rgba(0, 0, 0, 1);
     font-weight: 700;
     font-size: 24px;
@@ -217,7 +220,191 @@ body {
 
 .lupa, .buteliukas, .service-adres, .stat, .lagam, .list {
     height: 90px;
+
 }
+
+.learn-more {
+    background: #ffffff;
+    color: #458FF6;
+    font-family: "Mulish", sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 60px;
+    letter-spacing: 0%;
+    border: 2px solid #458FF6;
+    height: 100%;
+    max-height: 56px;
+    width: 100%;
+    max-width: 200px;
+    margin-top: 100px;
+    border-radius: 55px;
+    cursor: pointer;
+}
+
+.learn-more:hover {
+    background-color: #458FF6;
+    color: white;
+}
+
+.container-provider {
+    height: 477px;
+    width: 100%;
+    max-width: 1273px;
+    gap: 8rem;
+    padding-left: 135px;
+    margin-top: 218px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    align-content: center;
+    align-items: center;
+}
+
+.trafalgar-provider-image {
+    width: 100%;
+    max-width: 650px;
+    height: 477px;
+    background:url(Img/trafalgar-illustration\ sec02\ 1.png);
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+}
+
+.provider-text {
+    font-family: "Mulish", sans-serif;
+    width: 100%;
+    max-width: 486px;
+    height: 388px;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.provider-text .learn-more {
+    margin-top: 70px;
+}
+
+.healthcare-provider {
+    font-family: "Mulish", sans-serif;
+    margin-top: 0;
+    height: 112px;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 56px;
+}
+
+.rectangle-3 {
+    background-color: rgba(0, 0, 0, 1);
+    height: 2px;
+    width: 56px;
+    border-radius: 10px;
+}
+
+.p-provider {
+    font-family: "Mulish", sans-serif;
+    color: #7D7987;
+    height: 120px;
+    width:100%;
+    max-width: 450px;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 30px;
+    letter-spacing: 0%;
+}
+
+.container-dowload-app {
+    height: 675px;
+    width: 100%;
+    max-width: 1365px;
+    gap: 71px;
+    padding-left: 180px;
+    padding-top: 265px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.app-text {
+    font-family: "Mulish", sans-serif;
+    width: 100%;
+    max-width: 420px;
+    height: 375px;
+    margin-top: 33px;
+    justify-content: center;
+    align-items: center;
+}
+
+.mobile-app {
+    font-family: "Mulish", sans-serif;
+    margin-top: 0;
+    height: 112px;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: 0;
+}
+
+.app-text .rectangle-3 {
+    border-radius: 6px;
+    position: relative;
+    bottom: 5px
+}
+
+.p-app {
+    font-family: "Mulish", sans-serif;
+    color: #7D7987;
+    height: 120px;
+    width:100%;
+    max-width: 420px;
+    margin-top: 25px;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 30px;
+    letter-spacing: 0%;
+}
+
+.download {
+    background: #ffffff;
+    color: #458FF6;
+    font-family: "Mulish", sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 60px;
+    letter-spacing: 0%;
+    border: 2px solid #458FF6;
+    height: 100%;
+    max-height: 56px;
+    width: 100%;
+    max-width: 200px;
+    margin-top: 40px;
+    border-radius: 55px;
+    cursor: pointer;
+}
+
+.rodykle {
+    height: 15.43px;
+    width: 9.82px;
+    position: relative;
+    top: 23px;
+    left: 14px;
+}
+
+.trafalgar-app-image {
+    width: 100%;
+    max-width: 665px;
+    height: 434px;
+    background:url(Img/trafalgar-illustration\ sec03\ 1.png);
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+}
+
 
 
 
