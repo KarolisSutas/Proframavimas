@@ -1,5 +1,5 @@
 body {
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 1);
     height: 955.5vh;
     width: 100%;
     max-width: 1600px;
@@ -189,7 +189,7 @@ body {
     height: 354px;
     padding: 0;
     border-radius: 20px;
-    box-shadow: 20px 20px 25px 10px rgba(228, 230, 233, 0.3);
+    box-shadow: 5px 20px 25px 10px rgba(229, 233, 246, 0.4);
     text-align: left;
     align-content: center;
 }
@@ -527,7 +527,7 @@ body {
     align-content: center;
     text-align: center;
     height: 810px;
-    column-gap: 30px;
+    margin-top: 100px;
 }
 
 .container-article .rectangle-3 {
@@ -537,6 +537,7 @@ body {
 .container-gallery {
     background: rgba(255, 255, 255, 1);
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
     align-content: center;
@@ -544,18 +545,90 @@ body {
 }
 
 .article {
+    background: rgba(255, 255, 255, 1);
     border-radius: 20px;
     width: 100%;
     max-width: 350px;
     height:512px;
     margin-top: 40px;
-    border: 1px solid red;
+    box-shadow: 5px 20px 25px 10px rgba(229, 233, 246, 0.4);
+}
+
+.article div {
+    width: 100%;
+    max-width: 266px;
+    text-align: left;
+    padding-left: 2rem;
+
+}
+
+.article h3 {
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: 0%;
+}
+
+.article p {
+    color: rgba(125, 121, 135, 1);
+    height: 84px;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0;
+}
+
+.article a {
+    color: rgba(64, 137, 237, 1);
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.article a img {
+    position: relative;
+    left:11px;
 }
 
 .container-article .learn-more {
     margin-top: 69px;
+    border: 1.4px solid rgba(69, 143, 246, 1);
+    font-weight:bolder;
     align-self: center;
+    font-weight: 600;
 } 
+
+
+footer {
+    background: linear-gradient(to top right, rgba(90, 152, 242, 1), rgba(103, 195, 243, 1));
+    color: rgba(255, 255, 255, 1);
+    height: 432px;
+    width: 100%;
+    margin-top:250px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+footer .logo {
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(91, 155, 243, 1);
+    font-size: 26px;
+    font-weight: bold;
+    align-content: center;
+    text-align:center;
+    height: 41px;
+    width: 41px;
+    border-radius: 50%;
+}
+
+footer .trafalgar {
+    color: rgba(255, 255, 255, 1);
+    font-size: 24px;
+    font-weight: bold;
+
+}
+
+
 
 
 
