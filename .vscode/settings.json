@@ -1,0 +1,33 @@
+{
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "comment",
+                "settings": {
+                    "foreground": "#398d39",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope": "entity.name.tag.html",
+                "settings": {
+                    "foreground": "#79c645",
+                }
+            },
+            {
+                "scope": "string.quoted.single.js",
+                "settings": {
+                    "foreground": "#ddaf74",
+                }
+            },
+            {
+                "scope": "punctuation.separator",
+                "settings": {
+                    "foreground": "#22C55E"
+                }
+            }
+        ]
+    },
+    "workbench.colorTheme": "Firefox Quantum Dark"
+}
+
