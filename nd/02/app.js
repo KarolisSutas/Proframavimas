@@ -52,6 +52,71 @@ for (let i = 0; i < 44; i++) {
 // 3 UŽDUOTIS
 
 
+const apskritimas = document.querySelector('#uzd3');
+
+for (let i = 1; i < 15; i++) {
+    const span = document.createElement('span');
+    span.style.display = 'inline-block';
+    span.style.margin = '5px';
+    span.style.width = '60px';
+    span.style.height = '60px';
+    span.style.borderRadius = '50%';
+    span.style.backgroundColor = 'black';
+    span.innerText = [i];
+    span.style.color = 'white';
+    span.style.textAlign = 'center';
+    span.style.alignContent = 'center';
+
+    uzd3.appendChild(span);
+
+}
+
+// 4 UŽDUOTIS
+
+const zebrai = document.querySelector('#uzd4');
+
+for (let i = 0; i < 4; i++) {
+    const span = document.createElement('span');
+    span.style.display = 'inline-block';
+    span.style.margin = '5px';
+    span.style.width = '60px';
+    span.style.height = '60px';
+    span.style.borderRadius = '50%';
+    if( i % 2 === 0) { 
+        span.style.backgroundColor = 'red';
+    }else {
+    span.style.backgroundColor = 'blue';
+    }
+
+    uzd3.appendChild(span);
+}
+
+// 5 UŽDUOTIS
+
+const lentele = document.querySelector('#uzd5');
+    for (let i = 4; i <= 14; i++) {
+      const tr = document.createElement('tr');
+      tr.style.backgroundColor = 'white';
+
+      const skaičius = document.createElement('td');
+      skaičius.textContent = `4 x ${i} =`;
+      skaičius.style.border = '2px solid black';
+      skaičius.style.textAlign = 'right';
+      skaičius.style.alignContent = 'center';
+      skaičius.style.fontSize = '25px';
+  
+
+      const rezultatas = document.createElement('td');
+      rezultatas.textContent = 4 * i;
+      rezultatas.style.border = '2px solid black';
+      rezultatas.style.fontSize = '25px';
+
+
+      tr.appendChild(skaičius);
+      tr.appendChild(rezultatas);
+      lentele.appendChild(tr);
+    }
+
 
 
 
