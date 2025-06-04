@@ -58,7 +58,7 @@ const p3 = document.querySelector('p + p + p');
 // p3.innerText = 'Meškas';
 p3.innerHTML = `<span class="animal">
 Me<b>š</b>ka ${mano}
-<span>`; //su backtik galima dalinti eilutes kad aiskiau butu
+</span>`; //su backtik galima dalinti eilutes kad aiskiau butu
 
 
 
