@@ -315,16 +315,31 @@ body {
     letter-spacing: 0%;
 }
 
-.container-dowload-app {
-    height: 675px;
+.download-sekcija {
+    height: 1100px;
     width: 100%;
-    max-width: 1365px;
-    gap: 71px;
-    padding-left: 180px;
-    padding-top: 265px;
     display: flex;
+    box-sizing: border-box;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-ball3 {
+    position: absolute;
+    top: 0px;
+    left: 1515px;
+}
+
+.container-dowload-app {
+    width: 100%;
+    max-width: 1365px;
+    padding-left: 90px;
+    display: flex;
+    justify-content: center;
+    gap: 75px;
 }
 
 .app-text {
@@ -612,7 +627,7 @@ footer {
     position: relative;
 }
 
-section {
+.footer-sekcija {
     background: linear-gradient(to top, rgba(90, 152, 242, 1), rgba(103, 195, 243, 1));
     color: rgba(255, 255, 255, 1);
     height: 432px;

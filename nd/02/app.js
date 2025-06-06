@@ -76,19 +76,19 @@ for (let i = 1; i < 15; i++) {
 const zebrai = document.querySelector('#uzd4');
 
 for (let i = 0; i < 4; i++) {
-    const span = document.createElement('span');
-    span.style.display = 'inline-block';
-    span.style.margin = '5px';
-    span.style.width = '60px';
-    span.style.height = '60px';
-    span.style.borderRadius = '50%';
+    const span1 = document.createElement('span1');
+    span1.style.display = 'inline-block';
+    span1.style.margin = '5px';
+    span1.style.width = '60px';
+    span1.style.height = '60px';
+    span1.style.borderRadius = '50%';
     if( i % 2 === 0) { 
-        span.style.backgroundColor = 'red';
+        span1.style.backgroundColor = 'red';
     }else {
-    span.style.backgroundColor = 'blue';
+    span1.style.backgroundColor = 'blue';
     }
 
-    uzd3.appendChild(span);
+    uzd4.appendChild(span1);
 }
 
 // 5 UŽDUOTIS

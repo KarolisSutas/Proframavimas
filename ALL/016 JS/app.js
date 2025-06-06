@@ -96,7 +96,8 @@ console.log(all.flat());
 const zodis = "Ananasas";
 
 for (let i = 0; i < zodis.length; i++) {
-  if (zodis[i] === "a") {
+  // zodis[i] == 'a' && console.log(zodis[i]);
+  if (zodis[i] == 'a') {
     console.log(zodis[i]);
   }
 }
