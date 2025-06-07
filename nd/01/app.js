@@ -12,7 +12,6 @@ h3.innerText = 3;
 const h4 = document.querySelector('h4');
 h4.innerText = 4;
 
-console.log(typeof h4.innerText);
 
 // 2 uzduotis
 
@@ -42,7 +41,7 @@ function rand(min, max) {
 let a = rand(0, 4);
 let b = rand(0, 4);
 
-while (a === 0 || b === 0) {
+while (a == 0 || b == 0) {
     a = rand(0, 4);
     b = rand(0, 4);
 }
@@ -70,7 +69,7 @@ let apskritimas1 = { width: rand(50, 200), height: rand(50, 200) };
 let apskritimas2 = { width: rand(50, 200), height: rand(50, 200) };
 let apskritimas3 = { width: rand(50, 200), height: rand(50, 200) };
 
-// Apskaičiu plotus
+// Apskaičiuju plotus
 let plotas1 = Math.PI * (apskritimas1.width / 2) * (apskritimas1.height / 2);
 let plotas2 = Math.PI * (apskritimas2.width / 2) * (apskritimas2.height / 2);
 let plotas3 = Math.PI * (apskritimas3.width / 2) * (apskritimas3.height / 2);
@@ -160,7 +159,7 @@ if (i > 0) {
 // 6 UŽDUOTIS
 
 let Ž = rand(5, 3000);
-let K = Ž * 1;
+let K = Ž * 2;
 
 let nuolaida;
 
@@ -172,7 +171,7 @@ if (K > 2000) {
     nuolaida = 0;
 }
 
-const GK = function(K, N) {
+function GK(K, N) {
     return K - (K * N / 100);
 }
 

@@ -37,12 +37,12 @@ for (let i = 0; i < 44; i++) {
 
     const span = document.createElement('span');
     span.innerText = rand + ' ';
-    if(rand % 4 === 0) { 
+    if(rand % 4 == 0) { 
         span.style.color = 'red';
     }else {
     span.style.color = 'blue';
     }
-    // span.style.color = (rand % 4 === 0) ? 'red' : 'blue';
+    // span.style.color = (rand % 4 == 0) ? 'red' : 'blue';
     span.style.fontSize = '30px';
 
     uzd2.appendChild(span);
@@ -53,6 +53,7 @@ for (let i = 0; i < 44; i++) {
 
 
 const apskritimas = document.querySelector('#uzd3');
+apskritimas.style.marginTop = '30px';
 
 for (let i = 1; i < 15; i++) {
     const span = document.createElement('span');
@@ -74,6 +75,7 @@ for (let i = 1; i < 15; i++) {
 // 4 UŽDUOTIS
 
 const zebrai = document.querySelector('#uzd4');
+zebrai.style.marginTop = '30px';
 
 for (let i = 0; i < 4; i++) {
     const span1 = document.createElement('span1');
@@ -94,6 +96,8 @@ for (let i = 0; i < 4; i++) {
 // 5 UŽDUOTIS
 
 const lentele = document.querySelector('#uzd5');
+lentele.style.marginTop = '30px';
+
     for (let i = 4; i <= 14; i++) {
       const tr = document.createElement('tr');
       tr.style.backgroundColor = 'white';
@@ -116,6 +120,31 @@ const lentele = document.querySelector('#uzd5');
       tr.appendChild(rezultatas);
       lentele.appendChild(tr);
     }
+
+
+// 6 UŽDUOTIS
+
+const divas = document.querySelector('#uzd6');
+divas.style.marginTop = '30px';
+
+for(let i = 0; i < 10; i++) {
+    const simbolis = document.createElement('div');
+    simbolis.textContent = '*'.repeat(44);
+    simbolis.style.fontSize = '40px';
+    divas.appendChild(simbolis);
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
