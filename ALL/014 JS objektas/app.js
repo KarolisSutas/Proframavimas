@@ -23,7 +23,6 @@ console.log(nso);
 
 const me = {}
 
-
 me.Vardas = 'Antanas';
 me.Pavarde = 'Antanaitis';
 me.amzius = 100;

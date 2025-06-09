@@ -76,17 +76,17 @@ console.log(typeof B1, typeof B2);
 
 console.clear()
 
-console.log('true || true', 'true || true');
-console.log('true || flase', 'true || false');
-console.log('flase || true', 'false || true');
-console.log('flase || flase', 'false || false');
+console.log('true || true', 'true || true');      // TRUE
+console.log('true || flase', 'true || false');    // TRUE
+console.log('flase || true', 'false || true');    // TRUE
+console.log('flase || flase', 'false || false');  // FALSE
 console.log('------------------');
-console.log('true && true', 'true && true');
-console.log('true && flase', 'true && false');
-console.log('flase && true', 'false && true');
-console.log('flase && flase', 'false && false');
+console.log('true && true', 'true && true');      // TRUE
+console.log('true && flase', 'true && false');    // FALSE
+console.log('flase && true', 'false && true');    // FALSE
+console.log('flase && flase', 'false && false');  // FALSE
 console.log('------------------');
-console.log('!true', '!false');
-console.log('!false', '!true');
+console.log('!true', '!false');                   // FALSE
+console.log('!false', '!true');                   // TRUE     
 
 

@@ -134,6 +134,29 @@ for(let i = 0; i < 10; i++) {
     divas.appendChild(simbolis);
 }
 
+// 7 UŽDUOTIS
+
+const matrioska = document.querySelector('#uzd7');
+const kvadSum = 14;
+const maxdydis = 280;
+const tarpas = 20;
+
+function randomColor() {
+    return '#' + Math.floor(Math.random() * 16777215).toString(16).padEnd(6, '0');
+}
+
+for (let i = 0; i < kvadSum; i++) {
+    const kvadDydis = maxdydis - i * tarpas;
+    const kvadratas = document.createElement('div');
+    kvadratas.classList.add('kvadratas')
+    kvadratas. style.width = `${kvadDydis}px`;
+    kvadratas. style.height = `${kvadDydis}px`;
+    kvadratas.style.zIndex = i + 1;
+    kvadratas.style.backgroundColor = randomColor();
+    (matrioska).appendChild(kvadratas);
+}
+
+
 
 
 

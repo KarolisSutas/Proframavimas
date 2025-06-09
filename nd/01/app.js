@@ -231,6 +231,12 @@ if (maišas == 1) {
 }
 
 
+// 8 UŽDUOTIS
 
+const circles = document.querySelectorAll('#go8 div');
 
+circles.forEach((circle, index) => {
+  const color = window.getComputedStyle(circle).backgroundColor;
+  console.log(`Apskritimas ${index + 1}: ${color}`);
+});
 
