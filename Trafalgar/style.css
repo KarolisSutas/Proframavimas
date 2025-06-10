@@ -64,11 +64,10 @@ body {
     text-decoration: none;
     font-size: 18px;
     opacity: 0.5;
-    transition: 0;
 }
 
 .navbar li a:hover {
-    font-weight: bold;
+    color: black;
     opacity: 1;
 }
 
@@ -491,8 +490,19 @@ body {
     align-content:center;
     justify-content: flex-start;
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
+.footer-ball8 {
+    width:  100%;
+    max-width: 132px;
+    height: 115px;
+    position: absolute;
+    top: 0px;
+    left: 1035px;
+    
+}
 
 .customer-head {
     color: rgba(255, 255, 255, 1);
