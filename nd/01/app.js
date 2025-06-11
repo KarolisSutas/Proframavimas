@@ -240,3 +240,96 @@ circles.forEach((circle, index) => {
   console.log(`Apskritimas ${index + 1}: ${color}`);
 });
 
+
+
+
+
+
+// 9 UŽDUOTIS
+
+for (let i = 1; i <= 5; i++) {
+  const daugyba = document.querySelectorAll('#go9 span');
+  daugyba[2].textContent = +daugyba[0].textContent * +daugyba[1].textContent;
+  daugyba[5].textContent = +daugyba[3].textContent * +daugyba[4].textContent;
+  daugyba[8].textContent = +daugyba[6].textContent * +daugyba[7].textContent;
+  daugyba[11].textContent = +daugyba[9].textContent * +daugyba[10].textContent;
+  daugyba[14].textContent = +daugyba[12].textContent * +daugyba[13].textContent;
+
+}
+
+
+// 10 UŽDUOTIS
+
+
+const sq1 = document.querySelector('#go10 div');
+let width1 = sq1.clientWidth;
+let height1 = sq1.clientHeight;
+
+console.log({width1, height1});
+
+let area1 = width1 * height1;
+
+console.log(area1);
+
+if (area1 > 10000) {
+  sq1.style.backgroundColor = 'darkgreen';
+}
+
+const sq2 = document.querySelector('#go10 div + div');
+let width2 = sq2.clientWidth;
+let height2 = sq2.clientHeight;
+
+console.log({width2, height2});
+
+let area2 =width2 * height2;
+
+console.log(area2);
+
+if (area2 > 10000) {
+  sq2.style.backgroundColor = 'darkgreen';
+}
+
+const sq3 = document.querySelector('#go10 div + div + div');
+let width3 = sq3.clientWidth;
+let height3 = sq3.clientHeight;
+
+console.log({width3, height3});
+
+let area3 =width3 * height3;
+
+console.log(area3);
+
+if (area3 > 10000) {
+  sq3.style.backgroundColor = 'darkgreen';
+}
+
+const sq4 = document.querySelector('#go10 div + div + div + div');
+let width4 = sq4.clientWidth;
+let height4 = sq4.clientHeight;
+
+console.log({width4, height4});
+
+let area4 =width4 * height4;
+
+console.log(area4);
+
+if (area4 > 10000) {
+  sq4.style.backgroundColor = 'darkgreen';
+}
+
+const sq5 = document.querySelector('#go10 div + div + div + div + div');
+let width5 = sq5.clientWidth;
+let height5 = sq5.clientHeight;
+
+console.log({width5, height5});
+
+let area5 =width5 * height5;
+
+console.log(area5);
+
+if (area5 > 10000) {
+  sq5.style.backgroundColor = 'darkgreen';
+}
+
+
+
