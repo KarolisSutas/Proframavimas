@@ -118,6 +118,31 @@ for (let i = 0; i < B.length; i++) {
 
 
 
+// 6 užduotis
+
+const apskritimas3 = document.querySelector('#uzd6');
+
+
+for (let i = 0; i < vienatiniai.length; i++) {
+    const div = document.createElement('div');
+    div.style.display = 'inline-block';
+    div.style.width =  '200px';
+    div.style.height = '100px';
+    div.style.borderRadius = '50%';
+    div.style.backgroundColor = 'green';
+    div.style.margin = '10px auto';
+    div.style.border = '2px solid green';
+    div.innerText = vienatiniai[i];
+    div.style.color = 'floralwhite';
+    div.style.textAlign = 'center';
+    div.style.alignContent = 'center';
+
+    uzd6.appendChild(div);
+}
+
+
+
+
 
 
 
