@@ -127,12 +127,14 @@ lentele.style.marginTop = '30px';
 const divas = document.querySelector('#uzd6');
 divas.style.marginTop = '30px';
 
-for(let i = 0; i < 10; i++) {
+for(let i = 0; i < 12; i++) {
     const simbolis = document.createElement('div');
-    simbolis.textContent = '*'.repeat(44);
+    simbolis.textContent = '*'.repeat(37);
     simbolis.style.fontSize = '40px';
     divas.appendChild(simbolis);
 }
+
+
 
 // 7 UŽDUOTIS
 
