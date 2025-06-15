@@ -17,12 +17,18 @@ body {
     max-height: 100px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    gap: 12rem;
+    justify-content: center;
     align-content: center;
     align-items: center;
+    gap: 24rem;
     margin-top: 50px;
     margin-bottom: 50px;
+}
+
+@media (max-width:1300px) {
+    .navbar {
+        gap: 0;
+    }
 }
 
 .topleft {
@@ -127,7 +133,7 @@ body {
       flex-direction: column;
       text-align: center;
     }
-  
+
     .header-text {
       padding-inline: 1rem;
       margin-bottom: 2rem;
@@ -168,6 +174,8 @@ body {
 }
 
 .sekcija-1 {
+    width: 100%;
+    padding-inline: 1rem;
     position: relative;
 }
 
@@ -193,13 +201,9 @@ body {
     max-width: 132px;
     height: 115px;
     position: absolute;
-    top: 571px;
-    right: 170px;
+    top: 580px;
+    right: 155px;
     z-index: -1;
-}
-.sekcija-1{
-    width: 100%;
-    padding-inline: 1rem;
 }
 
 .services-text {
@@ -337,11 +341,8 @@ body {
 }
 
 .container-provider {
-    height: ;
     width: 100%;
-    max-width: 1273px;
     gap: 8rem;
-    padding-left: 135px;
     margin-top: 218px;
     display: flex;
     flex-wrap: wrap;
@@ -352,10 +353,10 @@ body {
 
 .trafalgar-provider-image {
     width: 100%;
-    max-width: 650px;
-    height: 477px;
-    background:url(Img/trafalgar-illustration\ sec02\ 1.png);
-    background-repeat: no-repeat;
+    max-width: clamp(300px, 50vw, 650px);
+    height: auto;
+    margin-top: 2rem;
+    object-fit: cover;
     background-color: #ffffff;
 }
 
@@ -376,7 +377,7 @@ body {
 .healthcare-provider {
     font-family: "Mulish", sans-serif;
     margin-top: 0;
-    height: 112px;
+    height: auto;
     font-size: 36px;
     font-weight: 700;
     line-height: 56px;
@@ -385,14 +386,15 @@ body {
 .rectangle-3 {
     background-color: rgba(0, 0, 0, 1);
     height: 2px;
-    width: 56px;
+    width: 100%;
+    max-width: 56px;
     border-radius: 10px;
 }
 
 .p-provider {
     font-family: "Mulish", sans-serif;
     color: #7D7987;
-    height: 120px;
+    height: auto;
     width:100%;
     max-width: 450px;
     font-size: 18px;
@@ -400,6 +402,34 @@ body {
     line-height: 30px;
     letter-spacing: 0%;
 }
+
+@media (max-width: 1235px) {
+    .container-provider {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      align-content: center;
+    }
+
+    .provider-text {
+      padding-inline: 1rem;
+      margin-bottom: 2rem;
+      order: 0;
+    }
+
+    .trafalgar-provider-image {
+        order: 1;
+    }
+
+    .provider-text .learn-more{
+        justify-self: center;
+    }
+
+    .rectangle-3 {
+        margin: 10px auto;
+    }
+  }
 
 .download-sekcija {
     height: 1100px;
