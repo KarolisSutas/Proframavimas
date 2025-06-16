@@ -53,7 +53,6 @@ const fun2 = function(pa1, pa2, pa3 = 5) { // pa3 = 5 default reiksme, jei argum
     rez.push(rez1);
     rez.push(rez2);
 
-
     return rez;
 }
 
@@ -116,7 +115,7 @@ h1.style.color = spalva;
 section.appendChild(h1);
 }
 
-hVienas('Bebras');
+hVienas('guliasas');
 hVienas('Barsukas', 'orange');
 hVienas('Briedis');
 

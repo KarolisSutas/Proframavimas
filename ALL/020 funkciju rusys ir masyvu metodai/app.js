@@ -31,7 +31,7 @@ funRezultatas = fun3(3);
 console.log(funRezultatas);
 
 //....................
-
+console.clear();
 const obuoliai = function() {
     console.log('Paprasta:', this);
     return this.sakos * 8;
@@ -80,7 +80,7 @@ console.log(funRezultatas);
 const colors = ['green', 'blue', 'yellow', 'pink', 'black'];
 // su ciklu konsoleje atspausdinti spalvas po viena spalva
 
-console.clear();
+
 
 // for(let i = 0; i < colors.length; i++) {
 //     console.log(colors[i]);
@@ -125,7 +125,7 @@ digits.forEach(el => {
 const fe = colors.forEach(el => console.log(el));
 console.log(fe);
 
-console.clear();
+
 
 const mp = colors.map(el => '<li>' + el + '</li>'); // kuriam masyvo kopija kuria norim siek tiek modifikuoti
 console.log(mp);

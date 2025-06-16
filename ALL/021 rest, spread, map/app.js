@@ -76,7 +76,7 @@ const skaiciaiObjekte = [
 
 // sukurti nauja masyva, kuriame kiekvienas skaicius yra padaugintas is 5, skaicius turi likti duotam objekte, objekto savybes vardas turi likti toks pat
 
-// const skaiciaObjekte" = skaiciaiObjekte.map(sk => {
+// const skaiciaiObjekte2 = skaiciaiObjekte.map(sk => {
 //     return { skaicius: sk.skaicius * 5 };
 // });
 
@@ -103,6 +103,4 @@ console.log(cartPlus1);
 const cartPlus2Sviestukai = cart.map(obj => obj.id == 8974 ? { ...obj, count: obj.count + 2 } : obj);
 
 console.log(cartPlus2Sviestukai);
-
-
 
