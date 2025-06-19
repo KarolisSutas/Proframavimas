@@ -32,30 +32,30 @@ console.log(objBack, typeof objBack);
 
 console.clear();
 
-// fetch('https://jsonplaceholder.typicode.com/posts')
-//       .then(response => response.json()) // kai sulaukiam atsakyma paverciam objektu
-//       .then(json => {
-//         console.log(json);
-//         prinTitles(json);
-//     }) // atspausdinam konsoleje
+fetch('https://jsonplaceholder.typicode.com/posts')
+    .then(response => response.json()) // kai sulaukiam atsakyma paverciam objektu
+    .then(json => {
+        console.log(json);
+        prinTitles(json);
+    }) // atspausdinam konsoleje
 
-// console.log('kodas PO fetch'); // sitas kodas ivyksta anksciau nei fetch
+console.log('kodas PO fetch'); // sitas kodas ivyksta anksciau nei fetch
 
-// const prinTitles = obj => {
-//     const ul = document.querySelector('ul');
-//     obj.forEach(p => { // p tai postas is API
-//         const li = document.createElement('li');
-//         li.innerText = p.title; // title is post 
-//         ul.appendChild(li);
-//     });
+const prinTitles = obj => {
+    const ul = document.querySelector('ul');
+    obj.forEach(p => { // p tai postas is API
+        const li = document.createElement('li');
+        li.innerText = p.title; // title is post 
+        ul.appendChild(li);
+    });
 
-// }
+}
 
 const cart = [
-    {id: 877, title: 'Pienisko desros', price: 2.45, count: 2},
-    {id: 8974, title: 'Sviestukas sintetinis', price: 3.20, count: 1},
-    {id: 16548, title: 'Batonas studentu', price: 1.22, count: 1},
-    {id: 974, title: 'Bulves 4kl', price: 0.88, count: 2}
+    { id: 877, title: 'Pienisko desros', price: 2.45, count: 2 },
+    { id: 8974, title: 'Sviestukas sintetinis', price: 3.20, count: 1 },
+    { id: 16548, title: 'Batonas studentu', price: 1.22, count: 1 },
+    { id: 974, title: 'Bulves 4kl', price: 0.88, count: 2 }
 ];
 
 // prie kiekvieno produkto prideti savybe total ir joje paskaiciuoti atitinkamo produkto bendra suma
