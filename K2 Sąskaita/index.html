@@ -5,11 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
-    <title>Document</title>
+    <title>Sąskaita-faktūra</title>
 </head>
 <body>
+    <header>
 
-    <div id="duomenys"></div>
+        <div class="tuščias"></div>
+        <h1 id="title">PVM sąskaita-faktūra</h1>
+        <h2 id="number"></h2>
+        <h2 id="date"></h2>
+
+    </header>
+    <main>
+        <div class="konteineris">
+            <div id="seller">Pardavejas<span></span></div>
+            <div id="buyer">pirkejas</div>
+        </div>    
+        <div id="pirma">
+            <table>
+                <thead>
+                    <th>Prekė</th>
+                    <th>Kiekis</th>
+                    <th>Kaina</th>
+                    <th>Nuolaida</th>
+                    <th>Suma</th>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </main>
+    
 
 </body>
 </html>

@@ -869,7 +869,7 @@ footer {
 }
 
 .end-left {
-    width: 50%;
+    width: 40%;
     display: flex;
     flex-wrap: wrap;
     align-content: center;
@@ -923,19 +923,16 @@ footer .trafalgar {
 }
 
 .container-end {
+    width: 50%;
     display: flex;
-    flex-direction: column;
     align-content: center;
+    justify-content: space-evenly;
     margin-bottom: 50px;
 }
 
 .end {
-    width: 33%;
-    max-width: 200px;
-    text-align: left;
-    padding: 0;
-    margin-bottom: 60px;
-    
+    display: flex;
+    flex-direction: column;
 }
 
 .end h2{
@@ -954,7 +951,6 @@ footer .trafalgar {
     line-height: 38px;
     letter-spacing: 0%;
     list-style-type: none;   
-    list-style-position: outside;
 }
 
 .footer-ball {
@@ -977,6 +973,23 @@ footer .trafalgar {
     z-index: 1;
 }
 
+@media (max-width: 1050px) {
+    .footer-sekcija {
+        display: flex;
+        flex-direction: row;
+        height: auto;
+    }
+    .end-left {
+        width: 100%;
+        padding-inline: 8px;
+    }
+    .container-end {
+        width: 100%;
+    }
+    .end {
+        padding-inline: 5px;
+    }
+}
 
 
 
