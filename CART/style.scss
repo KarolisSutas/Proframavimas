@@ -144,6 +144,7 @@ header {
             position: absolute;
             bottom: 13px;
             background-color: $white;
+            ;
             transition: all 0.4s;
         }
 
@@ -400,6 +401,7 @@ header {
     justify-content: center;
     margin-top: 100px;
     margin-bottom: 20px;
+
     &__bin {
         width: 100%;
         display: flex;
@@ -407,6 +409,7 @@ header {
         max-width: $xl;
         row-gap: $gap;
         padding: 0 $gap;
+
         select {
             width: 200px;
             height: 40px;
@@ -426,6 +429,7 @@ header {
 
 .cart {
     position: relative;
+
     .count {
         position: absolute;
         top: -10px;
@@ -439,19 +443,21 @@ header {
         justify-content: center;
         align-items: center;
         font-size: 14px;
+
         span {
             position: relative;
             top: -1px;
         }
     }
+
     .icon {
         svg {
             width: 40px;
             height: 40px;
-            fill: white;
+            fill: $white;
             transition: all 0.3s ease;
             cursor: pointer;
- 
+
             &:hover {
                 fill: $green;
             }
@@ -462,9 +468,18 @@ header {
 .cart-content {
     position: absolute;
     background-color: $blue;
-    width: 270px;
+    width: 280px;
     right: -20px;
- 
+    padding-top: 10px;
+    border: 1px solid $gray;
+
+    &__empty {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 15px 10px 25px;
+    }
+
     &__line {
         width: 100%;
         display: flex;
@@ -472,32 +487,32 @@ header {
         padding: 5px 10px;
         align-items: center;
     }
- 
+
     &__img {
         width: 50px;
         height: 50px;
- 
+
         img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
     }
- 
+
     &__title {
         font-size: 12px;
         width: 100px;
         max-width: 100px;
         overflow: hidden;
     }
- 
+
     &__price {
         font-size: 16px;
-        width: 40px;
-        max-width: 40px;
+        width: 50px;
+        max-width: 50px;
         overflow: hidden;
     }
- 
+
     &__amount {
         font-size: 16px;
         width: 20px;
@@ -543,4 +558,3 @@ header {
         }
     }
 }
- 

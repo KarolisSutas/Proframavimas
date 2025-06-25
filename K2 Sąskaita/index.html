@@ -17,24 +17,54 @@
 
     </header>
     <main>
-        <div class="konteineris">
-            <div id="seller">Pardavejas<span></span></div>
-            <div id="buyer">pirkejas</div>
+        <div class="konteineris" style="display: none;">
+            <div id="seller"><span></span></div>
+            <div id="buyer"></div>
         </div>    
-        <div id="pirma">
+        <div id="pirma" style="display: none;">
             <table>
                 <thead>
-                    <th>Prekė</th>
-                    <th>Kiekis</th>
-                    <th>Kaina</th>
-                    <th>Nuolaida</th>
-                    <th>Suma</th>
+                    <tr>
+                        <th>Prekė</th>
+                        <th>Kiekis</th>
+                        <th>Kaina</th>
+                        <th>Nuolaida</th>
+                        <th>Suma</th>
+                    </tr>   
                 </thead>
                 <tbody></tbody>
             </table>
         </div>
+        <div id="antra" style="display: none;">
+            <table>
+                <tr>
+                    <td>Transportas: </td>
+                    <td id="trans"></td>
+                </tr>
+                <tr>
+                    <td>Tarpinė suma: </td>
+                    <td id="tarp">0</td>
+                </tr>
+                <tr>
+                    <td>PVM 21 proc. </td>
+                    <td id="pvm">0</td>
+                </tr>
+                <tr>
+                    <td><b>Bendra suma: </b></td>
+                    <td id="viso">0</td>
+                </tr>
+            </table>
+        </div>
     </main>
     
-
 </body>
+<template data-items-content>
+        <tr>
+            <td class="prekė"></td>
+            <td class="kiekis"></td>
+            <td class="kaina"></td>
+            <td class="nuolaida"></td>
+            <td class="suma"></td>
+        </tr>
+</template>
 </html>
