@@ -115,7 +115,7 @@ const countTotal = () => {
     // Įrašom reikšmes atitinkamuose laukeliuose
     document.querySelector('#tarp').textContent = `${tarpinė.toFixed(2)} €`;
     document.querySelector('#pvm').textContent = `${pvm.toFixed(2)} €`;
-    document.querySelector('#viso').textContent = `${viso.toFixed(2)} €`;
+    document.querySelector('#viso').innerHTML = `<b>${viso.toFixed(2)} €</b>`;
 };
 
 
