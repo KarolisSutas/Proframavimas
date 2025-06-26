@@ -6,30 +6,45 @@ console.log('Kibiras!');
 // Sukurti vieną kibiro objektą ir pademonstruoti akmenų rinkimą į kibirą ir rezultatų išvedimą.
 
 class Kibiras1 {
-    constructor(k) {
+
+    constructor() {
         this.akmenuKiekis = 0;
-        this.kiekPririnktaAkmenu(k);
+        this.kiekPririnktaAkmenu();
     }
 
-        prideti1Akmeni() {
-         return this.akmenuKiekis + 1;
-        
+    prideti1Akmeni() {
+        this.akmenuKiekis++;
     }
 
-        pridetiDaugAkmenu(kiekis) {
-         return this.akmenuKiekis + kiekis;
+    pridetiDaugAkmenu(kiekis) {
+        this.akmenuKiekis += kiekis;
     }
 
-        kiekPririnktaAkmenu(k) {
-            if (k > 0) {
-                return this.akmenuKiekis = k;
-            }
+    kiekPririnktaAkmenu() {
+        console.log('kibire jau yra:', this.akmenuKiekis);
     }
+
+    gautiAkmenuKieki() {
+        return this.akmenuKiekis;
+    }
+
 }
 
-const akm = new Kibiras1(33);
+const k1 = new Kibiras1(); // setter
+const k2 = new Kibiras1();
 
-console.log(akm, akm.prideti1Akmeni(), akm.pridetiDaugAkmenu(35));
+k1.prideti1Akmeni();
+k1.prideti1Akmeni();
+k1.pridetiDaugAkmenu(5);
+
+k2.pridetiDaugAkmenu(10);
+k2.prideti1Akmeni();
+
+k1.kiekPririnktaAkmenu();
+k2.kiekPririnktaAkmenu();
+
+const k2Kiekis = k2.gautiAkmenuKieki(); // getter
+console.log(k2Kiekis);
 
 // 2.	Sukurti klasę Pinigine. 
 // Konstruktoriuje sukurti dvi savybes popieriniaiPinigai ir metaliniaiPinigai. 
