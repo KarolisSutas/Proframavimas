@@ -53,16 +53,15 @@ console.log(k2Kiekis);
 // Sukurti klasės objektą ir pademonstruoti veikimą. Nesvarbu kokios popierinės kupiūros ir metalinės monetos egzistuoja realiame pasaulyje.
 
 class Pinigine {
-    constructor(p) {
-        this.popieriniaiPinigai = 4;
-        this.metaliniaiPinigai = ;
-        this.ideti(p);
+    constructor() {
+        this.popieriniaiPinigai = 0;
+        this.metaliniaiPinigai = 0;
     }
     ideti(p) {
         if (p <= 2) {
-            this.metaliniaiPinigai = p;
+            this.metaliniaiPinigai += p;
         } else {
-            this.popieriniaiPinigai = p;
+            this.popieriniaiPinigai += p;
         }
     }
 
@@ -71,6 +70,59 @@ class Pinigine {
         }
 }
 
-const pin01 = new Pinigine(33);
+const pin01 = new Pinigine();
 
-console.log(pin01, pin01.skaiciuoti());
+pin01.ideti(2);
+pin01.ideti(2);
+pin01.ideti(1);
+pin01.ideti(12);
+pin01.ideti(30);
+
+console.log(pin01);
+console.log('Pinigineje yra', pin01.skaiciuoti(), 'pinigu.');
+
+// 3. Sukurti klasę Troleibusas. 
+// Konstruktoriuje sukurti savybę keleiviuSkaicius kuri yra lygi 0. 
+// Parašyti du metodus: ilipa(keleiviuSkaicius) ir islipa(keleiviuSkaicius). 
+// O taip pat parašyti metoda vaziuoja(), kuris į konsolę išvestų troleibusu važiuojančių keleivių skaičių. 
+// Atkreipkite dėmesį, kad troleibusu važiuoti neigiamas keleivių skaičius negali.
+
+class Troleibusas {
+    constructor() {
+        this.keleiviuSkaicius = 0;
+    }
+    
+    ilipa(keleiviuSkaicius) {
+        this.keleiviuSkaicius += keleiviuSkaicius; 
+    }
+
+    islipa(keleiviuSkaicius) {
+        this.keleiviuSkaicius -= keleiviuSkaicius;
+        // (2) const liko = this.keleiviuSkaicius - keleiviuSkaicius;
+        // (2) this.keleiviuSkaicius = Math.max(0, liko);
+        // (3) this,keleiviuSkaicius = Math.nax(0, this.keleiviuSkaicius - keleiviuSkaicius);
+
+    }
+
+    vaziuoja() {
+        // console.log(`Vaziuoja ${this.keleiviuSkaicius} keleiviai su troleibusu`)
+
+        if (this.keleiviuSkaicius >= 0) {
+            return this.keleiviuSkaicius;
+        } else {
+            return 0;
+        }
+    }
+}
+
+const vnt = new Troleibusas();
+
+vnt.ilipa(15);
+vnt.islipa(17);
+vnt.ilipa(5);
+
+console.log(vnt);
+console.log('Dabar vaziuoja: ', vnt.vaziuoja());
+
+// (2) vnt.vaziuoja();
+

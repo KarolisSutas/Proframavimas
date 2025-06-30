@@ -22,7 +22,7 @@ console.log(manoStringas2);
 
 console.log(manoFunkcija2());
 
-const manoFunkcija3 = function(kiekis) { // kiekis yra parametras. kieki yra susigalvotas kintamasis. 
+const manoFunkcija3 = function(kiekis) { // kiekis yra parametras. kiekis yra susigalvotas kintamasis. 
     kiekis = kiekis + 2;
     return 'B'.repeat(kiekis); // funkcijos deklaravimas
 }
@@ -128,7 +128,7 @@ function suma(a, b) { // vardine funkcija
     return a * b;
 }
 
-const suma2 = function(a, b) {
+const suma2 = function(a, b) { // anonimine funkcija
     return a + b;
 }
 
@@ -136,4 +136,5 @@ const suma2 = function(a, b) {
 //     return a * b;
 // }
 
-console.log(suma(5, 6));
+console.log( 'anonimine funkcija:', suma2(5, 6));
+console.log( 'vardine funkcija:', suma(5, 6));

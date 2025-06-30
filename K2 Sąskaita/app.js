@@ -28,24 +28,26 @@ const printDate = data => {
 
 const printSeller = pardavėjas => {
     const div = document.querySelector('#seller');
+    const seller = pardavėjas.company.seller;
         div.innerHTML = ` <b>PARDAVĖJAS</b><br><br> 
-        <b>${pardavėjas.company.seller.name}</b><br>
-        El. paštas: ${pardavėjas.company.seller.email}<br>
-        Tel. Nr. : ${pardavėjas.company.seller.phone}<br>
-        Adresas: ${pardavėjas.company.seller.address}<br>
-        Įmonės kodas: ${pardavėjas.company.seller.code}<br>
-        PVM mokėtojo kodas: ${pardavėjas.company.seller.vat}`;
+        <b>${seller.name}</b><br>
+        El. paštas: ${seller.email}<br>
+        Tel. Nr. : ${seller.phone}<br>
+        Adresas: ${seller.address}<br>
+        Įmonės kodas: ${seller.code}<br>
+        PVM mokėtojo kodas: ${seller.vat}`;
 };
 
 const printBuyer = pirkėjas => {
     const div = document.querySelector('#buyer');
+    const buyer = pirkėjas.company.buyer;
         div.innerHTML = ` <b>PIRKĖJAS</b><br><br> 
-        <b>${pirkėjas.company.buyer.name}</b><br>
-        El. paštas: ${pirkėjas.company.buyer.email}<br>
-        Tel. Nr. : ${pirkėjas.company.buyer.phone}<br>
-        Adresas: ${pirkėjas.company.buyer.address}<br>
-        Įmonės kodas: ${pirkėjas.company.buyer.code}<br>
-        PVM mokėtojo kodas: ${pirkėjas.company.buyer.vat}<br><br><br><br><br>
+        <b>${buyer.name}</b><br>
+        El. paštas: ${buyer.email}<br>
+        Tel. Nr. : ${buyer.phone}<br>
+        Adresas: ${buyer.address}<br>
+        Įmonės kodas: ${buyer.code}<br>
+        PVM mokėtojo kodas: ${buyer.vat}<br><br><br><br><br>
         <b>Apmokėti iki: ${pirkėjas.due_date}</b>`;
 
 };
@@ -117,9 +119,3 @@ const countTotal = () => {
     document.querySelector('#pvm').textContent = `${pvm.toFixed(2)} €`;
     document.querySelector('#viso').innerHTML = `<b>${viso.toFixed(2)} €</b>`;
 };
-
-
-// const printTarpinė = tarp => {
-//     const td = document.querySelector('.tarp');
-//     td.innerHTML = (Kaina * items.quantity) + tr.shippingPrice
-// }

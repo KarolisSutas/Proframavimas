@@ -37,21 +37,20 @@ class Cart {
             this.#toServer();
         }
     }
-
 }
 
 // Ieva kodina
 
 const c = new Cart();
 
-c.max = 111;
 
 console.log(c.max); // grąžina max kai max savybė, o get max funkcija. c.max - propsas
 
+c.max = 60;
 
-c.putToCart(5);
 c.putToCart(4);
-c.putToCart(4);
+c.putToCart(6);
+c.putToCart(2);
 
 // viesa property kiemas
 // protected property nera JavaScripte butas
@@ -71,6 +70,7 @@ class Color {
         this.#fullBody();
         const body = document.querySelector('body');
         body.style.backgroundColor = this.#color;
+        
     }
 
     #fullBody() {
@@ -91,6 +91,5 @@ class Color {
 
 const color = new Color();
 
-color.bodyColor = 'skyblue';
-console.log(color);
+color.bodyColor = 'goldenrod';
 
