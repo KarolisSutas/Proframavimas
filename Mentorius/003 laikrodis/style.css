@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #333;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* DIGITAL ONE */
+
+.clock-digital {
+
+}
+
+.date {
+    font-size: 3rem;
+}
+
+.time {
+    font-size: 3rem;
+}

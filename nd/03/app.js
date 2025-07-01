@@ -222,6 +222,7 @@ const šunsFiltras = C.filter(pavadinimas => {
     return !zodziai.includes('šuo');
   });
 
+console.log(šunsFiltras);
 
 for (let i = 0; i < šunsFiltras.length; i++) {
     const li = document.createElement('li');

@@ -25,6 +25,18 @@
                 "settings": {
                     "foreground": "#22C55E"
                 }
+            },
+            {
+                "scope": [
+                  "keyword.operator",        // bendri operatoriai (pvz., = + - * / > <)
+                  "keyword.operator.arithmetic",
+                  "keyword.operator.assignment",
+                  "keyword.operator.comparison"
+                ],
+                "settings": {
+                  "foreground": "#e74ee5",   // pasirink savo spalvą (pvz., fuksinė)
+                  "fontStyle": ""
+                }
             }
         ]
     },
