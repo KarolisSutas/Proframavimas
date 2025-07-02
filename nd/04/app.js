@@ -126,6 +126,16 @@ console.log('Dabar vaziuoja: ', vnt.vaziuoja());
 
 // (2) vnt.vaziuoja();
 
+
+// 7 UŽDUOTIS
+
+console.clear();
+
+
+
+
+
+
 // 8 UŽDUOTIS STIKLINE
 
 class Stikline {
