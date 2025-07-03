@@ -17,13 +17,70 @@ body {
 /* DIGITAL ONE */
 
 .clock-digital {
+    text-align: center;
 
 }
 
 .date {
+    font-family: sans-serif;
     font-size: 3rem;
+
 }
 
 .time {
+    font-family: monospace;
     font-size: 3rem;
+}
+
+/* Analogue one */
+
+.clock-analogue {
+    background-color: #fff;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    position: relative;
+    box-shadow: inset 0 0 3px 1px #333;
+    border: 3px solid white;
+}
+div[class^="h-"] {
+    position: absolute;
+    color: #333;
+    font-size: 1.2rem;
+    font-family: sans-serif;
+}
+.h-12 {
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.arr {
+    position: absolute;
+    border-radius: 0 0 3px 3px;
+    transform-origin: bottom;
+}
+
+.hours {
+    background-color: seagreen;
+    width: 6px;
+    height: 65px;
+    top: calc(50% - 65px);
+    left: calc(50% - 3px);
+}
+
+.minutes {
+    background-color: royalblue;
+    width: 4px;
+    height: 75px;
+    top: calc(50% - 75px);
+    left: calc(50% - 2px);
+}
+
+.seconds {
+    background-color: tomato;
+    width: 2px;
+    height: 85px;
+    top: calc(50% - 85px);
+    left: calc(50% - 1px);
 }

@@ -1,6 +1,9 @@
 const dateEL = document.getElementsByClassName('date')[0];
 
 const timeEL = document.getElementsByClassName('time')[0];
+const hourEl = document.getElementsByClassName('hours')[0];
+const minsEl = document.getElementsByClassName('minutes')[0];
+const secsEl = document.getElementsByClassName('seconds')[0];
 
 const weekDays = [
     'Sekmadienis',
@@ -45,7 +48,12 @@ function clock() {
     timeEL.textContent = h + ':' + m + ':' + s;
     setTimeout(clock, 1000);
 
-    dateEL.textContent = weekDays[weekDay] + ', ' + months[month] + ' ' + day + ' d.'; 
+    dateEL.textContent = 
+    weekDays[weekDay] + ', ' + months[month] + ' ' + day + ' d.'; 
+    hourEl.style.transform = 'rotate(' + h * 30 + 'deg)';
+    minsEl.style.transform = 'rotate(' + m * 6 + 'deg)';
+    secsEl.style.transform = 'rotate(' + s * 6 + 'deg)';
+
 }
 
 function addZero(t) {

@@ -18,14 +18,14 @@ console.log('c:', c);
 
 // 1.A
 const Asuma = a + b + c;
-console.log(Asuma);
+console.log('suma: ', Asuma);
 
 // 1.B, 1.C, 1.D
 const B = a.toString() + ' ' + b.toString() + ' ' + c.toString() + ' ' + Asuma.toString();
 console.log(B, typeof B, typeof Asuma.toString());
 
 
-console.clear();
+// console.clear();
 // 2.
 console.log('2 užduotis....................');
 
@@ -64,19 +64,63 @@ for (let i = 0; i < d; i++) {
     }
 }
 
-console.clear();
+ console.clear();
 // 7. 
 console.log('7 užduotis....................');
 
 let e;
+let iteracijosSuma = 0;
+let cStringas = [];
+
 
 for (let i = 0; i < 5; i++) {
   f = rand(10, 20); 
   console.log(f);
+  iteracijosSuma += f;
+  cStringas.push(f);
+
 }
-// 7A
-e = f;
-console.log('e: ', e);
+// 7A, B
+e = iteracijosSuma;
+console.log('suma: ', e);
+
+// 7C, D
+let tekstas = cStringas.join(' ') + ' ' + e.toString();
+console.log(tekstas, typeof tekstas);
+
+console.log('8 užduotis....................');
+
+let sk = rand(10, 25);
+let saugiklis = 50;
+let sumask = 0;
+let iteracija = 0;
+
+do {
+    if (--saugiklis == 0) {
+        console.log('BUM');
+        break;
+
+    }
+
+    sk = rand(10, 25);
+    
+    if (sk >= 18) {
+        sumask += sk;
+    }
+    if (sk >= 12) {
+        iteracija += 1;
+    }
+    console.log(sk);
+
+} while (sk >= 12);
+
+console.log('suma: ', sumask);
+console.log('Iteracija:', iteracija);
+
+
+
+
+
 
 
 
