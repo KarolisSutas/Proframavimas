@@ -4,6 +4,8 @@ const timeEL = document.getElementsByClassName('time')[0];
 const hourEl = document.getElementsByClassName('hours')[0];
 const minsEl = document.getElementsByClassName('minutes')[0];
 const secsEl = document.getElementsByClassName('seconds')[0];
+const pomoEl = document.getElementsByClassName('slider')[0];
+
 
 const weekDays = [
     'Sekmadienis',
@@ -46,14 +48,15 @@ function clock() {
     let day = now.getDate();
 
     timeEL.textContent = h + ':' + m + ':' + s;
-    setTimeout(clock, 1000);
-
+    
     dateEL.textContent = 
     weekDays[weekDay] + ', ' + months[month] + ' ' + day + ' d.'; 
     hourEl.style.transform = 'rotate(' + h * 30 + 'deg)';
     minsEl.style.transform = 'rotate(' + m * 6 + 'deg)';
     secsEl.style.transform = 'rotate(' + s * 6 + 'deg)';
 
+
+    setTimeout(clock, 1000);
 }
 
 function addZero(t) {
@@ -64,4 +67,34 @@ function addZero(t) {
 }
 
 clock();
+
+// PMODORO
+
+let isPomoOn = false;
+
+pomoEl.addEventListener('click', () => {
+    isPomoOn ? isPomoOn = false : isPomoOn = true;
+    pomoEl.classList.toggle('active') // invertina klase, pakeicia arba uzdeda jeigu nebuvo
+    isPomoOn ? work() : kill();
+});
+
+function work() {
+    timeEL.classList.remove('chill');
+    timeEL.classList.add('work');
+    isPomoOn ? setTimeout(chill, 25 * 1 * 1000) : kill(); // pakeistii 60 kad butu 25min o ne sekund
+};
+
+function chill() {
+    timeEL.classList.remove('work');
+    timeEL.classList.add('chill');
+    isPomoOn ? setTimeout(work, 5 * 1 * 1000) : kill(); // pakeistii 60 kad butu 25min o ne sekund
+};
+
+function kill() {
+    timeEL.classList.remove('chill');
+    timeEL.classList.remove('work');
+};
+
+
+
 

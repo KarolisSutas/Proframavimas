@@ -84,3 +84,50 @@ div[class^="h-"] {
     top: calc(50% - 85px);
     left: calc(50% - 1px);
 }
+
+/* POMODORO */
+
+.pomodoro {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.slider {
+    background-color: #fff;
+    padding: 3px;
+    width: 51px;
+    border-radius: 11px;
+    transition: all 200ms;
+}
+
+.dot {
+    background-color: tomato;
+    width: 15px;
+    height: 15px;
+    border-radius: 8px;
+    transition: all 200ms;
+}
+
+.label {
+    font-family: sans-serif;
+}
+
+.active {
+    background-color: tomato;
+}
+
+.active .dot {
+    background-color: #fff;
+    transform: translateX(30px);
+}
+
+.work {
+    color: tomato;
+}
+
+.chill {
+    color: limegreen;
+}
+
