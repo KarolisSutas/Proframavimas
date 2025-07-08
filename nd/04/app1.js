@@ -1,3 +1,5 @@
+// 7 UZDAVINYS
+
 class Kibiras1 {
 
     static visiAkmenys = 0;
@@ -42,6 +44,7 @@ k2.kiekPririnktaAkmenu();
 
 k1.akmenuSkaiciusVisuoseKibiruose();
 
+console.log('/*************************/');
 // 5 uzdavinys
 
 class PirkiniuKrepselis {
@@ -61,11 +64,11 @@ class PirkiniuKrepselis {
         this.ideti(kiekis, 'batonas');
     }
 
-    ideti(kiekis, ka) {
-        if (this.turinys.has(ka)) {
-            this.turinys.set(ka, this.turinys.get(ka) + kiekis);
+    ideti(kiekis, kas) {
+        if (this.turinys.has(kas)) {
+            this.turinys.set(kas, this.turinys.get(kas) + kiekis);
         } else {
-            this.turinys.set(ka, kiekis);
+            this.turinys.set(kas, kiekis);
         }
     }
 
@@ -77,9 +80,12 @@ class PirkiniuKrepselis {
 
 const norfa = new PirkiniuKrepselis();
 
+norfa.idetiSureli(4);
 norfa.idetiPieno(3);
 norfa.idetiPieno(3);
 norfa.idetiDuonos(2);
 norfa.ideti(3, 'Sūris baltas');
+norfa.ideti(45, 'Pomidoras raudonas');
+norfa.ideti(5, 'Pomidoras raudonas');
 
 norfa.krepselioTurinys();
