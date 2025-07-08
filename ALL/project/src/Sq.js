@@ -1,40 +1,52 @@
 export default class Sq {
 
-    #x;
-    #y;
+
     #color;
     #gate = false;
     #activeColor;
     #el;
-    #size;
 
     constructor(x, y, size, color = 'transparent') { // pagrindiniai dalykai konstruktoriuje
-        this.#x = x;
-        this.#y = y;
         this.#color = color;
-        this.#size = size;
         this.#el = document.createElement('div');
-        this.#el.style.left = this.#x + 'px';
-        this.#el.style.top = this.#y + 'px';
-        this.#el.style.width = this.#size + 'px';
-        this.#el.style.height = this.#size + 'px';
+        this.#el.style.left = x + 'px';
+        this.#el.style.top = y + 'px';
+        this.#el.style.width = size + 'px';
+        this.#el.style.height = size + 'px';
         this.#el.style.backgroundColor = this.#color;
+        this.#el.style.position = 'absolute';
     }
 // metodai kurie priskiria savybes, gate kuris setina arba ne ir colora
-    addTo(parent) {
+    addTo(parent, mode = 'view') {
         parent.appendChild(this.#el);
+        if (mode == 'view') {
+            return;
+        }
         this.#el.addEventListener('mouseover', _ => {
-            console.log('OK');
+            console.log('crimson');
+            if (this.#gate) {
+                this.#color = this.#activeColor;
+                this.#el.style.backgroundColor = this.#color;
+
+            }
         });
+    }
+
+    reset() {
+        this.#color = 'transparent';
+        this.#el.style.backgroundColor = this.#color;
     }
 
     open(gate) { // jeigu atidarytas kvadr spalva pasikeis, jei ne tai ne
         this.#gate = gate;
     }
 
+    
+    /**
+     * @param {string} color
+     */
     set activeColor(color) {
         this.#activeColor = color;
     }
-
 
 }

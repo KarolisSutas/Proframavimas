@@ -1,9 +1,13 @@
 console.log('Labas Projektai');
 
-import Sq from './Sq';
+import Frame from './Frame';
 
-const A = new Sq(0, 0, 300, 'crimson');
+const tf = document.querySelector('.test-frame');
 
-const b = document.querySelector('body');
+const F = new Frame(10, 100, tf, 'edit');
 
-A.addTo(b);
+F.openGates();
+
+F.setActiveColor('crimson');
+
+
