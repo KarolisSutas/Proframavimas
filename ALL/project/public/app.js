@@ -56,6 +56,7 @@ var Frame = /*#__PURE__*/function () {
     _classPrivateFieldSet(_mode, this, mode);
     _classPrivateFieldSet(_frameHolderElement, this, frameHolderElement);
     if (typeof frameSizeOrFrameData === 'number') {
+      // Vyksta tikrinimas 
       _classPrivateFieldSet(_frameSize, this, frameSizeOrFrameData);
       _classPrivateFieldSet(_data, this, null);
     } else if (frameSizeOrFrameData === 'object' && Array.isArray(frameSizeOrFrameData)) {

@@ -14,7 +14,7 @@ export default class Frame {
         this.#size = size;
         this.#mode = mode;
         this.#frameHolderElement = frameHolderElement;
-        if (typeof frameSizeOrFrameData === 'number') {
+        if (typeof frameSizeOrFrameData === 'number') { // Vyksta tikrinimas 
             this.#frameSize = frameSizeOrFrameData;
             this.#data = null;
         } else if (frameSizeOrFrameData === 'object' && Array.isArray(frameSizeOrFrameData)) {       
