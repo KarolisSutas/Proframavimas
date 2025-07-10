@@ -93,9 +93,14 @@ console.log('8 užduotis....................');
 let sk = rand(10, 25);
 let saugiklis = 50;
 let sumask = 0;
+let atmestisk = 0;
 let iteracija = 0;
+let Lyginiai = 0;
+let Nelyginiai = 0;
+
 
 do {
+
     if (--saugiklis == 0) {
         console.log('BUM');
         break;
@@ -103,19 +108,28 @@ do {
     }
 
     sk = rand(10, 25);
-    
-    if (sk >= 18) {
+
+    if (sk <= 18 && sk >= 12) {
         sumask += sk;
     }
-    if (sk >= 12) {
-        iteracija += 1;
+
+    if (sk > 18 && sk > 12) {
+        atmestisk++;
     }
+
+    if (sk >= 12) {
+        iteracija++;
+    }
+
+    sk % 2 == 0 ? Lyginiai++ : Nelyginiai++;
+
     console.log(sk);
 
 } while (sk >= 12);
 
-console.log('suma: ', sumask);
 console.log('Iteracija:', iteracija);
+console.log('Suma: ', sumask, 'Atmesti: ', atmestisk);
+console.log('Lyginiai', Lyginiai, 'Nelyginiai', Nelyginiai);
 
 
 

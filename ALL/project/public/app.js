@@ -27,7 +27,7 @@ function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("C
 function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
 function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
 function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
-
+ // Importuoja pirmąją klasę (vieno kvadrato logiką).
 var _size = /*#__PURE__*/new WeakMap();
 var _mode = /*#__PURE__*/new WeakMap();
 var _frameSize = /*#__PURE__*/new WeakMap();
@@ -35,17 +35,23 @@ var _data = /*#__PURE__*/new WeakMap();
 var _frameHolderElement = /*#__PURE__*/new WeakMap();
 var _sqs = /*#__PURE__*/new WeakMap();
 var Frame = /*#__PURE__*/function () {
-  // kvadraturku objektai
+  // masyvas visų kvadratų objektų
 
   function Frame(size, frameSizeOrFrameData, frameHolderElement) {
     var mode = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'view';
     _classCallCheck(this, Frame);
     _classPrivateFieldInitSpec(this, _size, void 0);
+    // kiekvieno kvadrato dydis px
     _classPrivateFieldInitSpec(this, _mode, void 0);
+    // režimas: 'view' arba 'edit'
     _classPrivateFieldInitSpec(this, _frameSize, void 0);
+    // kiek kvadratų vienoj eilėj
     _classPrivateFieldInitSpec(this, _data, void 0);
+    // jei duota spalvų masyvas
     _classPrivateFieldInitSpec(this, _frameHolderElement, void 0);
+    // DOM elementas į kurį dėti
     _classPrivateFieldInitSpec(this, _sqs, []);
+    // new Frame(10, 100, tf, 'edit')
     _classPrivateFieldSet(_size, this, size);
     _classPrivateFieldSet(_mode, this, mode);
     _classPrivateFieldSet(_frameHolderElement, this, frameHolderElement);
@@ -53,7 +59,7 @@ var Frame = /*#__PURE__*/function () {
       _classPrivateFieldSet(_frameSize, this, frameSizeOrFrameData);
       _classPrivateFieldSet(_data, this, null);
     } else if (frameSizeOrFrameData === 'object' && Array.isArray(frameSizeOrFrameData)) {
-      _classPrivateFieldSet(_frameSize, this, Math.SQRT2(frameSizeOrFrameData.length));
+      _classPrivateFieldSet(_frameSize, this, Math.sqrt(frameSizeOrFrameData.length)); // Jei perduodamas masyvas (pvz., spalvų), nustato kvadratų kiekį pagal masyvo ilgį (kvadratinė šaknis).
       _classPrivateFieldSet(_data, this, frameSizeOrFrameData);
     } else {
       throw new Error('Invalid argument: frameSizeOrFrameData must be a number or an array');
@@ -63,19 +69,39 @@ var Frame = /*#__PURE__*/function () {
   return _createClass(Frame, [{
     key: "makeFrame",
     value: function makeFrame() {
+      var _this = this;
       // frame'o kodas
       var sqNumber = 0;
       for (var i = 0; i < _classPrivateFieldGet(_frameSize, this); i++) {
+        // EILUTĖS (i = 0...9)
         for (var j = 0; j < _classPrivateFieldGet(_frameSize, this); j++) {
-          var args = [_classPrivateFieldGet(_size, this) * j, _classPrivateFieldGet(_size, this) * i, _classPrivateFieldGet(_size, this)];
-          _classPrivateFieldGet(_data, this) !== null && args.push(_classPrivateFieldGet(_data, this)[sqNumber]);
-          var sq = _construct(_Sq__WEBPACK_IMPORTED_MODULE_0__["default"], args);
-          sq.addTo(_classPrivateFieldGet(_frameHolderElement, this), _classPrivateFieldGet(_mode, this)); // idejom 
-          _classPrivateFieldGet(_sqs, this).push(sq); // pasidedam visa objekta
-          sqNumber++;
+          // STULPELIAI (j = 0...9)
+          var args = [_classPrivateFieldGet(_size, this) * j, _classPrivateFieldGet(_size, this) * i, _classPrivateFieldGet(_size, this)]; // [x, y, size]
+          _classPrivateFieldGet(_data, this) !== null && args.push(_classPrivateFieldGet(_data, this)[sqNumber]); // jei #data !== null → args.push(data[sqNumber]); bet čia NEvyksta, nes data === null
+          var sq = _construct(_Sq__WEBPACK_IMPORTED_MODULE_0__["default"], args); // sukuriamas kvadratas. kviečia Sq konstruktorių, kuris sukuria <div> su style reikšmėmis
+          sq.addTo(_classPrivateFieldGet(_frameHolderElement, this), _classPrivateFieldGet(_mode, this)); // Kvadratas įkeliamas į DOM, įdedamas į masyvą 
+          _classPrivateFieldGet(_sqs, this).push(sq); // pasidedam visa objekta, kvadratų skaičius didėja. Objektas saugomas this.#sqs masyve.
+          sqNumber++; // Sukuriamas naujas Sq, pridedamas į DOM ir masyvą.
         }
       }
+      if (_classPrivateFieldGet(_mode, this) == 'view') {
+        return;
+      }
+      document.addEventListener("mousedown", function (_) {
+        return _this.openGates();
+      });
+      document.addEventListener("mouseup", function (_) {
+        return _this.closeGates();
+      });
     }
+  }, {
+    key: "reset",
+    value: function reset() {
+      _classPrivateFieldGet(_sqs, this).forEach(function (sq) {
+        return sq.reset();
+      });
+    }
+
     // spalvos perkelimas ir vartu atidarimas arba uzdarymas
   }, {
     key: "openGates",
@@ -99,9 +125,127 @@ var Frame = /*#__PURE__*/function () {
         return sq.activeColor = color;
       });
     }
-    // dabar galima paziuret veikia ar ne
+  }, {
+    key: "addBorders",
+    value: function addBorders(color, borderSize) {
+      // Uždedame borderį ant elemento div class="container"
+      _classPrivateFieldGet(_frameHolderElement, this).style.border = "".concat(borderSize, "px solid ").concat(color);
+      var elSize = _classPrivateFieldGet(_frameSize, this) * _classPrivateFieldGet(_size, this) + 2 * borderSize; // prideti 2 kad piesimas neuzsidetu ant borderio
+      _classPrivateFieldGet(_frameHolderElement, this).style.width = elSize + 'px';
+      _classPrivateFieldGet(_frameHolderElement, this).style.height = elSize + 'px';
+    }
   }]);
 }();
+
+
+/***/ }),
+
+/***/ "./src/LS.js":
+/*!*******************!*\
+  !*** ./src/LS.js ***!
+  \*******************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ LS)
+/* harmony export */ });
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+var LS = /*#__PURE__*/function () {
+  function LS() {
+    _classCallCheck(this, LS);
+  }
+  return _createClass(LS, null, [{
+    key: "storageInit",
+    value: function storageInit(settings) {
+      this.key = settings.key;
+    }
+  }, {
+    key: "store",
+    value: function store(data) {}
+  }]);
+}();
+_defineProperty(LS, "key", void 0);
+
+
+/***/ }),
+
+/***/ "./src/Main.js":
+/*!*********************!*\
+  !*** ./src/Main.js ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Main)
+/* harmony export */ });
+/* harmony import */ var _Frame__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Frame */ "./src/Frame.js");
+/* harmony import */ var _LS__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LS */ "./src/LS.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
+function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
+function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
+function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
+
+
+var Main = /*#__PURE__*/function (_LS) {
+  function Main() {
+    _classCallCheck(this, Main);
+    return _callSuper(this, Main, arguments);
+  }
+  _inherits(Main, _LS);
+  return _createClass(Main, null, [{
+    key: "init",
+    value: function init() {
+      storageInit({
+        key: 'nice Art'
+      });
+      if (document.querySelector('[data-create]')) {
+        this.initCreate();
+      }
+    }
+  }, {
+    key: "initCreate",
+    value: function initCreate() {
+      var _this = this;
+      var f = document.querySelector('[data-create-frame]');
+      var colorImput = document.querySelector('[type="color"]');
+      var titleInput = document.querySelector('input[data-title]');
+      var saveButton = document.querySelector('button[data-save]');
+      var clear = document.querySelector('button[data-clear]');
+      var frame = new _Frame__WEBPACK_IMPORTED_MODULE_0__["default"](10, 20, f, 'create');
+      frame.addBorders('gray', 1);
+      frame.setActiveColor(colorImput.value);
+      colorImput.addEventListener('change', function (e) {
+        frame.setActiveColor(e.target.value);
+      });
+      clear.addEventListener('click', function (_) {
+        frame.reset();
+      });
+      saveButton.addEventListener('click', function (_) {
+        _this.store({
+          frame: frame,
+          title: titleInput.value
+        });
+      });
+    }
+  }]);
+}(_LS__WEBPACK_IMPORTED_MODULE_1__["default"]);
 
 
 /***/ }),
@@ -155,28 +299,31 @@ var Sq = /*#__PURE__*/function () {
     value: function addTo(parent) {
       var _this = this;
       var mode = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'view';
-      parent.appendChild(_classPrivateFieldGet(_el, this));
+      parent.appendChild(_classPrivateFieldGet(_el, this)); // Kvadratas įdedamas į tėvinį DOM elementą (parent), pvz., div.test-frame.
       if (mode == 'view') {
+        // Jei rėžimas view, nieko daugiau nedarom (kvadratas tik rodomas).
         return;
       }
       _classPrivateFieldGet(_el, this).addEventListener('mouseover', function (_) {
-        console.log('crimson');
+        // Jei režimas ne view, uždedamas mouseover event'as:
+
         if (_classPrivateFieldGet(_gate, _this)) {
           _classPrivateFieldSet(_color, _this, _classPrivateFieldGet(_activeColor, _this));
-          _classPrivateFieldGet(_el, _this).style.backgroundColor = _classPrivateFieldGet(_color, _this);
+          _classPrivateFieldGet(_el, _this).style.backgroundColor = _classPrivateFieldGet(_color, _this); // Jei #gate === true, kvadrato spalva pasikeičia į aktyvią (#activeColor), ir tai atsispindi DOM'e.
         }
       });
     }
   }, {
     key: "reset",
     value: function reset() {
+      // Grąžina kvadratą į „skaidrų“ foną – išvalo spalvą.
       _classPrivateFieldSet(_color, this, 'transparent');
       _classPrivateFieldGet(_el, this).style.backgroundColor = _classPrivateFieldGet(_color, this);
     }
   }, {
     key: "open",
     value: function open(gate) {
-      // jeigu atidarytas kvadr spalva pasikeis, jei ne tai ne
+      // Atidaro arba uždaro kvadrato „vartus“ – leidžia arba neleidžia keisti spalvą mouseover metu.
       _classPrivateFieldSet(_gate, this, gate);
     }
 
@@ -186,6 +333,7 @@ var Sq = /*#__PURE__*/function () {
   }, {
     key: "activeColor",
     set: function set(color) {
+      // Leidžia iš išorės nustatyti spalvą, kuri pasikeis per mouseover. Pvz., naudota Frame klasėje.
       _classPrivateFieldSet(_activeColor, this, color);
     }
   }]);
@@ -201,13 +349,9 @@ var Sq = /*#__PURE__*/function () {
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Frame__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Frame */ "./src/Frame.js");
-console.log('Labas Projektai');
+/* harmony import */ var _Main__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Main */ "./src/Main.js");
 
-var tf = document.querySelector('.test-frame');
-var F = new _Frame__WEBPACK_IMPORTED_MODULE_0__["default"](10, 100, tf, 'edit');
-F.openGates();
-F.setActiveColor('crimson');
+_Main__WEBPACK_IMPORTED_MODULE_0__["default"].init();
 
 /***/ }),
 

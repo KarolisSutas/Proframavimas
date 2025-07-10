@@ -1,13 +1,7 @@
-console.log('Labas Projektai');
+import Main from './Main';
 
-import Frame from './Frame';
+Main.init();
 
-const tf = document.querySelector('.test-frame');
 
-const F = new Frame(10, 100, tf, 'edit');
-
-F.openGates();
-
-F.setActiveColor('crimson');
 
 

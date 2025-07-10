@@ -17,35 +17,34 @@ export default class Sq {
         this.#el.style.position = 'absolute';
     }
 // metodai kurie priskiria savybes, gate kuris setina arba ne ir colora
-    addTo(parent, mode = 'view') {
-        parent.appendChild(this.#el);
-        if (mode == 'view') {
+    addTo(parent, mode = 'view') {      
+        parent.appendChild(this.#el);   // Kvadratas įdedamas į tėvinį DOM elementą (parent), pvz., div.test-frame.
+        if (mode == 'view') {           // Jei rėžimas view, nieko daugiau nedarom (kvadratas tik rodomas).
             return;
         }
-        this.#el.addEventListener('mouseover', _ => {
-            console.log('crimson');
-            if (this.#gate) {
+        this.#el.addEventListener('mouseover', _ => {           // Jei režimas ne view, uždedamas mouseover event'as:
+
+            if (this.#gate) {                                   
                 this.#color = this.#activeColor;
-                this.#el.style.backgroundColor = this.#color;
+                this.#el.style.backgroundColor = this.#color;   // Jei #gate === true, kvadrato spalva pasikeičia į aktyvią (#activeColor), ir tai atsispindi DOM'e.
 
             }
         });
     }
 
-    reset() {
+    reset() {                                           // Grąžina kvadratą į „skaidrų“ foną – išvalo spalvą.
         this.#color = 'transparent';
         this.#el.style.backgroundColor = this.#color;
     }
 
-    open(gate) { // jeigu atidarytas kvadr spalva pasikeis, jei ne tai ne
+    open(gate) {          // Atidaro arba uždaro kvadrato „vartus“ – leidžia arba neleidžia keisti spalvą mouseover metu.
         this.#gate = gate;
     }
-
     
     /**
      * @param {string} color
      */
-    set activeColor(color) {
+    set activeColor(color) {        // Leidžia iš išorės nustatyti spalvą, kuri pasikeis per mouseover. Pvz., naudota Frame klasėje.
         this.#activeColor = color;
     }
 

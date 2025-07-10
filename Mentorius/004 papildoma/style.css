@@ -1,0 +1,98 @@
+/* universalus selektorius */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* elemento selektorius */
+
+p {
+    color: royalblue;
+}
+
+/* klasės selektorius */
+
+.pirmas-paragrafas {
+    color: tomato;
+}
+
+/* id selektorius */
+
+#pirmas-paragrafas {
+    color: limegreen;
+}
+
+/* atributo selektorius */
+
+[title = "pirmas"] {
+    color: burlywood;
+}
+
+/* Specificity (specifika, tikslumas) */
+
+/* už elementą gaunam 1 tašką 
+    už klasę 10 tsk
+    uz id 100 tsk
+    uz atributa 10 tsk
+*/
+
+/* Eiliškumas */
+
+.pirmas-p {
+    color: crimson;
+}
+
+/* sudėtiniai selektoriai */
+
+/* SELEKTORIAUS SIMBOLIAI */
+
+/* 
+
+body header - palikuonis
+body > header - tiesioginis palikuonis
+header + main - tiesiogiai sekantis elementas po header
+header ~ footer - sekantis elementas
+
+*/
+
+p:first-child {
+    background-color: tomato;
+}
+
+p:nth-child(2) {
+    background-color: seagreen;
+}
+
+article:first-child p:nth-child(2) {
+    background-color: rgb(162, 90, 23);
+}
+
+header {
+    font-size: 2.5rem;
+}
+
+h2 + p {
+    background-color: blueviolet !important;
+}
+
+main p {
+    font-size: 1.2rem;
+}
+
+/* Paveldimumas */
+
+body {
+    /* paveldimas */
+    font-family: sans-serif;
+    /* nepaveldimi */
+    border: 10px double red;
+    margin: 10px;
+}
+
+/* ingerit */
+
+main {
+    border: inherit;
+}
