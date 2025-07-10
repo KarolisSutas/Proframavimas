@@ -14,14 +14,12 @@ export default class Frame {
         this.#size = size;
         this.#mode = mode;
         this.#frameHolderElement = frameHolderElement;
-        if (typeof frameSizeOrFrameData === 'number') { // Vyksta tikrinimas 
+        if (typeof frameSizeOrFrameData === 'number') {
             this.#frameSize = frameSizeOrFrameData;
             this.#data = null;
-        } else if (frameSizeOrFrameData === 'object' && Array.isArray(frameSizeOrFrameData)) {       
-            this.#frameSize = Math.sqrt(frameSizeOrFrameData.length);    // Jei perduodamas masyvas (pvz., spalvų), nustato kvadratų kiekį pagal masyvo ilgį (kvadratinė šaknis).
-            this.#data = frameSizeOrFrameData;
         } else {
-            throw new Error('Invalid argument: frameSizeOrFrameData must be a number or an array');
+            this.#frameSize = Math.sqrt(frameSizeOrFrameData.length);
+            this.#data = frameSizeOrFrameData;
         }
         this.makeFrame(); // paleidziama frame'o gamyba
 
@@ -64,6 +62,11 @@ export default class Frame {
         this.#sqs.forEach(sq => sq.activeColor = color);
     }
 
+    export() { // surinks visu kvadr spalvas sudes i masyva ir ta masyva grazins
+        const colors = [];
+        this.#sqs.forEach(sq => colors.push(sq.color));
+        return colors;
+    }
 
     addBorders(color, borderSize) {         // Uždedame borderį ant elemento div class="container"
         this.#frameHolderElement.style.border = `${borderSize}px solid ${color}`;
