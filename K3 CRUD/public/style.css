@@ -1,0 +1,94 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+header .tuščias {
+  width: 100%;
+  height: 50px;
+}
+header #title {
+  font-size: 18px;
+}
+header #number {
+  font-size: 12px;
+}
+header #date {
+  font-weight: normal;
+  font-size: 12px;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+main .konteineris {
+  display: flex;
+  margin-inline: 20px;
+  padding: 0;
+}
+main #seller {
+  width: 50%;
+  border: 1px solid #050505;
+  font-size: 12px;
+  padding-inline: 5px;
+  padding-top: 10px;
+}
+main #buyer {
+  width: 50%;
+  border: 1px solid #050505;
+  font-size: 12px;
+  padding-inline: 5px;
+  padding-top: 10px;
+}
+main #pirma {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+main table {
+  table-layout: auto;
+  width: 100%;
+  font-size: 12px;
+  border: 1px solid #050505;
+  border-collapse: collapse;
+}
+main thead {
+  background-color: rgba(138, 135, 135, 0.9843137255);
+}
+main th {
+  border: 1px solid #050505;
+}
+main td {
+  border: 1px solid #050505;
+}
+main #antra {
+  width: 30%;
+  padding-right: 20px;
+  text-align: center;
+  align-self: flex-end;
+}

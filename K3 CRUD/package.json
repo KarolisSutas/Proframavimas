@@ -1,0 +1,24 @@
+{
+  "name": "k3-crud",
+  "version": "1.0.0",
+  "description": "projekt about ivoice with crud",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx mix watch"
+  },
+  "keywords": [
+    "k2",
+    "invoice",
+    "crud"
+  ],
+  "author": "Karolis",
+  "license": "ISC",
+  "dependencies": {
+    "laravel-mix": "^6.0.49"
+  },
+  "devDependencies": {
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.89.2",
+    "sass-loader": "^12.6.0"
+  }
+}
