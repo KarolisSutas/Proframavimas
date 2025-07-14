@@ -37,6 +37,11 @@ export default class Sq {
         this.#el.style.backgroundColor = this.#color;
     }
 
+    custom(color) {                                           // Grąžina kvadratą į „skaidrų“ foną – išvalo spalvą.
+        this.#color = color;
+        this.#el.style.backgroundColor = this.#color;
+    }
+
     open(gate) {          // Atidaro arba uždaro kvadrato „vartus“ – leidžia arba neleidžia keisti spalvą mouseover metu.
         this.#gate = gate;
     }

@@ -8,7 +8,6 @@ export default class LS {
         this.key = settings.key;
     }
 
-
     static read() {
         const storedData = localStorage.getItem(this.key);
         if (null === storedData) {
@@ -22,9 +21,17 @@ export default class LS {
     }
  // CRUD
     static store(data) {
-        const id = v4();
-        data.id = id;
-        this.write([...this.read(), data]);
+        this.write([...this.read(), {...data, id: v4()}]);
     }
+
+    static destroy(id) {
+        this.write(this.read().filter(f => f.id != id));
+    }
+
+    static update(id, data) {
+        this.write(this.read().map(f => f.id == id ? {...f, ...data, id} : f));
+    }
+
+
 
 }

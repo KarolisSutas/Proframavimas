@@ -50,6 +50,13 @@ export default class Frame {
         this.#sqs.forEach(sq => sq.reset());
     }
 
+
+
+    ai() {
+            this.#sqs.forEach(sq => sq.custom('#' + Math.floor(Math.random()*16777215).toString(16).padEnd(6, '0')));
+    }
+    
+
 // spalvos perkelimas ir vartu atidarimas arba uzdarymas
     openGates() {
         this.#sqs.forEach(sq => sq.open(true)); // atsidaro visi gate'ai ant kvadratuku
