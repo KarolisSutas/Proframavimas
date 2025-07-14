@@ -238,12 +238,37 @@ const circles = document.querySelectorAll('#go8 div');
 circles.forEach((circle, index) => {
   const color = window.getComputedStyle(circle).backgroundColor;
   console.log(`Apskritimas ${index + 1}: ${color}`);
+
+    const zaliuSum = document.querySelector('[data-green] span');
+    const raudonuSum = document.querySelector('[data-red] span');
+    const melynuSum = document.querySelector('[data-blue] span');
+
+    let zali = 0;
+    let raudoni = 0;
+    let melyni = 0;
+
+    let zaliuRez = 0;
+
+
+  if (color == 'rgb(0, 128, 0)') {
+    zali++;
+    zaliuRez += zali;
+    console.log(zaliuRez, 'zali');
+  } else if ( color == 'rgb(255, 0, 0)') {
+      raudoni++;
+      console.log(raudoni, 'raudoni');
+  } else if (color == 'rgb(0, 0, 255)') {
+      melyni++;
+      console.log(melyni, 'melyni');
+    }
+  
+    
+
+    zaliuSum.innerText = zali;
+    raudonuSum.innerText = raudoni;
+    melynuSum.innerText = melyni;
+
 });
-
-
-
-
-
 
 // 9 UŽDUOTIS
 

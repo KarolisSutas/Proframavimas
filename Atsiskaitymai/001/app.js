@@ -14,9 +14,9 @@ let kauliukas2 = rand(1, 6);
 const rez = kauliukas1 + kauliukas2;
 
     if (rez > 8) {
-        console.log(rez, 'Laimėjote');
+        console.log('kaul1', kauliukas1, 'kaul2', kauliukas2, 'suma', rez, 'Laimėjote');
     } else { 
-        console.log(rez, 'Pralaimėjote');
+        console.log('kaul1', kauliukas1, 'kaul2', kauliukas2, 'suma', rez, 'Pralaimėjote');
     }
  
 console.log('2 uzd.............');

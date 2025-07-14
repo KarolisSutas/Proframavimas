@@ -132,8 +132,9 @@ console.log('Suma: ', sumask, 'Atmesti: ', atmestisk);
 console.log('Lyginiai', Lyginiai, 'Nelyginiai', Nelyginiai);
 
 
-
-
+const t = 5;
+ t = 7;
+    console.log(t);
 
 
 

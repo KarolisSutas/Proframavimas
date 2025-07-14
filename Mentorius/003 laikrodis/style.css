@@ -28,7 +28,7 @@ body {
 }
 
 .time {
-    font-family: monospace;
+    font-family: "Manufacturing Consent", system-ui;
     font-size: 3rem;
 }
 
@@ -48,12 +48,55 @@ div[class^="h-"] {
     position: absolute;
     color: #333;
     font-size: 1.2rem;
-    font-family: sans-serif;
+    font-family: "Monoton", sans-serif;
 }
 .h-12 {
     top: 5px;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.h-1 {
+    top: 25px;
+    right: 26%;
+    transform: translateY(-30%);
+}
+
+.h-2 {
+    top: 50px;
+    right: 12%;
+    transform: translateY(-30%);
+}
+
+.h-3 {
+    bottom: 85px;
+    right: 0;
+    transform: translateX(-50%);
+}
+
+.h-6 {
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
+.h-9 {
+    bottom: 85px;
+    left: 11%;
+    transform: translateX(-50%);
+}
+
+.h-11 {
+    top: 25px;
+    left: 25%;
+    transform: translateY(-30%);
+}
+
+.h-10 {
+    top: 50px;
+    left: 12%;
+    transform: translateY(-30%);
 }
 
 .arr {
@@ -160,3 +203,12 @@ div.bg2 {
 .show {
     display: block;
 }
+
+/* spongebob */
+
+img {
+    position: absolute;
+    height: 150px;
+    bottom: 0;
+    display: none;
+  }

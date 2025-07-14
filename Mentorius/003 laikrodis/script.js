@@ -6,6 +6,7 @@ const minsEl = document.getElementsByClassName('minutes')[0];
 const secsEl = document.getElementsByClassName('seconds')[0];
 const pomoEl = document.getElementsByClassName('slider')[0];
 const pomobgEl = document.getElementsByClassName('pomodoro-bg')[0];
+const spongeEl = document.getElementsByTagName('img')[0];
 
 
 const weekDays = [
@@ -83,6 +84,7 @@ pomoEl.addEventListener('click', () => {
 
 function work() {
     timeEL.classList.remove('chill');
+    spongeEl.classList.remove('show');
     timeEL.classList.add('work');
     isPomoOn ? setTimeout(chill, 25 * 60 * 1000) : kill(); // pakeisti 60 kad butu 25min o ne sekund
 };
@@ -90,6 +92,7 @@ function work() {
 function chill() {
     timeEL.classList.remove('work');
     timeEL.classList.add('chill');
+    spongeEl.classList.add('show');
     show(true);
     isPomoOn ? setTimeout(work, 5 * 60 * 1000) : kill(); // pakeistii 60 kad butu 25min o ne sekund
 };
@@ -98,6 +101,7 @@ function kill() {
     timeEL.classList.remove('chill');
     timeEL.classList.remove('work');
     pomobgEl.classList.remove('show');
+    spongeEl.classList.remove('show')
 };
 
 function show(afterFive) {
