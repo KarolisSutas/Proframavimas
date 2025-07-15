@@ -46,8 +46,6 @@ if (loterija == 1 || loterija == 5) {
 
 console.log('5 uzd.............');
 
-
-
 let sk1 = rand(1, 7);
 let sk2 = rand(1, 7);
 let sk3 = rand(1, 7);
@@ -66,6 +64,11 @@ if (sk1 <= sk2 && sk2 <= sk3) {
 } else {
     console.log('sk3', sk3, 'sk2', sk2, 'sk1',sk1);
 }
+
+// su masyvu:
+// const arr = [num1, num2, num3];
+// arr.sort((a, b) => a - b);
+// console.log(`(Su masyvu ir sort) ${arr.join(' ')}`);
 
 console.log('3 uzd.............');
 
