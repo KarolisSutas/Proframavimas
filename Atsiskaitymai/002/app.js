@@ -47,16 +47,30 @@ for (let i = 10; i > 0; i--) {
     }
 }
 
+    const finisas = masina55;
+    if (finisas > 0) {
+        console.log('pavyko');
+    }
+
+
+
 console.log('4 uzd .............');
 
+let ratas = 0
+let masyvas = [];
+
 for (let i = 10; i > 0; i--) {
-    console.log(greitis);
+    ratas++;
+    console.log('ratas:', i);
     for (let j = 5; j > 0; j--) {
         let greitis = rand(20, 120);
-        let minGreitis = Math.min(greitis);
-        console.log(minGreitis);
+        console.log('greitis posukyje:', greitis);
+        masyvas.push(greitis);
     }
+ 
+
 }
+console.log(masyvas);
 
 
 
