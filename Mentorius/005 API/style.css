@@ -42,6 +42,8 @@ td {
     border-right: 1px solid #111;
     border-left: 1px solid #111;
     border-bottom: 1px solid #555;
+
+    transition: all 200ms;
 }
 
 td {
@@ -60,3 +62,29 @@ th {
 tbody tr:nth-child(even) td {
     background-color: #561c1c;
 }
+
+tbody tr:hover td {
+    background-color: salmon;
+}
+
+tbody tr {
+    cursor: pointer;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+}
+
+/* LOADER */
+
+#loading {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 10rem 2rem;
+}
+
+.hide {
+    display: none;
+}
+
