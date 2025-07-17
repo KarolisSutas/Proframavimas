@@ -31,16 +31,17 @@ tableDataEl.addEventListener('click', (e) => {
     const bookID = tr.dataset.bookid;
     console.log(bookID);
 
-    fetch('https://stephen-king-api.onrender.com/api/books' + bookID)
+    fetch('https://stephen-king-api.onrender.com/api/book/' + bookID)
     .then((res) => res.json())
     .then((data) => {
         console.log(data)
-        tr.insertAdjacentHTML('afterend', 
+        tr.insertAdjacentHTML(
+            'afterend', 
             `<tr>
                 <td colspan="2">${data.data.Title}</td>
                 <td colspan="4">${data.data.villains}</td>
             </tr>`
-        )
+        );
     });
 });
 
