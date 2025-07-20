@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="style.css">
     <title>K3 CRUD</title>
 </head>
-<body>
+<body data-create>
     <header>
 
         <div class="tuščias"></div>
         <h1 id="title">PVM sąskaita-faktūra</h1>
-        <h2 id="number"></h2>
-        <h2 id="date"></h2>
+        <h2 id="number" data-title></h2>
+        <h2 id="date" data-date></h2>
 
     </header>
     <main>
@@ -51,10 +51,16 @@
                 </tr>
                 <tr>
                     <td><b>Bendra suma: </b></td>
-                    <td id="viso">0</td>
+                    <td id="viso" data-sum>0</td>
                 </tr>
             </table>
         </div>
+
+        <div class="mt-5">
+            <button data-save class="btn btn-primary">Išsaugoti</button>
+            <button data-clear class="btn btn-secondary">Sekanti sąskaita</button>
+        </div>
+
     </main>
     
 </body>

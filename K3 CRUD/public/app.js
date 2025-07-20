@@ -2,10 +2,181 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/Inv.js":
-/*!********************!*\
-  !*** ./src/Inv.js ***!
-  \********************/
+/***/ "./node_modules/uuid/dist/esm-browser/native.js":
+/*!******************************************************!*\
+  !*** ./node_modules/uuid/dist/esm-browser/native.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const randomUUID = typeof crypto !== 'undefined' && crypto.randomUUID && crypto.randomUUID.bind(crypto);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({ randomUUID });
+
+
+/***/ }),
+
+/***/ "./node_modules/uuid/dist/esm-browser/regex.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/uuid/dist/esm-browser/regex.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/i);
+
+
+/***/ }),
+
+/***/ "./node_modules/uuid/dist/esm-browser/rng.js":
+/*!***************************************************!*\
+  !*** ./node_modules/uuid/dist/esm-browser/rng.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ rng)
+/* harmony export */ });
+let getRandomValues;
+const rnds8 = new Uint8Array(16);
+function rng() {
+    if (!getRandomValues) {
+        if (typeof crypto === 'undefined' || !crypto.getRandomValues) {
+            throw new Error('crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported');
+        }
+        getRandomValues = crypto.getRandomValues.bind(crypto);
+    }
+    return getRandomValues(rnds8);
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/uuid/dist/esm-browser/stringify.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/uuid/dist/esm-browser/stringify.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   unsafeStringify: () => (/* binding */ unsafeStringify)
+/* harmony export */ });
+/* harmony import */ var _validate_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./validate.js */ "./node_modules/uuid/dist/esm-browser/validate.js");
+
+const byteToHex = [];
+for (let i = 0; i < 256; ++i) {
+    byteToHex.push((i + 0x100).toString(16).slice(1));
+}
+function unsafeStringify(arr, offset = 0) {
+    return (byteToHex[arr[offset + 0]] +
+        byteToHex[arr[offset + 1]] +
+        byteToHex[arr[offset + 2]] +
+        byteToHex[arr[offset + 3]] +
+        '-' +
+        byteToHex[arr[offset + 4]] +
+        byteToHex[arr[offset + 5]] +
+        '-' +
+        byteToHex[arr[offset + 6]] +
+        byteToHex[arr[offset + 7]] +
+        '-' +
+        byteToHex[arr[offset + 8]] +
+        byteToHex[arr[offset + 9]] +
+        '-' +
+        byteToHex[arr[offset + 10]] +
+        byteToHex[arr[offset + 11]] +
+        byteToHex[arr[offset + 12]] +
+        byteToHex[arr[offset + 13]] +
+        byteToHex[arr[offset + 14]] +
+        byteToHex[arr[offset + 15]]).toLowerCase();
+}
+function stringify(arr, offset = 0) {
+    const uuid = unsafeStringify(arr, offset);
+    if (!(0,_validate_js__WEBPACK_IMPORTED_MODULE_0__["default"])(uuid)) {
+        throw TypeError('Stringified UUID is invalid');
+    }
+    return uuid;
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (stringify);
+
+
+/***/ }),
+
+/***/ "./node_modules/uuid/dist/esm-browser/v4.js":
+/*!**************************************************!*\
+  !*** ./node_modules/uuid/dist/esm-browser/v4.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _native_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./native.js */ "./node_modules/uuid/dist/esm-browser/native.js");
+/* harmony import */ var _rng_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./rng.js */ "./node_modules/uuid/dist/esm-browser/rng.js");
+/* harmony import */ var _stringify_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stringify.js */ "./node_modules/uuid/dist/esm-browser/stringify.js");
+
+
+
+function v4(options, buf, offset) {
+    if (_native_js__WEBPACK_IMPORTED_MODULE_0__["default"].randomUUID && !buf && !options) {
+        return _native_js__WEBPACK_IMPORTED_MODULE_0__["default"].randomUUID();
+    }
+    options = options || {};
+    const rnds = options.random ?? options.rng?.() ?? (0,_rng_js__WEBPACK_IMPORTED_MODULE_1__["default"])();
+    if (rnds.length < 16) {
+        throw new Error('Random bytes length must be >= 16');
+    }
+    rnds[6] = (rnds[6] & 0x0f) | 0x40;
+    rnds[8] = (rnds[8] & 0x3f) | 0x80;
+    if (buf) {
+        offset = offset || 0;
+        if (offset < 0 || offset + 16 > buf.length) {
+            throw new RangeError(`UUID byte range ${offset}:${offset + 15} is out of buffer bounds`);
+        }
+        for (let i = 0; i < 16; ++i) {
+            buf[offset + i] = rnds[i];
+        }
+        return buf;
+    }
+    return (0,_stringify_js__WEBPACK_IMPORTED_MODULE_2__.unsafeStringify)(rnds);
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (v4);
+
+
+/***/ }),
+
+/***/ "./node_modules/uuid/dist/esm-browser/validate.js":
+/*!********************************************************!*\
+  !*** ./node_modules/uuid/dist/esm-browser/validate.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _regex_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./regex.js */ "./node_modules/uuid/dist/esm-browser/regex.js");
+
+function validate(uuid) {
+    return typeof uuid === 'string' && _regex_js__WEBPACK_IMPORTED_MODULE_0__["default"].test(uuid);
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (validate);
+
+
+/***/ }),
+
+/***/ "./src/Invoice.js":
+/*!************************!*\
+  !*** ./src/Invoice.js ***!
+  \************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -133,6 +304,152 @@ var Invoice = /*#__PURE__*/function () {
 
 /***/ }),
 
+/***/ "./src/Main.js":
+/*!*********************!*\
+  !*** ./src/Main.js ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Main)
+/* harmony export */ });
+/* harmony import */ var _locStor_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./locStor.js */ "./src/locStor.js");
+/* harmony import */ var _Invoice_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Invoice.js */ "./src/Invoice.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+ // Importuojame locStor klasę darbui su localStorage
+ // Importuojame Invoice klasę sąskaitos generavimui ir atvaizdavimui
+var Main = /*#__PURE__*/function () {
+  function Main() {
+    _classCallCheck(this, Main);
+  }
+  return _createClass(Main, null, [{
+    key: "init",
+    value: function init() {
+      // Inicializuojame localStorage su raktu „Sąskaitos“
+      _locStor_js__WEBPACK_IMPORTED_MODULE_0__["default"].storageInit({
+        key: 'Sąskaitos'
+      });
+
+      // Patikriname ar esame puslapyje, kuriame reikia kurti sąskaitą
+      if (document.querySelector('[data-create]')) {
+        this.initCreate();
+      } else if (document.querySelector('[data-read]')) {
+        this.initRead();
+      } else if (document.querySelector('[data-delete]')) {
+        this.initDelete();
+      }
+    }
+  }, {
+    key: "initCreate",
+    value: function initCreate() {
+      // Gauname atsitiktinius sąskaitos duomenis iš API
+      fetch('https://in3.dev/inv/').then(function (res) {
+        return res.json();
+      }) // Konvertuojame atsakymą į JSON
+      .then(function (data) {
+        // Sukuriame naują Invoice objektą su gautais duomenimis
+        var saskaita = new _Invoice_js__WEBPACK_IMPORTED_MODULE_1__["default"](data);
+        console.log(saskaita);
+        saskaita.render(); // Atvaizduojame sąskaitą puslapyje
+
+        // Parodome konteinerį ir sekcijas
+        document.querySelector('.konteineris').style.display = 'flex';
+        document.querySelector('#pirma').style.display = 'flex';
+        document.querySelector('#antra').style.display = 'flex';
+        var clearButton = document.querySelector('[data-clear]');
+        clearButton.addEventListener('click', function () {
+          window.location.href = 'create.html';
+        });
+
+        // Surandame mygtuką „Saugoti“
+        var saveButton = document.querySelector('[data-save]');
+
+        // Pridedame įvykio klausytoją mygtukui
+        saveButton.addEventListener('click', function () {
+          var pilnaSaskaita = _objectSpread(_objectSpread({}, saskaita.data), {}, {
+            // visi API duomenys
+            totals: {
+              tarpinė: document.querySelector('#tarp').textContent,
+              pvm: document.querySelector('#pvm').textContent,
+              bendra: document.querySelector('#viso').textContent
+            }
+          });
+          // Išsaugome pilną sąskaitą į localStorage
+          _locStor_js__WEBPACK_IMPORTED_MODULE_0__["default"].store(pilnaSaskaita);
+
+          // Patikriname ar tikrai išsaugojo (debug)
+          console.log('Sąskaita išsaugota:', saskaita.data);
+          console.log('Visos sąskaitos localStorage:', _locStor_js__WEBPACK_IMPORTED_MODULE_0__["default"].read());
+
+          // Pranešimas, kad sąskaita išsaugota
+          alert('Sąskaita išsaugota į localStorage!');
+
+          // Nukreipiame į sąskaitų sąrašą po išsaugojimo
+          window.location.href = 'read.html';
+        });
+      })["catch"](function (err) {
+        return console.error('Klaida gaunant duomenis iš API:', err);
+      });
+    }
+  }, {
+    key: "initRead",
+    value: function initRead() {
+      var invoices = _locStor_js__WEBPACK_IMPORTED_MODULE_0__["default"].read();
+
+      // Jei sąskaitų nėra – parodome žinutę
+      if (!invoices || invoices.length === 0) {
+        document.querySelector('[data-list]').innerHTML = '<li class="list-group-item">Nėra išsaugotų sąskaitų</li>';
+        return;
+      }
+      var template = document.querySelector('template');
+      var listEl = document.querySelector('[data-list]');
+      listEl.innerHTML = ''; // išvalome sąrašą prieš įkeldami
+
+      invoices.forEach(function (inv) {
+        var clone = template.content.cloneNode(true);
+        clone.querySelector('[data-title]').textContent = inv.number;
+        clone.querySelector('[data-date]').textContent = inv.date;
+        clone.querySelector('[data-sum]').textContent = inv.totals.bendra;
+        clone.querySelector('[data-edit]').setAttribute('href', 'edit.html#' + inv.id);
+        clone.querySelector('[data-delete]').setAttribute('href', 'delete.html#' + inv.id);
+        clone.querySelector('[data-show]').setAttribute('href', 'show.html#' + inv.id);
+        listEl.appendChild(clone);
+      });
+    }
+  }, {
+    key: "initDelete",
+    value: function initDelete() {
+      var invoices = _locStor_js__WEBPACK_IMPORTED_MODULE_0__["default"].read();
+      var id = window.location.hash.slice(1); // id paemimas is hashtago
+      var invoice = invoices.find(function (inv) {
+        return inv.id == id;
+      });
+      if (!invoice) {
+        window.location.href = 'read.html'; // puslapio redirectas
+        return;
+      }
+      document.querySelector('[data-title]').innerText = invoice.number;
+      var destroyButton = document.querySelector('[data-destroy]');
+      destroyButton.addEventListener('click', function (_) {
+        _locStor_js__WEBPACK_IMPORTED_MODULE_0__["default"].destroy(invoice.id);
+        window.location.href = 'read.html';
+      });
+    }
+  }]);
+}();
+
+
+/***/ }),
+
 /***/ "./src/app.js":
 /*!********************!*\
   !*** ./src/app.js ***!
@@ -140,9 +457,90 @@ var Invoice = /*#__PURE__*/function () {
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Inv_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Inv.js */ "./src/Inv.js");
+/* harmony import */ var _Main_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Main.js */ "./src/Main.js");
 
-saskaita.render();
+_Main_js__WEBPACK_IMPORTED_MODULE_0__["default"].init();
+
+/***/ }),
+
+/***/ "./src/locStor.js":
+/*!************************!*\
+  !*** ./src/locStor.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ locStor)
+/* harmony export */ });
+/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/dist/esm-browser/v4.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+
+var locStor = /*#__PURE__*/function () {
+  function locStor() {
+    _classCallCheck(this, locStor);
+  }
+  return _createClass(locStor, null, [{
+    key: "storageInit",
+    value: function storageInit(settings) {
+      this.key = settings.key;
+    }
+  }, {
+    key: "read",
+    value: function read() {
+      var storedData = localStorage.getItem(this.key);
+      if (null === storedData) {
+        return [];
+      }
+      return JSON.parse(storedData);
+    }
+  }, {
+    key: "write",
+    value: function write(data) {
+      localStorage.setItem(this.key, JSON.stringify(data));
+    }
+    // CRUD
+  }, {
+    key: "store",
+    value: function store(data) {
+      this.write([].concat(_toConsumableArray(this.read()), [_objectSpread(_objectSpread({}, data), {}, {
+        id: (0,uuid__WEBPACK_IMPORTED_MODULE_0__["default"])()
+      })]));
+    }
+  }, {
+    key: "destroy",
+    value: function destroy(id) {
+      this.write(this.read().filter(function (f) {
+        return f.id != id;
+      }));
+    }
+  }, {
+    key: "update",
+    value: function update(id, data) {
+      this.write(this.read().map(function (f) {
+        return f.id == id ? _objectSpread(_objectSpread(_objectSpread({}, f), data), {}, {
+          id: id
+        }) : f;
+      }));
+    }
+  }]);
+}();
+_defineProperty(locStor, "key", void 0);
+
 
 /***/ }),
 

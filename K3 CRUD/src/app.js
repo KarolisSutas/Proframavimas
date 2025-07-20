@@ -1,3 +1,3 @@
-import Invoice from './Inv.js';
+import Main from './Main.js';
 
-saskaita.render();
+Main.init();
