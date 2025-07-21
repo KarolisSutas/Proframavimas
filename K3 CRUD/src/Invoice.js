@@ -33,8 +33,10 @@ export default class Invoice {
     }
 
     renderNumber() {
-        document.querySelector('#number').innerHTML = `Serija: ${this.data.number}`;
-    }
+        const el = document.querySelector('#number');
+        if (!el) return; // jei nėra elemento – nutraukiam
+        el.innerHTML = `Serija: ${this.data.number}`;
+      }
 
     renderDate() {
         document.querySelector('#date').innerHTML = `${this.data.date}`;

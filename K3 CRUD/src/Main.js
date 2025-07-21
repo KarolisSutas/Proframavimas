@@ -1,7 +1,7 @@
 import locStor from './locStor.js'; // Importuojame locStor klasę darbui su localStorage
 import Invoice from './Invoice.js'; // Importuojame Invoice klasę sąskaitos generavimui ir atvaizdavimui
 
-export default class Main {
+export default class Main extends locStor{
     static init() {
         // Inicializuojame localStorage su raktu „Sąskaitos“
         locStor.storageInit({ key: 'Sąskaitos' });
@@ -25,7 +25,6 @@ export default class Main {
             .then(data => {
                 // Sukuriame naują Invoice objektą su gautais duomenimis
                 const saskaita = new Invoice(data);
-                console.log(saskaita)
                 saskaita.render(); // Atvaizduojame sąskaitą puslapyje
 
                 // Parodome konteinerį ir sekcijas
@@ -38,7 +37,6 @@ export default class Main {
                 clearButton.addEventListener('click', () => {
                     window.location.href = 'create.html';
                 })
-
 
                 // Surandame mygtuką „Saugoti“
                 const saveButton = document.querySelector('[data-save]');
@@ -69,14 +67,14 @@ export default class Main {
                 });
             })
             .catch(err => console.error('Klaida gaunant duomenis iš API:', err));
-    }
+    };
 
     static initRead() {
 
         const invoices = locStor.read();
 
         // Jei sąskaitų nėra – parodome žinutę
-        if (!invoices || invoices.length === 0) {
+        if (!invoices || invoices.length == 0) {
             document.querySelector('[data-list]').innerHTML = '<li class="list-group-item">Nėra išsaugotų sąskaitų</li>';
             return;
         }
