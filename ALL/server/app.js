@@ -111,7 +111,32 @@ app.post('/animal', (req, res) => {
   })
 });
 
+app.get('/animal-csr', (req, res) => {
+  let file = fs.readFileSync('./data.json', 'utf8'); // failo stringas
+  file = JSON.parse(file); // failo masyva
+  
+  res.json({
+    success: true,
+    animals: file
+  });
+});
 
+app.get('/animal-ssr', (req, res) => {
+
+  let file = fs.readFileSync('./data.json', 'utf8'); // failo stringas
+  file = JSON.parse(file); // failo masyva
+
+  let html = '';
+  file.forEach(animalData => {
+    html += `<li>${animalData.animal} - ${animalData.tail} cm</li>`;
+  });
+
+  res.json({
+    success: true,
+    html: html
+  });
+
+});
 
 
 // querry laisvai informacijai o parametrai grieztai informacijai perduoti

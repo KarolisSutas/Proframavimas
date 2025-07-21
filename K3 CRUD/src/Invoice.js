@@ -26,10 +26,6 @@ export default class Invoice {
         this.renderItems();
         this.renderTransport();
         this.countTotal();
-
-        document.querySelector('.konteineris').style.display = 'flex';
-        document.querySelector('#pirma').style.display = 'flex';
-        document.querySelector('#antra').style.display = 'flex';
     }
 
     renderNumber() {
@@ -39,11 +35,14 @@ export default class Invoice {
       }
 
     renderDate() {
-        document.querySelector('#date').innerHTML = `${this.data.date}`;
+        const el = document.querySelector('#date')
+        if (!el) return;
+        el.innerHTML = `${this.data.date}`;
     }
 
     renderSeller() {
         const seller = this.data.company.seller;
+        
         document.querySelector('#seller').innerHTML = `
           <b>PARDAVĖJAS</b><br><br> 
           <b>${seller.name}</b><br>

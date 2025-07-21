@@ -7046,7 +7046,26 @@ var animalInput = document.querySelector('[name="animal"]');
 var tailInput = document.querySelector('[name="tail"]');
 var buttonSend = document.querySelector('[data-action="send"]');
 var responseEl = document.querySelector('[data-response]');
-console.log(responseEl);
+var getCSR = document.querySelector('[data-action="get-csr"]');
+var getSSR = document.querySelector('[data-action="get-ssr"]');
+var dataCSR = document.querySelector('[data-list="CSR"] ul');
+var dataSSR = document.querySelector('[data-list="SSR"] ul');
+getCSR.addEventListener('click', function (_) {
+  var url = 'http://localhost/animal-csr';
+  var html = '';
+  axios__WEBPACK_IMPORTED_MODULE_0__["default"].get(url).then(function (res) {
+    res.data.animals.forEach(function (animalData) {
+      html += "<li>".concat(animalData.animal, " - ").concat(animalData.tail, " cm</li>");
+    });
+    dataCSR.innerHTML = html;
+  });
+});
+getSSR.addEventListener('click', function (_) {
+  var url = 'http://localhost/animal-ssr';
+  axios__WEBPACK_IMPORTED_MODULE_0__["default"].get(url).then(function (res) {
+    dataSSR.innerHTML = res.data.html;
+  });
+});
 buttonSend.addEventListener('click', function (_) {
   var animal = animalInput.value;
   var tail = tailInput.value;

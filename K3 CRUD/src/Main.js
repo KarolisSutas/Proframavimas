@@ -9,10 +9,16 @@ export default class Main extends locStor{
         // Patikriname ar esame puslapyje, kuriame reikia kurti sąskaitą
         if (document.querySelector('[data-create]')) {
             this.initCreate();
+            return;
         } else if (document.querySelector('[data-read]')) {
             this.initRead();
+            return;
         } else if (document.querySelector('[data-delete]')) {
             this.initDelete();
+            return;
+        } else if (document.querySelector('[data-show-inv]')) {
+            this.initShow();
+            return;
         }
         
     }
@@ -116,6 +122,25 @@ export default class Main extends locStor{
             window.location.href = 'read.html';
         });
 
+    }
+
+    static initShow() {
+        const invoices = locStor.read();
+        const id = window.location.hash.slice(1);
+        const invoiceData = invoices.find(inv => inv.id == id);
+        if (!invoiceData) {
+            window.location.href = 'read.html'; 
+            return;
+        }
+    
+        // 👇 pirmiau parodome konteinerį ir sekcijas
+        document.querySelector('.konteineris').style.display = 'flex';
+        document.querySelector('#pirma').style.display = 'flex';
+        document.querySelector('#antra').style.display = 'flex';
+    
+        // tada tik kuriame Invoice ir renderinam
+        const invoiceShow = new Invoice(invoiceData);
+        invoiceShow.render();
     }
 
 }

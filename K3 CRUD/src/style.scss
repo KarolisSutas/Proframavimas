@@ -133,3 +133,20 @@ main {
         
     }
 }
+
+.confirm {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(202, 209, 202);
+
+    .info-table {
+        padding: 40px;
+        border: 2px solid crimson;
+        border-radius: 20px;
+        background-color: rgb(233, 179, 188);
+    }
+
+}

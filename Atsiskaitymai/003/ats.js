@@ -4,7 +4,9 @@ console.log('1 užduotis...............')
 const bitGirls = ['Edita', 'Lina', 'Brigita', 'Deimantė', 'Justė'];
 const cats = ['Murka', 'Rainius', 'Meilutė', 'Bosas', 'Dičkis'];
 
-bitGirls[0] = 'Nausėda';
+// bitGirls[0] = 'Nausėda';
+
+bitGirls.unshift('Nausėda');
 
 console.log(bitGirls);
 
@@ -33,6 +35,19 @@ bitCats.forEach(cat => {
   (mase == 'storas') ? stori++ : normalus++; 
 });
 
+// const catsStats = bitCats.reduce((accumulator, currentValue) => {
+//         if (currentValue[1] == 'storas') {
+//             accumulator.storu++;
+//         } else {
+//             accumulator.normaliu++;
+//         } 
+//         return accumulator
+//     }, 
+// {storu: 0, normaliu: 0}
+// );
+
+// console.log(catsStats);
+
 console.log("Storų katinukų:", stori);
 console.log("Normalių katinukų:", normalus);
 
@@ -49,5 +64,12 @@ bitCats.sort((a, b) => {
   console.log(bitCats);
 
   console.log('5 užduotis...............');
+
+  const happyCats = bitGirls.map((girls, index) => {
+    const cat = cats[index - 1] || 'Barsukas';
+    return [girls, cat];
+  });
+
+  console.log(happyCats);
 
   

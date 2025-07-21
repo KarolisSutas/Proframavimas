@@ -216,9 +216,6 @@ var Invoice = /*#__PURE__*/function () {
       this.renderItems();
       this.renderTransport();
       this.countTotal();
-      document.querySelector('.konteineris').style.display = 'flex';
-      document.querySelector('#pirma').style.display = 'flex';
-      document.querySelector('#antra').style.display = 'flex';
     }
   }, {
     key: "renderNumber",
@@ -230,7 +227,9 @@ var Invoice = /*#__PURE__*/function () {
   }, {
     key: "renderDate",
     value: function renderDate() {
-      document.querySelector('#date').innerHTML = "".concat(this.data.date);
+      var el = document.querySelector('#date');
+      if (!el) return;
+      el.innerHTML = "".concat(this.data.date);
     }
   }, {
     key: "renderSeller",
@@ -353,10 +352,16 @@ var Main = /*#__PURE__*/function (_locStor) {
       // Patikriname ar esame puslapyje, kuriame reikia kurti sąskaitą
       if (document.querySelector('[data-create]')) {
         this.initCreate();
+        return;
       } else if (document.querySelector('[data-read]')) {
         this.initRead();
+        return;
       } else if (document.querySelector('[data-delete]')) {
         this.initDelete();
+        return;
+      } else if (document.querySelector('[data-show-inv]')) {
+        this.initShow();
+        return;
       }
     }
   }, {
@@ -453,6 +458,28 @@ var Main = /*#__PURE__*/function (_locStor) {
         _locStor_js__WEBPACK_IMPORTED_MODULE_0__["default"].destroy(invoice.id);
         window.location.href = 'read.html';
       });
+    }
+  }, {
+    key: "initShow",
+    value: function initShow() {
+      var invoices = _locStor_js__WEBPACK_IMPORTED_MODULE_0__["default"].read();
+      var id = window.location.hash.slice(1);
+      var invoiceData = invoices.find(function (inv) {
+        return inv.id == id;
+      });
+      if (!invoiceData) {
+        window.location.href = 'read.html';
+        return;
+      }
+
+      // 👇 pirmiau parodome konteinerį ir sekcijas
+      document.querySelector('.konteineris').style.display = 'flex';
+      document.querySelector('#pirma').style.display = 'flex';
+      document.querySelector('#antra').style.display = 'flex';
+
+      // tada tik kuriame Invoice ir renderinam
+      var invoiceShow = new _Invoice_js__WEBPACK_IMPORTED_MODULE_1__["default"](invoiceData);
+      invoiceShow.render();
     }
   }]);
 }(_locStor_js__WEBPACK_IMPORTED_MODULE_0__["default"]);
