@@ -1,19 +1,27 @@
-const cookieParser = require('cookie-parser');
 const express = require('express');
-const app = express()
-const port = 3000
+const app = express();
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const md5 = require('md5');
+const fs = require('node:fs');
+const port = 3000;
 
 app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(express.static('public'));
 
+// req reikalavimas kazko o res atsakymas
 app.get('/', (req, res) => {
 
   let counter;
 
+// laiko skaiciavimas ms tikslumu:
   const minute = 60 * 1000;
   const hour = 60 * 60 * 1000;
   const day = 24 * 60 * 60 * 1000;
 
-  if (req.cookies.kartai) {
+
+  if (req.cookies.kartai) { // narsykle issiuncia laiska uzklausa cookiams
     counter = parseInt(req.cookies.kartai); // nuskaitom kuki
   } else {
     counter = 0;
@@ -21,25 +29,65 @@ app.get('/', (req, res) => {
 
   counter++;
 
-  res.cookie('kartai', counter, { maxAge: day }); // irasome kuki
+  res.cookie('kartai', counter, { maxAge: day }); // irasome cookie ir galiojimo laikas cookie
 
   // res.clearCookie('kartai'); istrina cookie uzdedant praeities laika
-
+// su sendu issisiunte ir cookie:
   res.send(`
     Hello ${counter} Cookie!
     <a href="http://localhost:3000/reset/">TRINTI</a>
     `);
 });
 
+
+// narsykle kreipiasi i reset 
 app.get('/reset', (req, res) => {
 
-  res.clearCookie('kartai'); // istrina cookie uzdedant praeities laika
+  setTimeout(_ => {
+    res.clearCookie('kartai'); // istrina cookie uzdedant praeities laika
 
-  res.redirect('http://localhost:3000');
+    res.redirect('http://localhost:3000.html');
+
+  }, 5000);
 
 });
 
 
+app.post('/login', (req, res) => {
+
+  const email = req.body.email;
+  const psw = md5(req.body.psw);
+
+  let users = fs.readFileSync('./users.json', 'utf8');
+  users = JSON.parse(users);
+
+  const user = users.find(u => u.email === email && u.psw === psw);
+
+  if (!user) {
+      res.json({
+          success: false,
+          message: 'User email or password invalid'
+      })
+  }
+
+  const token = md5(Math.random() + 'SALT 2587415468'); // psuedo atsitiktinis stringas
+
+  user.token = token;
+  users = JSON.stringify(users);
+  fs.writeFileSync('./users.json', users);
+
+  res.cookie('session', token);
+
+  res.json({
+      success: true,
+      message: 'Welcome!',
+      name: user.name
+  });
+
+});
+
+
+
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Cookie app listening on port ${port}`)
 });
