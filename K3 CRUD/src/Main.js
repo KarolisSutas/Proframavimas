@@ -3,7 +3,7 @@ import Invoice from './Invoice.js'; // Importuojame Invoice klasę sąskaitos ge
 
 export default class Main extends locStor{
     static init() {
-        // Inicializuojame localStorage su raktu „Sąskaitos“
+        // Inicializuojame localStorage su raktu Sąskaitos
         locStor.storageInit({ key: 'Sąskaitos' });
 
         // Patikriname ar esame puslapyje, kuriame reikia kurti sąskaitą
@@ -44,7 +44,7 @@ export default class Main extends locStor{
                     window.location.href = 'create.html';
                 })
 
-                // Surandame mygtuką „Saugoti“
+                // Surandame mygtuką Saugoti
                 const saveButton = document.querySelector('[data-save]');
 
                 // Pridedame įvykio klausytoją mygtukui
@@ -71,8 +71,7 @@ export default class Main extends locStor{
                     // Nukreipiame į sąskaitų sąrašą po išsaugojimo
                     window.location.href = 'read.html';
                 });
-            })
-            .catch(err => console.error('Klaida gaunant duomenis iš API:', err));
+            });
     };
 
     static initRead() {
@@ -87,7 +86,7 @@ export default class Main extends locStor{
 
         const template = document.querySelector('template');
         const listEl = document.querySelector('[data-list]');
-        listEl.innerHTML = ''; // išvalome sąrašą prieš įkeldami
+        listEl.innerHTML = ''; // išvalymas sąrašo prieš įkėlimą
 
         invoices.forEach(inv => {
             const clone = template.content.cloneNode(true);
@@ -133,12 +132,12 @@ export default class Main extends locStor{
             return;
         }
     
-        // 👇 pirmiau parodome konteinerį ir sekcijas
+        // pirmiau parodome konteinerį ir sekcijas
         document.querySelector('.konteineris').style.display = 'flex';
         document.querySelector('#pirma').style.display = 'flex';
         document.querySelector('#antra').style.display = 'flex';
     
-        // tada tik kuriame Invoice ir renderinam
+        // kuriame Invoice ir renderinam
         const invoiceShow = new Invoice(invoiceData);
         invoiceShow.render();
     }

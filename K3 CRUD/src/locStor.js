@@ -25,11 +25,11 @@ export default class locStor {
     }
 
     static destroy(id) {
-        this.write(this.read().filter(f => f.id != id));
+        this.write(this.read().filter(inv => inv.id != id));
     }
 
     static update(id, data) {
-        this.write(this.read().map(f => f.id == id ? {...f, ...data, id} : f));
+        this.write(this.read().map(inv => inv.id == id ? {...inv, ...data, id} : inv));
     }
 
 

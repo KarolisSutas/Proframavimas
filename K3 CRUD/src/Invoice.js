@@ -1,15 +1,5 @@
 console.log('Sąskaita')
 
-fetch('https://in3.dev/inv/')
-    .then(res => res.json())
-    .then(data => {
-        const saskaita = new Invoice(data);
-        saskaita.render();
-        document.querySelector('.konteineris').style.display = 'flex';
-        document.querySelector('#pirma').style.display = 'flex';
-        document.querySelector('#antra').style.display = 'flex';
-    }); 
-
 export default class Invoice {
 
     constructor(data) {
@@ -42,7 +32,10 @@ export default class Invoice {
 
     renderSeller() {
         const seller = this.data.company.seller;
-        
+        if (!document.querySelector('#seller')) {
+            return;
+        }
+
         document.querySelector('#seller').innerHTML = `
           <b>PARDAVĖJAS</b><br><br> 
           <b>${seller.name}</b><br>
@@ -55,6 +48,9 @@ export default class Invoice {
 
     renderBuyer() {
         const buyer = this.data.company.buyer;
+        if (!document.querySelector('#buyer')) {
+            return;
+        }
         document.querySelector('#buyer').innerHTML = `
           <b>PIRKĖJAS</b><br><br> 
           <b>${buyer.name}</b><br>
@@ -68,6 +64,9 @@ export default class Invoice {
 
     renderItems() {
         const tbody = document.querySelector('tbody');
+        if (!document.querySelector('tbody')) {
+            return;
+        }
         const template = document.querySelector('[data-items-content]');
         tbody.innerHTML = '';
 
@@ -98,10 +97,17 @@ export default class Invoice {
     }
 
     renderTransport() {
+        if (!document.querySelector('#trans')) {
+            return;
+        }
         document.querySelector('#trans').textContent = `${this.shippingPrice.toFixed(2)} €`;
+
     }
 
     countTotal() {
+        if (!document.querySelector('#pirma table tbody tr')) {
+            return;
+        }
         const rows = document.querySelectorAll('#pirma table tbody tr');
         let suma = 0;
 

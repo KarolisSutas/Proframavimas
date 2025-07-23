@@ -88,3 +88,7 @@ thead {
     display: none;
 }
 
+#villains-row td {
+    background-color: #000;
+    cursor: default;
+}

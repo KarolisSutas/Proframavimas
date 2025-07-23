@@ -190,15 +190,6 @@ function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), 
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 console.log('Sąskaita');
-fetch('https://in3.dev/inv/').then(function (res) {
-  return res.json();
-}).then(function (data) {
-  var saskaita = new Invoice(data);
-  saskaita.render();
-  document.querySelector('.konteineris').style.display = 'flex';
-  document.querySelector('#pirma').style.display = 'flex';
-  document.querySelector('#antra').style.display = 'flex';
-});
 var Invoice = /*#__PURE__*/function () {
   function Invoice(data) {
     _classCallCheck(this, Invoice);
@@ -235,18 +226,27 @@ var Invoice = /*#__PURE__*/function () {
     key: "renderSeller",
     value: function renderSeller() {
       var seller = this.data.company.seller;
+      if (!document.querySelector('#seller')) {
+        return;
+      }
       document.querySelector('#seller').innerHTML = "\n          <b>PARDAV\u0116JAS</b><br><br> \n          <b>".concat(seller.name, "</b><br>\n          El. pa\u0161tas: ").concat(seller.email, "<br>\n          Tel. Nr.: ").concat(seller.phone, "<br>\n          Adresas: ").concat(seller.address, "<br>\n          \u012Emon\u0117s kodas: ").concat(seller.code, "<br>\n          PVM mok\u0117tojo kodas: ").concat(seller.vat);
     }
   }, {
     key: "renderBuyer",
     value: function renderBuyer() {
       var buyer = this.data.company.buyer;
+      if (!document.querySelector('#buyer')) {
+        return;
+      }
       document.querySelector('#buyer').innerHTML = "\n          <b>PIRK\u0116JAS</b><br><br> \n          <b>".concat(buyer.name, "</b><br>\n          El. pa\u0161tas: ").concat(buyer.email, "<br>\n          Tel. Nr.: ").concat(buyer.phone, "<br>\n          Adresas: ").concat(buyer.address, "<br>\n          \u012Emon\u0117s kodas: ").concat(buyer.code, "<br>\n          PVM mok\u0117tojo kodas: ").concat(buyer.vat, "<br><br><br><br><br>\n          <b>Apmok\u0117ti iki: ").concat(this.data.due_date, "</b>");
     }
   }, {
     key: "renderItems",
     value: function renderItems() {
       var tbody = document.querySelector('tbody');
+      if (!document.querySelector('tbody')) {
+        return;
+      }
       var template = document.querySelector('[data-items-content]');
       tbody.innerHTML = '';
       this.items.forEach(function (item) {
@@ -273,11 +273,17 @@ var Invoice = /*#__PURE__*/function () {
   }, {
     key: "renderTransport",
     value: function renderTransport() {
+      if (!document.querySelector('#trans')) {
+        return;
+      }
       document.querySelector('#trans').textContent = "".concat(this.shippingPrice.toFixed(2), " \u20AC");
     }
   }, {
     key: "countTotal",
     value: function countTotal() {
+      if (!document.querySelector('#pirma table tbody tr')) {
+        return;
+      }
       var rows = document.querySelectorAll('#pirma table tbody tr');
       var suma = 0;
       rows.forEach(function (row) {
@@ -344,7 +350,7 @@ var Main = /*#__PURE__*/function (_locStor) {
   return _createClass(Main, null, [{
     key: "init",
     value: function init() {
-      // Inicializuojame localStorage su raktu „Sąskaitos“
+      // Inicializuojame localStorage su raktu Sąskaitos
       _locStor_js__WEBPACK_IMPORTED_MODULE_0__["default"].storageInit({
         key: 'Sąskaitos'
       });
@@ -385,7 +391,7 @@ var Main = /*#__PURE__*/function (_locStor) {
           window.location.href = 'create.html';
         });
 
-        // Surandame mygtuką „Saugoti“
+        // Surandame mygtuką Saugoti
         var saveButton = document.querySelector('[data-save]');
 
         // Pridedame įvykio klausytoją mygtukui
@@ -411,8 +417,6 @@ var Main = /*#__PURE__*/function (_locStor) {
           // Nukreipiame į sąskaitų sąrašą po išsaugojimo
           window.location.href = 'read.html';
         });
-      })["catch"](function (err) {
-        return console.error('Klaida gaunant duomenis iš API:', err);
       });
     }
   }, {
@@ -427,7 +431,7 @@ var Main = /*#__PURE__*/function (_locStor) {
       }
       var template = document.querySelector('template');
       var listEl = document.querySelector('[data-list]');
-      listEl.innerHTML = ''; // išvalome sąrašą prieš įkeldami
+      listEl.innerHTML = ''; // išvalymas sąrašo prieš įkėlimą
 
       invoices.forEach(function (inv) {
         var clone = template.content.cloneNode(true);
@@ -472,12 +476,12 @@ var Main = /*#__PURE__*/function (_locStor) {
         return;
       }
 
-      // 👇 pirmiau parodome konteinerį ir sekcijas
+      // pirmiau parodome konteinerį ir sekcijas
       document.querySelector('.konteineris').style.display = 'flex';
       document.querySelector('#pirma').style.display = 'flex';
       document.querySelector('#antra').style.display = 'flex';
 
-      // tada tik kuriame Invoice ir renderinam
+      // kuriame Invoice ir renderinam
       var invoiceShow = new _Invoice_js__WEBPACK_IMPORTED_MODULE_1__["default"](invoiceData);
       invoiceShow.render();
     }
@@ -561,17 +565,17 @@ var locStor = /*#__PURE__*/function () {
   }, {
     key: "destroy",
     value: function destroy(id) {
-      this.write(this.read().filter(function (f) {
-        return f.id != id;
+      this.write(this.read().filter(function (inv) {
+        return inv.id != id;
       }));
     }
   }, {
     key: "update",
     value: function update(id, data) {
-      this.write(this.read().map(function (f) {
-        return f.id == id ? _objectSpread(_objectSpread(_objectSpread({}, f), data), {}, {
+      this.write(this.read().map(function (inv) {
+        return inv.id == id ? _objectSpread(_objectSpread(_objectSpread({}, inv), data), {}, {
           id: id
-        }) : f;
+        }) : inv;
       }));
     }
   }]);
