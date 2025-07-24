@@ -28,10 +28,13 @@ export default class locStor {
         this.write(this.read().filter(inv => inv.id != id));
     }
 
-    static update(id, data) {
-        this.write(this.read().map(inv => inv.id == id ? {...inv, ...data, id} : inv));
+    static update(id, updatedInvoice) {
+        const data = this.read();
+        const index = data.findIndex(inv => inv.id === id);
+        if (index !== -1) {
+            data[index] = updatedInvoice;
+            localStorage.setItem(this.key, JSON.stringify(data));
+        }
     }
-
-
 
 }

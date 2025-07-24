@@ -19,6 +19,9 @@ export default class Main extends locStor{
         } else if (document.querySelector('[data-show-inv]')) {
             this.initShow();
             return;
+        } else if (document.querySelector('[data-update]')) {
+            this.initUpdate();
+            return;
         }
         
     }
@@ -95,7 +98,7 @@ export default class Main extends locStor{
             clone.querySelector('[data-date]').textContent = inv.date;
             clone.querySelector('[data-sum]').textContent = inv.totals.bendra;
 
-            clone.querySelector('[data-edit]').setAttribute('href', 'edit.html#' + inv.id);
+            clone.querySelector('[data-edit]').setAttribute('href', 'update.html#' + inv.id);
             clone.querySelector('[data-delete]').setAttribute('href', 'delete.html#' + inv.id);
             clone.querySelector('[data-show]').setAttribute('href', 'show.html#' + inv.id);
 
@@ -142,4 +145,28 @@ export default class Main extends locStor{
         invoiceShow.render();
     }
 
+    static initUpdate() {
+        const invoices = locStor.read();
+        const id = window.location.hash.slice(1);
+        const invoice = invoices.find(inv => inv.id == id);
+    
+        if (!invoice) {
+            alert('Sąskaita nerasta!');
+            window.location.href = 'read.html';
+            return;
+        }
+    
+        document.querySelector('.konteineris').style.display = 'flex';
+        document.querySelector('#pirma').style.display = 'flex';
+        document.querySelector('#antra').style.display = 'flex';
+    
+        const invoiceUpdate = new Invoice(invoice);
+        invoiceUpdate.render();
+    
+    //     // ✅ mygtukas Išsaugoti pakeitimus
+    //     document.querySelector('[data-save]').addEventListener('click', () => {
+    //         locStor.update(id, invoiceUpdate.data); 
+    //         window.location.href = 'read.html';
+    //     });
+    }
 }

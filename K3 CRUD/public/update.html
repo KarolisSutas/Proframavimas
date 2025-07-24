@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="app.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <title>K3 CRUD</title>
+</head>
+<body data-update>
+    <header>
+
+        <div class="tuščias"></div>
+        <h1 id="title">PVM sąskaita-faktūra</h1>
+        <h2 id="number" data-title></h2>
+        <h2 id="date" data-date></h2>
+
+    </header>
+    <main>
+        <div class="konteineris" style="display: none;">
+            <div id="seller"><span></span></div>
+            <div id="buyer"></div>
+        </div>    
+        <div id="pirma" style="display: none;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Prekė</th>
+                        <th>Kiekis</th>
+                        <th>Kaina</th>
+                        <th>Nuolaida</th>
+                        <th>Suma</th>
+                    </tr>   
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div id="antra" style="display: none;">
+            <table>
+                <tr>
+                    <td>Transportas: </td>
+                    <td id="trans"></td>
+                </tr>
+                <tr>
+                    <td>Tarpinė suma: </td>
+                    <td id="tarp">0</td>
+                </tr>
+                <tr>
+                    <td>PVM 21 proc. </td>
+                    <td id="pvm">0</td>
+                </tr>
+                <tr>
+                    <td><b>Bendra suma: </b></td>
+                    <td id="viso" data-sum>0</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="mt-5">
+            <button data-save class="btn btn-primary">Išsaugoti</button>
+            <a href="read.html" data-back class="btn btn-info">Grįžti</a>
+        </div>
+
+    </main>
+    
+</body>
+<template data-items-content>
+        <tr>
+            <td class="prekė"></td>
+            <td class="kiekis"></td>
+            <td class="kaina"></td>
+            <td class="nuolaida"></td>
+            <td class="suma"></td>
+        </tr>
+</template>
+</html>

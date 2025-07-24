@@ -20,6 +20,8 @@ export default class Main extends LS {
             this.initEdit();
         } else if (document.querySelector('[data-show]')) {
             this.initShow();
+        } else if (document.querySelector('[data-update]')) {
+            this.initUpdate();
         }
 }
 
@@ -65,7 +67,7 @@ export default class Main extends LS {
 
             clone.querySelector('[data-title]').textContent = activeFrame.title;
 
-            clone.querySelector('[data-edit]').setAttribute('href', 'edit.html#' + activeFrame.id);
+            clone.querySelector('[data-edit]').setAttribute('href', 'update.html#' + inv.id);
             clone.querySelector('[data-delete]').setAttribute('href', 'delete.html#' + activeFrame.id);
             clone.querySelector('[data-show]').setAttribute('href', 'show.html#' + activeFrame.id);
 
@@ -157,6 +159,5 @@ export default class Main extends LS {
         });
         
     }
-
 
 }
