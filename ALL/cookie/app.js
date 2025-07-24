@@ -10,46 +10,95 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-// req reikalavimas kazko o res atsakymas
+
+app.use((req, res, next) => {
+
+  const token = req.cookies.session || '';
+  if (token) {
+    let users = fs.readFileSync('./users.json', 'utf8');
+    users = JSON.parse(users);
+    const user = users.find(u => u.token === token);
+    if (user) {
+      req.user = {
+        name: user.name,
+        email: user.email
+      }
+    } else {
+      req.user = null;
+    }
+  } else {
+    req.user = null;
+  }
+
+  const url = req.originalUrl;
+
+  if (url === '/profile' && !req.user) {
+    res.status(401).send('Unauthorized');
+    return;
+  }
+
+  next();
+});
+
+
+
 app.get('/', (req, res) => {
 
   let counter;
 
-// laiko skaiciavimas ms tikslumu:
   const minute = 60 * 1000;
   const hour = 60 * 60 * 1000;
   const day = 24 * 60 * 60 * 1000;
 
-
-  if (req.cookies.kartai) { // narsykle issiuncia laiska uzklausa cookiams
-    counter = parseInt(req.cookies.kartai); // nuskaitom kuki
+  if (req.cookies.kartai) {
+    counter = parseInt(req.cookies.kartai); // nuskaitome kuki
   } else {
     counter = 0;
   }
 
   counter++;
 
-  res.cookie('kartai', counter, { maxAge: day }); // irasome cookie ir galiojimo laikas cookie
+  res.cookie('kartai', counter, { maxAge: day }); // irasome kuki
 
-  // res.clearCookie('kartai'); istrina cookie uzdedant praeities laika
-// su sendu issisiunte ir cookie:
   res.send(`
-    Hello ${counter} Cookie!
-    <a href="http://localhost:3000/reset/">TRINTI</a>
+        Hello ${counter} Cookie!
+        <a href="http://localhost:3000/reset/">TRINTI</a>
     `);
 });
 
 
-// narsykle kreipiasi i reset 
+
 app.get('/reset', (req, res) => {
 
   setTimeout(_ => {
-    res.clearCookie('kartai'); // istrina cookie uzdedant praeities laika
 
-    res.redirect('http://localhost:3000.html');
+    res.clearCookie('kartai'); //istrina cookie uzdedant praeities laika
+
+    res.redirect('http://localhost:3000/');
 
   }, 5000);
 
+
+});
+
+app.get('/login', (req, res) => {
+
+  if (req.user) {
+    res.redirect('http://localhost:3000/reset/');
+    return;
+  }
+
+  const file = fs.readFileSync('./templates/login.html', 'utf8');
+  res.send(file);
+});
+
+app.post('/logout', (req, res) => {
+
+  res.clearCookie('session'); 
+  res.json({
+    success: true
+  });
+  
 });
 
 
@@ -64,25 +113,37 @@ app.post('/login', (req, res) => {
   const user = users.find(u => u.email === email && u.psw === psw);
 
   if (!user) {
-      res.json({
-          success: false,
-          message: 'User email or password invalid'
-      })
-  }
+    res.json({
+      success: false,
+      message: 'User email or password invalid'
+    });
+  } else {
 
-  const token = md5(Math.random() + 'SALT 2587415468'); // psuedo atsitiktinis stringas
+    const token = md5(Math.random() + 'SALT 2587415468'); // psuedo atsitiktinis stringas
 
-  user.token = token;
-  users = JSON.stringify(users);
-  fs.writeFileSync('./users.json', users);
+    user.token = token;
+    users = JSON.stringify(users);
+    fs.writeFileSync('./users.json', users);
 
-  res.cookie('session', token);
+    res.cookie('session', token);
 
-  res.json({
+    res.json({
       success: true,
       message: 'Welcome!',
-      name: user.name
-  });
+    });
+  }
+
+});
+
+app.get('/profile', (req, res) => {
+
+  const userName = req.user.name;
+
+  let file = fs.readFileSync('./templates/profile.html', 'utf8');
+  file = file.replace('{{userName}}', userName);
+  res.send(file);
+  // res.send(`<h1>Profile</h1><h2>Hello, ${userName} </h2>`);
+
 
 });
 
