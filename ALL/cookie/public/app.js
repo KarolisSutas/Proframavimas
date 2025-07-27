@@ -7150,7 +7150,7 @@ __webpack_require__.r(__webpack_exports__);
 console.log('Cookies');
 var loginForm = document.querySelector('[data-login]');
 var logoutForm = document.querySelector('[data-logout]');
-if (loginForm) {
+if (logoutForm) {
   var logoutButton = logoutForm.querySelector('button');
   logoutButton.addEventListener('click', function (_) {
     axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('http://localhost:3000/logout', {}, {

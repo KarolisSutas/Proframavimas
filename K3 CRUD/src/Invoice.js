@@ -1,4 +1,4 @@
-console.log('Sąskaita')
+console.log('Sąskaita');
 
 export default class Invoice {
 
@@ -9,13 +9,15 @@ export default class Invoice {
     }
 
     render() {
-        this.renderNumber();
-        this.renderDate();
-        this.renderSeller();
-        this.renderBuyer();
-        this.renderItems();
-        this.renderTransport();
-        this.countTotal();
+        console.log('Render start', this.data);
+
+        this.renderNumber();  console.log('number done');
+        this.renderDate();    console.log('date done');
+        this.renderSeller();  console.log('seller done');
+        this.renderBuyer();   console.log('buyer done');
+        this.renderItems();   console.log('items done');
+        this.renderTransport(); console.log('transport done');
+        this.countTotal();    console.log('total done');
     }
 
     renderNumber() {
@@ -96,6 +98,63 @@ export default class Invoice {
         });
     }
 
+    // renderUpdatedItems() {
+    //     const tbody = document.querySelector('tbody');
+    //     if (!tbody) return;
+    
+    //     const template = document.querySelector('[data-update-content]');
+    //     tbody.innerHTML = '';
+    
+    //     this.items.forEach((item, index) => {
+    //         const clone = template.content.cloneNode(true);
+    
+    //         // --- 1. Prekės pavadinimas ---
+    //         clone.querySelector('.prekė').textContent = item.description;
+    
+    //         // --- 2. Kiekis ---
+    //         const qtyInput = clone.querySelector('.kiekis');
+    //         qtyInput.value = item.quantity;
+    //         qtyInput.addEventListener('input', (e) => {
+    //             this.items[index].quantity = parseFloat(e.target.value) || 0;
+    //             this.countTotal();
+    //         });
+    
+    //         // --- 3. Vieneto kaina ---
+    //         clone.querySelector('.kaina').textContent = `${item.price.toFixed(2)} €`;
+
+    //         // --- 4. Nuolaida (galim laikyti % ar fiksuotą) ---
+    //         const discountInput = clone.querySelector('.nuolaida');
+    //         discountInput.value = item.discount.value;
+    //         discountInput.addEventListener('input', (e) => {
+    //             this.items[index].discount.value = parseFloat(e.target.value) || 0;
+    //             this.countTotal();
+    //         });
+    
+    //         // --- 5. Skaičiuojam realią sumą su nuolaida ---
+    //         let galutineKaina = item.price;
+    
+    //         if (item.discount.type === 'percentage') {
+    //             const proc = (item.price * item.discount.value) / 100;
+    //             galutineKaina -= proc;
+    //         } else if (item.discount.type === 'fixed') {
+    //             galutineKaina -= item.discount.value;
+    //         }
+    
+    //         const bendraSuma = galutineKaina * item.quantity;
+    
+    //         // Jei norėtum rodyti sumą ar nuolaidos tekstą update lange (nebūtina):
+    //         const sumaCell = clone.querySelector('.suma');
+    //         if (sumaCell) sumaCell.textContent = `${bendraSuma.toFixed(2)} €`;
+    
+    //         tbody.appendChild(clone);
+    //     });
+    
+    //     // Po renderio perskaičiuojam tarpines sumas + PVM
+    //     this.countTotal();
+    // }
+    
+    
+
     renderTransport() {
         if (!document.querySelector('#trans')) {
             return;
@@ -133,188 +192,3 @@ export default class Invoice {
     }
 
 };
-
-
-// console.log('Sąskaita');
-
-// export default class Invoice {
-
-//     constructor(data) {
-//         this.data = data;
-//         this.items = data.items;
-//         this.shippingPrice = data.shippingPrice;
-//     }
-
-//     render() {
-//         this.renderNumber();
-//         this.renderDate();
-//         this.renderSeller();
-//         this.renderBuyer();
-//         this.renderItems();   // dabar su input laukais
-//         this.renderTransport();
-//         this.countTotal();
-//     }
-
-//     renderNumber() {
-//         const el = document.querySelector('#number');
-//         if (!el) return;
-//         el.innerHTML = `Serija: ${this.data.number}`;
-//     }
-
-//     renderDate() {
-//         const el = document.querySelector('#date');
-//         if (!el) return;
-//         el.innerHTML = `${this.data.date}`;
-//     }
-
-//     renderSeller() {
-//         const seller = this.data.company.seller;
-//         const el = document.querySelector('#seller');
-//         if (!el) return;
-
-//         el.innerHTML = `
-//           <b>PARDAVĖJAS</b><br><br> 
-//           <b>${seller.name}</b><br>
-//           El. paštas: ${seller.email}<br>
-//           Tel. Nr.: ${seller.phone}<br>
-//           Adresas: ${seller.address}<br>
-//           Įmonės kodas: ${seller.code}<br>
-//           PVM mokėtojo kodas: ${seller.vat}`;
-//     }
-
-//     renderBuyer() {
-//         const buyer = this.data.company.buyer;
-//         const el = document.querySelector('#buyer');
-//         if (!el) return;
-
-//         el.innerHTML = `
-//           <b>PIRKĖJAS</b><br><br> 
-//           <b>${buyer.name}</b><br>
-//           El. paštas: ${buyer.email}<br>
-//           Tel. Nr.: ${buyer.phone}<br>
-//           Adresas: ${buyer.address}<br>
-//           Įmonės kodas: ${buyer.code}<br>
-//           PVM mokėtojo kodas: ${buyer.vat}<br><br><br><br><br>
-//           <b>Apmokėti iki: ${this.data.due_date}</b>`;
-//     }
-
-//     renderItems() {
-//         const tbody = document.querySelector('tbody');
-//         const template = document.querySelector('[data-items-content]');
-//         tbody.innerHTML = '';
-
-//         this.items.forEach((item, index) => {
-//             const clone = template.content.cloneNode(true);
-//             clone.querySelector('.prekė').textContent = item.description;
-
-//             // ✅ kiekis kaip input
-//             clone.querySelector('.kiekis').innerHTML =
-//                 `<input type="number" min="1" value="${item.quantity}" data-index="${index}" class="edit-qty">`;
-
-//             // ✅ kaina tik tekstas
-//             clone.querySelector('.kaina').textContent = `${item.price.toFixed(2)} €`;
-
-//             // ✅ nuolaida kaip input (paprastumui tik €
-//             const discountValue = item.discount?.value || 0;
-//             clone.querySelector('.nuolaida').innerHTML =
-//                 `<input type="number" min="0" step="0.01" value="${discountValue}" data-index="${index}" class="edit-discount">`;
-
-//             // ✅ pradinė suma
-//             const suma = this.calculateItemSum(item);
-//             clone.querySelector('.suma').textContent = `${suma.toFixed(2)} €`;
-
-//             tbody.appendChild(clone);
-//         });
-
-//         // Po atvaizdavimo prijungiam event'us
-//         this.attachEditEvents();
-//     }
-
-//     // ✅ apskaičiuoja vienos prekės sumą
-//     calculateItemSum(item) {
-//         let finalPrice = item.price;
-
-//         if (item.discount?.type === 'percentage') {
-//             finalPrice -= item.price * (item.discount.value / 100);
-//         } else if (item.discount?.type === 'fixed') {
-//             finalPrice -= item.discount.value;
-//         }
-
-//         if (finalPrice < 0) finalPrice = 0; // apsauga nuo minusų
-//         return finalPrice * item.quantity;
-//     }
-
-//     // ✅ gaudo kiekio ir nuolaidos pakeitimus
-//     attachEditEvents() {
-//         const qtyInputs = document.querySelectorAll('.edit-qty');
-//         const discountInputs = document.querySelectorAll('.edit-discount');
-
-//         qtyInputs.forEach(input => {
-//             input.addEventListener('input', (e) => {
-//                 const index = e.target.dataset.index;
-//                 const value = parseFloat(e.target.value) || 1;
-//                 this.items[index].quantity = value;
-//                 this.updateItemRow(index);
-//             });
-//         });
-
-//         discountInputs.forEach(input => {
-//             input.addEventListener('input', (e) => {
-//                 const index = e.target.dataset.index;
-//                 const value = parseFloat(e.target.value) || 0;
-
-//                 if (!this.items[index].discount) {
-//                     this.items[index].discount = { type: 'fixed', value: 0 };
-//                 }
-//                 this.items[index].discount.value = value;
-//                 this.items[index].discount.type = 'fixed'; // paprastumui €
-
-//                 this.updateItemRow(index);
-//             });
-//         });
-//     }
-
-//     // ✅ atnaujina konkrečios eilutės sumą + perskaičiuoja visą lentelę
-//     updateItemRow(index) {
-//         const tbody = document.querySelector('tbody');
-//         const row = tbody.querySelectorAll('tr')[index];
-//         const sumaCell = row.querySelector('.suma');
-
-//         const item = this.items[index];
-//         const suma = this.calculateItemSum(item);
-//         sumaCell.textContent = `${suma.toFixed(2)} €`;
-
-//         this.countTotal();
-//     }
-
-//     renderTransport() {
-//         const el = document.querySelector('#trans');
-//         if (!el) return;
-//         el.textContent = `${this.shippingPrice.toFixed(2)} €`;
-//     }
-
-//     countTotal() {
-//         const rows = document.querySelectorAll('#pirma table tbody tr');
-//         let suma = 0;
-
-//         rows.forEach(row => {
-//             const lastCell = row.querySelector('td:last-child');
-//             if (lastCell) {
-//                 const value = parseFloat(lastCell.textContent.replace('€', '').trim());
-//                 if (!isNaN(value)) {
-//                     suma += value;
-//                 }
-//             }
-//         });
-
-//         const transport = this.shippingPrice || 0;
-//         const tarpine = suma;
-//         const suTransportu = tarpine + transport;
-//         const pvm = suTransportu * 0.21;
-//         const viso = suTransportu + pvm;
-
-//         document.querySelector('#tarp').textContent = `${tarpine.toFixed(2)} €`;
-//         document.querySelector('#pvm').textContent = `${pvm.toFixed(2)} €`;
-//         document.querySelector('#viso').innerHTML = `<b>${viso.toFixed(2)} €</b>`;
-//     }
-// }

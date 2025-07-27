@@ -41,10 +41,10 @@ export default class Main extends locStor{
                 document.querySelector('#pirma').style.display = 'flex';
                 document.querySelector('#antra').style.display = 'flex';
 
-                const clearButton = document.querySelector('[data-clear]');
+                const allInvButton = document.querySelector('[data-all]');
 
-                clearButton.addEventListener('click', () => {
-                    window.location.href = 'create.html';
+                allInvButton.addEventListener('click', () => {
+                    window.location.href = 'read.html';
                 })
 
                 // Surandame mygtuką Saugoti
@@ -156,17 +156,34 @@ export default class Main extends locStor{
             return;
         }
     
+        // parodyti paslėptus blokus
         document.querySelector('.konteineris').style.display = 'flex';
         document.querySelector('#pirma').style.display = 'flex';
         document.querySelector('#antra').style.display = 'flex';
     
         const invoiceUpdate = new Invoice(invoice);
         invoiceUpdate.render();
-    
-    //     // ✅ mygtukas Išsaugoti pakeitimus
-    //     document.querySelector('[data-save]').addEventListener('click', () => {
-    //         locStor.update(id, invoiceUpdate.data); 
-    //         window.location.href = 'read.html';
-    //     });
+
     }
+
+    // static initUpdate() {
+    //     const invoiceId = Main.getInvoiceIdFromUrl(); 
+    //     const invoiceData = Main.loadInvoiceFromStorage(invoiceId);
+    
+    //     if (!invoiceData) {
+    //         alert('Nerasta sąskaita!');
+    //         return;
+    //     }
+    
+    //     const invoice = new Invoice(invoiceData);
+    
+    //     // Panaudojam kitą render metodą
+    //     invoice.renderNumber();
+    //     invoice.renderDate();
+    //     invoice.renderSeller();
+    //     invoice.renderBuyer();
+    //     invoice.renderTransport();
+    //     invoice.renderUpdatedItems(); // <-- čia vietoj renderItems
+    // }
+
 }

@@ -6,7 +6,7 @@ console.log('Cookies');
 const loginForm = document.querySelector('[data-login]');
 const logoutForm = document.querySelector('[data-logout]');
 
-if (loginForm) {
+if (logoutForm) {
     const logoutButton = logoutForm.querySelector('button');
 
     logoutButton.addEventListener('click', _ => {
