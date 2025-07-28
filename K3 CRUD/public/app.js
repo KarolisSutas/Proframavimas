@@ -278,61 +278,39 @@ var Invoice = /*#__PURE__*/function () {
         tbody.appendChild(clone);
       });
     }
+  }, {
+    key: "renderUpdatedItems",
+    value: function renderUpdatedItems() {
+      var tbody = document.querySelector('tbody');
+      var template = document.querySelector('[data-update-content]');
+      tbody.innerHTML = '';
+      this.items.forEach(function (item, index) {
+        var _item$discount, _item$discount2, _item$discount3, _item$discount4;
+        var clone = template.content.cloneNode(true);
 
-    // renderUpdatedItems() {
-    //     const tbody = document.querySelector('tbody');
-    //     if (!tbody) return;
+        // Įrašom reikšmes į input'us
+        clone.querySelector('.desc').textContent = item.description;
+        clone.querySelector('.qty').value = item.quantity;
+        clone.querySelector('.price').textContent = item.price.toFixed(2);
+        // Nuolaidos tipo select
+        var discountTypeSelect = clone.querySelector('.discount-type');
+        var discountValueInput = clone.querySelector('.discount-value');
+        discountTypeSelect.value = ((_item$discount = item.discount) === null || _item$discount === void 0 ? void 0 : _item$discount.type) || 'none';
+        discountValueInput.value = ((_item$discount2 = item.discount) === null || _item$discount2 === void 0 ? void 0 : _item$discount2.value) || '';
 
-    //     const template = document.querySelector('[data-update-content]');
-    //     tbody.innerHTML = '';
-
-    //     this.items.forEach((item, index) => {
-    //         const clone = template.content.cloneNode(true);
-
-    //         // --- 1. Prekės pavadinimas ---
-    //         clone.querySelector('.prekė').textContent = item.description;
-
-    //         // --- 2. Kiekis ---
-    //         const qtyInput = clone.querySelector('.kiekis');
-    //         qtyInput.value = item.quantity;
-    //         qtyInput.addEventListener('input', (e) => {
-    //             this.items[index].quantity = parseFloat(e.target.value) || 0;
-    //             this.countTotal();
-    //         });
-
-    //         // --- 3. Vieneto kaina ---
-    //         clone.querySelector('.kaina').textContent = `${item.price.toFixed(2)} €`;
-
-    //         // --- 4. Nuolaida (galim laikyti % ar fiksuotą) ---
-    //         const discountInput = clone.querySelector('.nuolaida');
-    //         discountInput.value = item.discount.value;
-    //         discountInput.addEventListener('input', (e) => {
-    //             this.items[index].discount.value = parseFloat(e.target.value) || 0;
-    //             this.countTotal();
-    //         });
-
-    //         // --- 5. Skaičiuojam realią sumą su nuolaida ---
-    //         let galutineKaina = item.price;
-
-    //         if (item.discount.type === 'percentage') {
-    //             const proc = (item.price * item.discount.value) / 100;
-    //             galutineKaina -= proc;
-    //         } else if (item.discount.type === 'fixed') {
-    //             galutineKaina -= item.discount.value;
-    //         }
-
-    //         const bendraSuma = galutineKaina * item.quantity;
-
-    //         // Jei norėtum rodyti sumą ar nuolaidos tekstą update lange (nebūtina):
-    //         const sumaCell = clone.querySelector('.suma');
-    //         if (sumaCell) sumaCell.textContent = `${bendraSuma.toFixed(2)} €`;
-
-    //         tbody.appendChild(clone);
-    //     });
-
-    //     // Po renderio perskaičiuojam tarpines sumas + PVM
-    //     this.countTotal();
-    // }
+        // Skaičiuojam pradinę sumą
+        var price = item.price;
+        if (((_item$discount3 = item.discount) === null || _item$discount3 === void 0 ? void 0 : _item$discount3.type) === 'percentage') {
+          price -= price * (item.discount.value / 100);
+        } else if (((_item$discount4 = item.discount) === null || _item$discount4 === void 0 ? void 0 : _item$discount4.type) === 'fixed') {
+          price -= item.discount.value;
+        }
+        var suma = price * item.quantity;
+        clone.querySelector('.suma').textContent = "".concat(suma.toFixed(2), " \u20AC");
+        tbody.appendChild(clone);
+      });
+      this.countTotal();
+    }
   }, {
     key: "renderTransport",
     value: function renderTransport() {
@@ -476,10 +454,6 @@ var Main = /*#__PURE__*/function (_locStor) {
           // Patikriname ar tikrai išsaugojo (debug)
           console.log('Sąskaita išsaugota:', saskaita.data);
           console.log('Visos sąskaitos localStorage:', _locStor_js__WEBPACK_IMPORTED_MODULE_0__["default"].read());
-
-          // Pranešimas, kad sąskaita išsaugota
-          alert('Sąskaita išsaugota į localStorage!');
-
           // Nukreipiame į sąskaitų sąrašą po išsaugojimo
           window.location.href = 'read.html';
         });
@@ -555,6 +529,7 @@ var Main = /*#__PURE__*/function (_locStor) {
     key: "initUpdate",
     value: function initUpdate() {
       var invoices = _locStor_js__WEBPACK_IMPORTED_MODULE_0__["default"].read();
+      console.log(invoices);
       var id = window.location.hash.slice(1);
       var invoice = invoices.find(function (inv) {
         return inv.id == id;
@@ -569,29 +544,44 @@ var Main = /*#__PURE__*/function (_locStor) {
       document.querySelector('.konteineris').style.display = 'flex';
       document.querySelector('#pirma').style.display = 'flex';
       document.querySelector('#antra').style.display = 'flex';
+
+      // Sukuriam invoice objektą ir renderinam
       var invoiceUpdate = new _Invoice_js__WEBPACK_IMPORTED_MODULE_1__["default"](invoice);
-      invoiceUpdate.render();
+      invoiceUpdate.renderNumber();
+      invoiceUpdate.renderDate();
+      invoiceUpdate.renderSeller();
+      invoiceUpdate.renderBuyer();
+      invoiceUpdate.renderTransport();
+      invoiceUpdate.renderUpdatedItems(); // čia jau input laukų versija
+      invoiceUpdate.countTotal(); // pradinis skaičiavimas
+
+      document.querySelector('[data-save]').addEventListener('click', function () {
+        var rows = document.querySelectorAll('tbody tr');
+        rows.forEach(function (row, i) {
+          var qtyEl = row.querySelector('.qty');
+          var typeEl = row.querySelector('.discount-type');
+          var valueEl = row.querySelector('.discount-value');
+          if (qtyEl && typeEl && valueEl) {
+            invoice.items[i].quantity = parseFloat(qtyEl.value) || 0;
+            invoice.items[i].discount.type = typeEl.value;
+            invoice.items[i].discount.value = parseFloat(valueEl.value) || 0;
+          } else {
+            console.warn("Tr\u016Bksta lauk\u0173 eilut\u0117je ".concat(i));
+          }
+        });
+
+        // Išsaugoti atnaujintą sąskaitą
+        var invoices = _locStor_js__WEBPACK_IMPORTED_MODULE_0__["default"].read();
+        var index = invoices.findIndex(function (inv) {
+          return inv.id === invoice.id;
+        });
+        if (index !== -1) {
+          invoices[index] = invoice;
+          _locStor_js__WEBPACK_IMPORTED_MODULE_0__["default"].write(invoices);
+          window.location.href = 'read.html';
+        }
+      });
     }
-
-    // static initUpdate() {
-    //     const invoiceId = Main.getInvoiceIdFromUrl(); 
-    //     const invoiceData = Main.loadInvoiceFromStorage(invoiceId);
-
-    //     if (!invoiceData) {
-    //         alert('Nerasta sąskaita!');
-    //         return;
-    //     }
-
-    //     const invoice = new Invoice(invoiceData);
-
-    //     // Panaudojam kitą render metodą
-    //     invoice.renderNumber();
-    //     invoice.renderDate();
-    //     invoice.renderSeller();
-    //     invoice.renderBuyer();
-    //     invoice.renderTransport();
-    //     invoice.renderUpdatedItems(); // <-- čia vietoj renderItems
-    // }
   }]);
 }(_locStor_js__WEBPACK_IMPORTED_MODULE_0__["default"]);
 

@@ -64,39 +64,22 @@
     </main>
     
 </body>
-<template data-items-content>
-    <tr>
-        <td class="prekė"></td>
-        <td class="kiekis"></td>
-        <td class="kaina"></td>
-        <td class="nuolaida"></td>
-        <td class="suma"></td>
-    </tr>
-</template>
+
 <template data-update-content>
     <tr>
-        <!-- Pavadinimas – NEREDAGUOJAMAS -->
         <td class="desc"></td>
-
-        <!-- Kiekis – REDAGUOJAMAS -->
         <td>
             <input type="number" class="qty" step="1" min="0">
         </td>
-
-        <!-- Kaina – NEREDAGUOJAMA -->
         <td class="price">0.00 €</td>
-
-        <!-- Nuolaida – REDAGUOJAMA (galima pasirinkti tipą ir reikšmę) -->
         <td>
             <select class="discount-type">
                 <option value="none">Nėra</option>
                 <option value="percentage">%</option>
                 <option value="fixed">€</option>
             </select>
-            <input type="number" class="discount-value" step="0.01" min="0">
+            <input type="number" class="discount-value">
         </td>
-
-        <!-- Suma – automatiškai perskaičiuojama -->
         <td class="suma">0.00 €</td>
     </tr>
 </template>

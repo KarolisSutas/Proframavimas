@@ -67,10 +67,6 @@ export default class Main extends locStor{
                     // Patikriname ar tikrai išsaugojo (debug)
                     console.log('Sąskaita išsaugota:', saskaita.data);
                     console.log('Visos sąskaitos localStorage:', locStor.read());
-
-                    // Pranešimas, kad sąskaita išsaugota
-                    alert('Sąskaita išsaugota į localStorage!');
-
                     // Nukreipiame į sąskaitų sąrašą po išsaugojimo
                     window.location.href = 'read.html';
                 });
@@ -147,6 +143,7 @@ export default class Main extends locStor{
 
     static initUpdate() {
         const invoices = locStor.read();
+        console.log(invoices)
         const id = window.location.hash.slice(1);
         const invoice = invoices.find(inv => inv.id == id);
     
@@ -161,29 +158,45 @@ export default class Main extends locStor{
         document.querySelector('#pirma').style.display = 'flex';
         document.querySelector('#antra').style.display = 'flex';
     
+        // Sukuriam invoice objektą ir renderinam
         const invoiceUpdate = new Invoice(invoice);
-        invoiceUpdate.render();
+        invoiceUpdate.renderNumber();
+        invoiceUpdate.renderDate();
+        invoiceUpdate.renderSeller();
+        invoiceUpdate.renderBuyer();
+        invoiceUpdate.renderTransport();
+        invoiceUpdate.renderUpdatedItems(); // čia jau input laukų versija
+        invoiceUpdate.countTotal(); // pradinis skaičiavimas
+    
+        document.querySelector('[data-save]').addEventListener('click', () => {
+            const rows = document.querySelectorAll('tbody tr');
+          
+            rows.forEach((row, i) => {
+              const qtyEl = row.querySelector('.qty');
+              const typeEl = row.querySelector('.discount-type');
+              const valueEl = row.querySelector('.discount-value');
+          
+              if (qtyEl && typeEl && valueEl) {
+                invoice.items[i].quantity = parseFloat(qtyEl.value) || 0;
+                invoice.items[i].discount.type = typeEl.value;
+                invoice.items[i].discount.value = parseFloat(valueEl.value) || 0;
+              } else {
+                console.warn(`Trūksta laukų eilutėje ${i}`);
+              }
+            });
+          
+            // Išsaugoti atnaujintą sąskaitą
+            const invoices = locStor.read();
+            const index = invoices.findIndex(inv => inv.id === invoice.id);
+            if (index !== -1) {
+              invoices[index] = invoice;
+              locStor.write(invoices);
+              window.location.href = 'read.html';
+            }
+          });
 
     }
+    
 
-    // static initUpdate() {
-    //     const invoiceId = Main.getInvoiceIdFromUrl(); 
-    //     const invoiceData = Main.loadInvoiceFromStorage(invoiceId);
-    
-    //     if (!invoiceData) {
-    //         alert('Nerasta sąskaita!');
-    //         return;
-    //     }
-    
-    //     const invoice = new Invoice(invoiceData);
-    
-    //     // Panaudojam kitą render metodą
-    //     invoice.renderNumber();
-    //     invoice.renderDate();
-    //     invoice.renderSeller();
-    //     invoice.renderBuyer();
-    //     invoice.renderTransport();
-    //     invoice.renderUpdatedItems(); // <-- čia vietoj renderItems
-    // }
 
 }
