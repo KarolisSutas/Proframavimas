@@ -52,6 +52,10 @@ export default class Main extends locStor{
 
                 // Pridedame įvykio klausytoją mygtukui
                 saveButton.addEventListener('click', () => {
+                    
+                    // locStor.store(saskaita.data);
+                    // window.location.href = 'read.html';
+
 
                     const pilnaSaskaita = {
                         ...saskaita.data, // visi API duomenys
@@ -185,6 +189,8 @@ export default class Main extends locStor{
               }
             });
           
+            
+
             // Išsaugoti atnaujintą sąskaitą
             const invoices = locStor.read();
             const index = invoices.findIndex(inv => inv.id === invoice.id);

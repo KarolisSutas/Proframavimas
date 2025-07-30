@@ -21,7 +21,6 @@ const con = mysql.createConnection({
   });
 
 
-
 // Router
 // serverio kodas kuris kreipias i db ir su ja bendrauja
 app.get('/all-trees', (req, res) => {
@@ -31,9 +30,11 @@ app.get('/all-trees', (req, res) => {
 
   const sql = `
     SELECT id, name, height, type
-    FROM trees;
+    FROM trees
+    -- WHERE name LIKE '%a_'
+    ORDER BY type DESC, height
   `;
-
+// komentaras mysql priekyje eilutes --
 
   con.query(sql, (err, result) => {
     if (err) throw err;
@@ -42,6 +43,45 @@ app.get('/all-trees', (req, res) => {
 
 
   
+});
+
+app.post('/tree', (req, res) => {
+
+  const name = req.body.name;
+  const type = req.body.type;
+  const height = req.body.height;
+
+  // INSERT INTO table_name (column1, column2, column3, ...)
+  // VALUES (value1, value2, value3, ...);
+
+  const sql = `
+    INSERT INTO trees (name, type, height)
+    VALUES (?, ?, ?)
+  `;
+
+  con.query(sql, [name, type, height], (err, result) => {
+    if (err) throw err;
+    res.json(result);
+  });
+
+});
+
+app.delete('/tree/:id', (req, res) => {
+
+    const id = req.params.id;
+    // paruosimas su ? ir paskui po sql sukuriamas masyvas [id]
+    const sql = `
+    DELETE FROM trees
+    -- WHERE id = ${id}
+    WHERE id = ?
+    `;
+
+    // paruosimas su ? ir paskui po sql sukuriamas masyvas [id]
+    con.query(sql, [id], (err, result) => {
+      if (err) throw err;
+      res.json(result);
+    });
+
 });
 
 

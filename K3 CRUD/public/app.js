@@ -440,6 +440,9 @@ var Main = /*#__PURE__*/function (_locStor) {
 
         // Pridedame įvykio klausytoją mygtukui
         saveButton.addEventListener('click', function () {
+          // locStor.store(saskaita.data);
+          // window.location.href = 'read.html';
+
           var pilnaSaskaita = _objectSpread(_objectSpread({}, saskaita.data), {}, {
             // visi API duomenys
             totals: {
