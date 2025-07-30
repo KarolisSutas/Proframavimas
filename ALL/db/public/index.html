@@ -15,7 +15,6 @@
             <h2>View Trees</h2>
             <ul data-tree-list></ul>
         </section>
-        <section class="edit"></section>
         <section class="plant">
             <h2>Plant a Tree</h2>
             <form data-plant-form>
@@ -35,6 +34,14 @@
             <form data-cut-form>
                 <input type="text" placeholder="Tree ID" required>
                 <button type="button">Cut Tree</button>
+            </form>
+        </section>
+        <section class="grow">
+            <h2>Grow a Tree</h2>
+            <form data-grow-form>
+                <input type="text" placeholder="Tree ID" required>
+                <input type="number" placeholder="Tree Height (m)" required>
+                <button type="button">Grow Tree</button>
             </form>
         </section>
     </div>
