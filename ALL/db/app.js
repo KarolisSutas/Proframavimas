@@ -28,20 +28,35 @@ app.get('/all-trees', (req, res) => {
   // SELECT column1, column2, ...
   // FROM table_name;
 
-  const sql = `
-    SELECT id, name, height, type
-    FROM trees
-    -- WHERE name LIKE '%a_'
-    ORDER BY height
-  `;
-// komentaras mysql priekyje eilutes --
+  const sortBy = req.query.sort || 'height'; // Default sort by height
+
+  let sql;
+
+  if (sortBy === 'name') {
+    sql = `
+      SELECT id, name, height, type
+      FROM trees
+      ORDER BY name
+    `;
+  } else if (sortBy === 'height') {
+    sql = `
+      SELECT id, name, height, type
+      FROM trees
+      ORDER BY height
+    `;
+  } else if (sortBy === 'type') {
+    sql = `
+      SELECT id, name, height, type
+      FROM trees
+      ORDER BY type
+    `;
+  }
+
 
   con.query(sql, (err, result) => {
     if (err) throw err;
     res.json(result);
   });
-
-
   
 });
 

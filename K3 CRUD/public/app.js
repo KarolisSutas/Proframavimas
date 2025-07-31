@@ -573,6 +573,29 @@ var Main = /*#__PURE__*/function (_locStor) {
           }
         });
 
+        // const allDiscounts = invoiceSection.querySelectorAll('[data-discount]');
+        // allDiscounts.forEach((input, i) => {
+        //     input.addEventListener('change', _ => {
+        //         const newDiscountValue = parseFloat(input.value);
+        //         if (isNaN(newDiscountValue) || newDiscountValue < 0) {
+        //             input.value = invoice.items[i].discount?.value || 0; // Reset to original if invalid
+        //             return;
+        //         }
+        //         const discountType = document.querySelector(`input[name="discount-type-${i}"]:checked`);
+        //         if (!discountType) {
+        //             const fixedRadio = invoiceSection.querySelector(`input[name="discount-type-${i}"][value="fixed"]`);
+        //             fixedRadio.checked = true;
+        //         }
+        //         invoice.items[i].discount = {
+        //             value: newDiscountValue,
+        //             type: discountType ? discountType.value : 'fixed'
+        //         };
+        //         updateItemTotal(i);
+        //         calcTotals();
+        //         updateTotals();
+        //     });
+        // });
+
         // Išsaugoti atnaujintą sąskaitą
         var invoices = _locStor_js__WEBPACK_IMPORTED_MODULE_0__["default"].read();
         var index = invoices.findIndex(function (inv) {
