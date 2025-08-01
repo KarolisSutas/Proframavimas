@@ -3,3 +3,61 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    line-height: 1.5rem;
+
+    h1 {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+    }
+    p {
+        margin: 10px 0;
+        border: 1px solid rgb(160, 23, 133);
+        border-radius: 1rem;
+        text-align: center;
+    }
+}
+
+#cookie-banner {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #000000;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    z-index: 9999;
+
+    #cookie-box {
+        max-width: 600px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        #accept-cookies {
+            background-color: #59a65b;
+            border: none;
+            padding: 0.5rem 1rem;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1rem;
+          }
+        
+          #accept-cookies:hover {
+            background-color: #59a65b;
+          }
+      }
+  }
+
+  
+
+  
