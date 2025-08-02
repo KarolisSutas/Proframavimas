@@ -1,28 +1,298 @@
+
+$xl: 1100px;
+$lg: 1200px;
+$md: 992px;
+$sm: 768px;
+$xs: 576px;
+$xxs: 480px;
+$xxxs: 320px;
+
+$gap: 20px;
+$gap-min: 10px;
+$gap-max: 40px;
+
+$blue: #084C61;
+$green: #56A3A6;
+$yellow: #f5cd13;
+$red: #DB504A;
+$gray: #4F6D7A;
+$white: #FFFFFF;
+$black: #030306;
+
+
+// $fancy-font: "Fascinate", system-ui;
+// $main-font: "Oswald", sans-serif;
+
+$heder-height: 96px;
+$burger-width: 40px;
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1.2;
+    color: $black;
+    background-image: url(Img/excavator_1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+a {
+    text-decoration: none;
+    color: $black;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+ul,
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    width: 100%;
+    height: $heder-height;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.800);
+
+    
+    // animation: moveDown 500ms ease-in, fastUp 200ms linear 800ms;
+
+    .menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: $xl;
+        padding: 0 $gap;
+
+        &__left {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            
+            .logo {
+                height: 200px;
+                width: 100%;
+                max-width: 200px;
+            }
+
+        }
+
+        &__right {
+            nav ul {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: $gap;
+
+                li a {
+                    color: $yellow;
+                    font-size: 16px;
+                    font-weight: 400;
+                    transition: all 0.3s ease;
+
+                    &:hover {
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+
+    .burger {
+        height: 5px;
+        width: $burger-width;
+        background-color: $yellow;
+        margin: 10px 0;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.4s;
+        display: none;
+
+        &::before {
+            content: '';
+            display: block;
+            height: 5px;
+            width: $burger-width;
+            position: absolute;
+            bottom: 10px;
+            background-color: $yellow;
+            transition: all 0.4s; 
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            height: 5px;
+            width: $burger-width;
+            position: absolute;
+            top: 10px;
+            background-color: $yellow;
+            transition: all 0.4s;
+
+        }
+    }
+
+    .mobile-menu {
+        display: none;
+        position: absolute;
+        z-index: 1000;
+        background-color: rgba(0, 0, 0, 0.800);
+        width: 100%;
+        right: 0;
+        top: $heder-height;
+        transform: translate(-100%, 0);
+        transition: all 0.4s ease-in-out;
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            padding: $gap-max;
+            
+            li{
+            }
+
+        }
+    }
+
+    input {
+        display: none;
+    
+        &:checked + .burger {
+            background-color: transparent;
+    
+            &::before {
+                transform: rotate(45deg);
+                bottom: unset;
+            }
+    
+            &::after {
+                transform: rotate(-45deg);
+                top: unset;
+            }
+        }
+    
+        &:checked ~ .mobile-menu {
+            transform: translate(0, 0);
+        }
+    }
+
+    @media (max-width: $sm) {
+        .desktop-menu {
+            display: none;
+        }
+
+        .mobile-menu {
+            display: block;
+        }
+
+        .burger {
+            display: block;
+        }
+
+
+    }
+
+}
+
+@keyframes moveDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    80% {
+        opacity: 1;
+        transform: translateY(20px);
+
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
 main {
+
+    .hero {
+        width: 100%;
+        height: calc(100vh - #{$heder-height});
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+
+        &__bin {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: $xl;
+            padding: 0 $gap;
+            gap: $gap;
+            // $blue: #084C61;
+            // $green: #56A3A6;
+            // $yellow: #f5cd13;
+            // $red: #DB504A;
+            // $gray: #4F6D7A;
+            // $white: #FFFFFF;
+            // $black: #030306;
+            &__box {
+                background-color: rgba(0, 0, 0, 0.800);
+                color: $yellow;
+                width: 30%;
+                height: 300px;
+                gap: $gap;
+                border-radius: 15px;
+                text-align: center;
+                align-content: center;
+    
+                h1 {
+                    font-size: 60px;
+                    margin-bottom: 30px;
+                    line-height: 1.2;
+                }
+            }
+        }
+    } 
+
+    
+
+}
+
+footer {
+    width: 100%;
+    height: $heder-height;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    line-height: 1.5rem;
-
-    h1 {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        margin: 20px 0;
-    }
-    p {
-        margin: 10px 0;
-        border: 1px solid rgb(160, 23, 133);
-        border-radius: 1rem;
-        text-align: center;
-    }
+    background-color: rgba(0, 0, 0, 0.800);
+    color: $yellow;
 }
 
 #cookie-banner {
@@ -50,14 +320,10 @@ main {
             cursor: pointer;
             border-radius: 5px;
             font-size: 1rem;
-          }
-        
-          #accept-cookies:hover {
+        }
+
+        #accept-cookies:hover {
             background-color: #59a65b;
-          }
-      }
-  }
-
-  
-
-  
+        }
+    }
+}

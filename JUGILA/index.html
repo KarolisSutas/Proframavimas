@@ -6,38 +6,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="app.js" defer></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <title>Jugila</title>
 </head>
+
 <body>
     <div class="app">
         <header>
 
-            <div class="hero"></div>
+            <div class="menu">
+                <div class="menu__left">
+                    <img class="logo" src="Img/logo-jugila.png" alt="logo">
+                </div>
+                <div class="menu__right">
+                    <nav class="desktop-menu">
+                        <ul>
+                            <li><a href="./index.html">Pradžia</a></li>
+                            <li><a href="#">Apie mus</a></li>
+                            <li><a href="#">Paslaugos</a></li>
+                            <li><a href="#">Galerija</a></li>
+                            <li><a href="#">Kontaktai</a></li>
+                        </ul>
+                    </nav>
+                    <input type="checkbox" id="mob-menu">
+                    <label class="burger" for="mob-menu"></label>
+                    <nav class="mobile-menu">
+                        <ul>
+                            <li><a href="./index.html">Pradžia</a></li>
+                            <li><a href="#">Apie mus</a></li>
+                            <li><a href="#">Paslaugos</a></li>
+                            <li><a href="#">Galerija</a></li>
+                            <li><a href="#">Kontaktai</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
 
         </header>
         <main>
+            <section class="hero">
+                <div class="hero__bin">
 
-            <h1>JUGILA</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At sequi tempora officia maxime culpa corrupti
-                quos laborum accusamus architecto animi, atque facilis placeat aliquid facere?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, quam aut saepe architecto itaque
-                similique? Neque sed sit aperiam voluptatum, distinctio reprehenderit velit tempora placeat laborum
-                laudantium autem quod nulla odit sint quasi eum maxime necessitatibus animi, ipsa fugit voluptas quia
-                minus. Eius officia alias reprehenderit dolores, quaerat aliquid temporibus iusto quidem expedita
-                delectus ipsa incidunt recusandae excepturi maxime quibusdam ea possimus dignissimos asperiores amet
-                omnis at tenetur. Veniam provident dolorem maiores animi fugiat illo architecto, tempora maxime illum
-                incidunt accusamus dignissimos exercitationem! Enim, delectus et laudantium in quia iusto necessitatibus
-                accusantium aut odio temporibus sapiente. Illum, architecto dolorem. Optio!</p>
+                    <div class="hero__bin__box">Sekcija 1</div>
+                    <div class="hero__bin__box">Sekcija 2</div>
+                    <div class="hero__bin__box">Sekcija 3</div>
+                    <div class="hero__bin__box">Sekcija 4</div>
+                    <div class="hero__bin__box">Sekcija 5</div>
+                    <div class="hero__bin__box">Sekcija 6</div>
 
+                </div>
+
+            </section>
         </main>
         <footer>
-
+            <p>&copy; 2025 Jugila</p> 
         </footer>
     </div>
     <div id="cookie-banner" style="display:none;">
         <div id="cookie-box">
-          Ši svetainė naudoja slapukus, kad pagerintų jūsų patirtį. 
-          <button id="accept-cookies">Sutinku</button>
+            Ši svetainė naudoja slapukus, kad pagerintų jūsų patirtį.
+            <button id="accept-cookies">Sutinku</button>
         </div>
     </div>
 </body>
