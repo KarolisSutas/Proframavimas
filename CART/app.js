@@ -228,3 +228,32 @@ const initShop = _ => {
 if (document.querySelector('[data-shop]')) {
     initShop();
 }
+
+// [Puslapio paleidimas]
+//         ↓
+// readLocalStorage()
+//         ↓
+// localStorage → JSON.parse(...) → cart = [esami duomenys]
+//         ↓
+// Vartotojas paspaudžia [Pridėti į krepšelį]
+//         ↓
+// addToCart(id, amount)
+//         ↓
+// • cart kintamasis atnaujinamas atmintyje (RAM'e)
+// • writeLocalStorage() → naujas cart → saugomas į localStorage
+//         ↓
+// renderCart()
+//         ↓
+// • Naudoja atmintyje esantį cart
+// • Sudeda HTML per DOM
+
+
+// [Puslapio perkrovimas]
+//         ↓
+// initShop()
+//         ↓
+// readLocalStorage()
+//         ↓
+// cart = JSON.parse(localStorage.getItem(...))
+//         ↓
+// renderCart()
