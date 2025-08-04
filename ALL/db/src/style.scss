@@ -36,7 +36,7 @@ section.view {
             justify-content: space-between;
             align-items: center;
 
-            .tree-id, .tree-name, .tree-type, .tree-height {
+            .tree-id, .tree-name, .tree-type, .tree-height, .client-id, .client-name, .phone-id, .client-phone, .client-cid {
                 margin-right: 10px;
                 font-weight: bold;
             }
@@ -51,6 +51,21 @@ section.view {
             }
             .tree-height {
                 color: #ffc107;
+            }
+            .client-id {
+                color: #2883d3;
+            }
+            .client-name {
+                color: #a81a95;
+            }
+            .phone-id {
+                color: #17a2b8;
+            }
+            .client-phone {
+                color: #a8cd12;
+            }
+            .client-cid {
+                color: #4eac1f;
             }
         }
     }

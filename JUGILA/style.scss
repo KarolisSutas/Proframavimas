@@ -238,7 +238,9 @@ main {
 
     .hero {
         width: 100%;
-        height: calc(100vh - #{$heder-height});
+        // height: calc(100vh - #{$heder-height});
+        height: 100vh;
+        padding-top: 20px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -252,6 +254,7 @@ main {
             align-items: center;
             flex-wrap: wrap;
             width: 100%;
+            height: auto;
             max-width: $xl;
             padding: 0 $gap;
             gap: $gap;
@@ -262,6 +265,7 @@ main {
             // $gray: #4F6D7A;
             // $white: #FFFFFF;
             // $black: #030306;
+
             &__box {
                 background-color: rgba(0, 0, 0, 0.800);
                 color: $yellow;
@@ -272,11 +276,17 @@ main {
                 text-align: center;
                 align-content: center;
     
-                h1 {
-                    font-size: 60px;
-                    margin-bottom: 30px;
-                    line-height: 1.2;
-                }
+            }
+            @media (max-width: 600px) {
+                &__box {
+                    width: 40%;
+                }   
+            }
+
+            @media (max-width: 450px) {
+                &__box {
+                    width: 50%;
+                }   
             }
         }
     } 

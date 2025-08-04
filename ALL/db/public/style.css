@@ -38,7 +38,7 @@ section.view ul li {
   justify-content: space-between;
   align-items: center;
 }
-section.view ul li .tree-id, section.view ul li .tree-name, section.view ul li .tree-type, section.view ul li .tree-height {
+section.view ul li .tree-id, section.view ul li .tree-name, section.view ul li .tree-type, section.view ul li .tree-height, section.view ul li .client-id, section.view ul li .client-name, section.view ul li .phone-id, section.view ul li .client-phone, section.view ul li .client-cid {
   margin-right: 10px;
   font-weight: bold;
 }
@@ -53,6 +53,21 @@ section.view ul li .tree-type {
 }
 section.view ul li .tree-height {
   color: #ffc107;
+}
+section.view ul li .client-id {
+  color: #2883d3;
+}
+section.view ul li .client-name {
+  color: #a81a95;
+}
+section.view ul li .phone-id {
+  color: #17a2b8;
+}
+section.view ul li .client-phone {
+  color: #a8cd12;
+}
+section.view ul li .client-cid {
+  color: #4eac1f;
 }
 section.view button {
   margin-top: 10px;

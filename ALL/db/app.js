@@ -20,6 +20,67 @@ const con = mysql.createConnection({
     console.log("Connected!");
   });
 
+  app.get('/all-clients', (req, res) => {
+    // SELECT column_name(s)
+    // FROM table1
+    // INNER JOIN table2
+    // ON table1.column_name = table2.column_name;
+
+    // -- SELECT id, name, number, client_id vietoj to * (visus is visur)
+    // AS pervadina lenteled
+    const sql = `
+    SELECT c.id, name, t.id AS tid, number, client_id 
+    FROM clients AS c
+    INNER JOIN telephones AS t
+    ON c.id = t.client_id
+    `;
+
+    con.query(sql, (err, result) => {
+      if (err) throw err;
+      res.json(result);
+    });
+
+  });
+
+  app.get('/all-clients-left', (req, res) => {
+    // SELECT column_name(s)
+    // FROM table1
+    // LeFT JOIN table2
+    // ON table1.column_name = table2.column_name;
+
+    const sql = `
+    SELECT c.id, name, t.id AS tid, number, client_id 
+    FROM clients AS c
+    LEFT JOIN telephones AS t
+    ON c.id = t.client_id
+    `;
+
+    con.query(sql, (err, result) => {
+      if (err) throw err;
+      res.json(result);
+    });
+
+  });
+
+  app.get('/all-clients-right', (req, res) => {
+    // SELECT column_name(s)
+    // FROM table1
+    // RIGHT JOIN table2
+    // ON table1.column_name = table2.column_name;
+
+    const sql = `
+    SELECT c.id, name, t.id AS tid, number, client_id 
+    FROM clients AS c
+    RIGHT JOIN telephones AS t
+    ON c.id = t.client_id
+    `;
+
+    con.query(sql, (err, result) => {
+      if (err) throw err;
+      res.json(result);
+    });
+
+  });
 
 // Router
 // serverio kodas kuris kreipias i db ir su ja bendrauja
