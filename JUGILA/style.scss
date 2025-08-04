@@ -45,6 +45,14 @@ body {
     
 }
 
+@media (max-width: 600px) {
+    body {
+        background-size: cover;
+        background-repeat: no-repeat;
+        
+    }
+}
+
 a {
     text-decoration: none;
     color: $black;
@@ -239,16 +247,14 @@ main {
     .hero {
         width: 100%;
         // height: calc(100vh - #{$heder-height});
-        height: 100vh;
-        padding-top: 20px;
+        height: 100%;
+        padding-top: $heder-height;
+        padding-bottom: $heder-height;
         display: flex;
         justify-content: center;
         align-items: center;
-        position: relative;
-        overflow: hidden;
 
         &__bin {
-            position: absolute;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -278,6 +284,12 @@ main {
     
             }
             @media (max-width: 600px) {
+                body {
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-position: center;
+                
+                }
                 &__box {
                     width: 40%;
                 }   
