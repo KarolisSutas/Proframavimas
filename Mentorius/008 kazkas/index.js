@@ -56,6 +56,11 @@ const books = [
     },
 ];
 
+// MIDDLEWARE
+app.use(express.json());
+
+
+//....................................
 app.get('/api/books', (req, res) => {
     res.send(books);
 });
@@ -64,8 +69,38 @@ app.get('/api/books/:id', (req, res) => {
     const id = req.params.id;
     const book = books.find(book => book.id === parseInt(id));
     if (!book) return res.status(404).send('Knyyga su tokiu id neegzistuoja');
-    res.status(200).send(book);
+    res.send(book);
 
+});
+
+app.post('/api/books', (req, res) => {
+    const newBook = {
+        id: books.length + 1,
+        author: req.body.author,
+        title: req.body.title
+    };
+    books.push(newBook);
+    res.send(books);
+});
+
+app.put('/api/books/:id', (req, res) => {
+    const id = req.params.id;
+    const book = books.find(book => book.id === parseInt(id));
+    if (!book) return res.status(404).send('Knyyga su tokiu id neegzistuoja');
+
+    book.author = req.body.author;
+    book.title = req.body.title;
+    res.send(books);
+});
+
+app.delete('/api/books/:id', (req, res) => {
+    const id = req.params.id;
+    const book = books.find(book => book.id === parseInt(id));
+    if (!book) return res.status(404).send('Knyyga su tokiu id neegzistuoja');
+
+    const index = books.indexOf(book);
+    books.splice(index, 1);
+    res.send(books);
 });
 
 //............................................
