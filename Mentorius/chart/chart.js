@@ -68,7 +68,7 @@ new Chart(document.getElementById('BarChart'), {
 // Pie Chart
 
 new Chart(document.getElementById('PieChart'), {
-    type: "pie",
+    type: "doughnut",
     data: {
         labels: xReiksmes,
         datasets: [{
