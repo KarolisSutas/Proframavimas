@@ -7,9 +7,23 @@ function rand(min, max) {
     return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
 }
 
+
+
 const xReiksmes = ['A', 'B', 'C', 'D', 'E', 'F'];
 const yReiksmes = xReiksmes.map(() => rand(1, 100));
 console.log(yReiksmes);
+
+const suma = yReiksmes.reduce((acc, sk) => acc + sk, 0);
+console.log('suma:', suma);
+
+const procentai = [];
+
+yReiksmes.forEach((y, i) => {
+    const procentas = (y / suma * 100).toFixed(0);
+    procentai.push(procentas);
+    console.log(procentai);
+});
+
 
 const barSpalvos = [
     'LightCoral',
@@ -22,22 +36,26 @@ const barSpalvos = [
 
 const table = document.querySelector('[data-content]');
 const antraste = table.querySelector('[data-tabel-header]');
-const duomenys = table.querySelector('[data-table-data]');
+const duomenys = table.querySelector('[data-table-percentage]');
+const duomenys2 = table.querySelector('[data-table-value]');
 
 
 antraste.innerHTML = '';
 duomenys.innerHTML = '';
 
-yReiksmes.forEach((y, i) => {
+procentai.forEach((p, i) => {
   const th = document.createElement('th'); 
   const td = document.createElement('td');  
+  const td2 = document.createElement('td');  
 
   th.textContent = xReiksmes[i];
   th.style.backgroundColor = barSpalvos[i];
-  td.textContent = y;
+  td.textContent = p + '%';
+  td2.textContent = yReiksmes[i];
 
   antraste.appendChild(th);
   duomenys.appendChild(td);
+  duomenys2.appendChild(td2);
 });
 
 // Bar Chart
@@ -68,13 +86,13 @@ new Chart(document.getElementById('BarChart'), {
 // Pie Chart
 
 new Chart(document.getElementById('PieChart'), {
-    type: "doughnut",
+    type: "pie",
     data: {
         labels: xReiksmes,
         datasets: [{
             backgroundColor: barSpalvos,
             borderSize: 1,
-            data: yReiksmes
+            data: procentai
         }]
     },
     options: {
