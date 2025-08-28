@@ -18,7 +18,7 @@ console.log('suma:', suma);
 
 const procentai = [];
 
-yReiksmes.forEach((y, i) => {
+yReiksmes.forEach((y) => {
     const procentas = (y / suma * 100).toFixed(0);
     procentai.push(procentas);
     console.log(procentai);

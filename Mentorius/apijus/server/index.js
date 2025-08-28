@@ -1,6 +1,6 @@
 import express from "express";
 import Joi from "joi";
-import { getBooks, getBook, addBook } from "./db.js";
+import { getBooks, getBook, addBook, editBook, removeBook } from "./db.js";
 
 
 const app = express();
@@ -137,10 +137,10 @@ app.post("/api/books", async (req, res) => {
     res.send(books);
   });
 
-app.put("/api/books/:id", (req, res) => {
+app.put("/api/books/:id", async (req, res) => {
   const id = req.params.id;
-  const book = books.find((book) => book.id === parseInt(id));
-  if (!book) return res.status(404).send("Knyga su tokiu id neegzistuoja.");
+  // const book = books.find((book) => book.id === parseInt(id));
+  // if (!book) return res.status(404).send("Knyga su tokiu id neegzistuoja.");
 
   const valid = validateBook(req.body);
 
@@ -149,18 +149,19 @@ app.put("/api/books/:id", (req, res) => {
     return;
   }
 
-  book.author = req.body.author;
-  book.title = req.body.title;
-  res.send(books);
+  const book = await editBook(id, req.body.author, req.body.title);
+  res.send(book);
 });
 
-app.delete("/api/books/:id", (req, res) => {
-  const id = req.params.id;
-  const book = books.find((book) => book.id === parseInt(id));
-  if (!book) return res.status(404).send("Knyga su tokiu id neegzistuoja.");
+app.delete("/api/books/:id", async (req, res) => {
+  // const id = req.params.id;
+  // const book = books.find((book) => book.id === parseInt(id));
+  // if (!book) return res.status(404).send("Knyga su tokiu id neegzistuoja.");
 
-  const index = books.indexOf(book);
-  books.splice(index, 1);
+  // const index = books.indexOf(book);
+  // books.splice(index, 1);
+
+  const books = await removeBook(req.params.id);
   res.send(books);
 });
 

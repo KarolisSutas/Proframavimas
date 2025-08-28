@@ -26,6 +26,18 @@ export async function addBook(author, title) {
     return books;
 }
 
+export async function editBook(id, author, title) {
+    await db.query('UPDATE books SET author = ?, title = ? WHERE id = ?', [author, title, id]);
+    const book = await getBook();
+    return book;
+}
+
+export async function removeBook(id) {
+    await db.query('DELETE FROM books WHERE id = ?', [id]);
+    const books = await getBooks();
+    return books;
+}
+
 
 
 
