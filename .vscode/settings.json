@@ -40,6 +40,9 @@
             }
         ]
     },
-    "workbench.colorTheme": "Firefox Quantum Dark"
+    "workbench.colorTheme": "Firefox Quantum Dark",
+    "workbench.colorCustomizations": {
+        "tab.activeBorder": "#ffff00",
+    }
 }
 
