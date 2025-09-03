@@ -1,6 +1,7 @@
 import express from "express";
 import Joi from "joi";
 import { getBooks, getBook, addBook, editBook, removeBook } from "./db.js";
+import cors from 'cors';
 
 
 const app = express();
@@ -59,6 +60,8 @@ const books = [
 
 // MIDDLEWARE
 app.use(express.json());
+app.use(cors());
+
 
 // ------------------------
 
