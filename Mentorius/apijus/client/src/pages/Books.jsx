@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Books = () => {
 // useState
@@ -41,7 +42,10 @@ const Books = () => {
             ))}
         </tbody>
     </table>
-  </div>;
+    <button>
+        <Link to='/add'>Add new book</Link>
+    </button>
+  </div>
 };
 
 export default Books;
