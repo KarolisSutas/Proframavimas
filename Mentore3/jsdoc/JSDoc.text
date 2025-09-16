@@ -1,0 +1,14 @@
+dokumentacija
+https://jsdoc.app/
+
+prasideda /** 
+
+* @param {number} a - Pirmas skaicius
+* @param {number} b - Antras skaicius
+* @returns {number} - Skaiciu suma
+
+baigiasi */
+
+function add(a, b) {
+    return a + b
+}
