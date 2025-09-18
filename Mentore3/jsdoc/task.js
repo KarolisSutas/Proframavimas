@@ -30,7 +30,14 @@ function greet({ name, age }) {
  
 // 3) Async funkcija su @template(generinis tipas)
 // Aprašyk JSDoc fetchJson(url) taip, kad grąžintų Promise < T >, kur T – generinis tipas pagal faktinį JSON.
- 
+ /**
+  * Gauna JSON duomenis is nurodyto URL
+  * @async
+  * @param {string} url - URL is kurio gaunami JSON duomenys
+  * @returns {Promise<T>} - Promise, duomenys iš URL
+  * @template T - Generinis tipas, nurodantis JSON duomenų struktūrą
+  * @throws {Error} - Jei HTTP užklausa nepavyksta
+  */
 async function fetchJson(url) {
     const res = await fetch(url);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -39,7 +46,8 @@ async function fetchJson(url) {
  
 // 4) Callback tipas su @callback ir @param funkcijai
 // Sukurk @callback tipą Iteratee, naudok jį mapAsync(arr, iteratee), kuri grąžina Promise su nauju masyvu.
- 
+
+
 async function mapAsync(arr, iteratee) {
     const out = [];
     for (const [i, v] of arr.entries()) {
