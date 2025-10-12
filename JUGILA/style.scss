@@ -16,7 +16,7 @@ $yellow: #f5cd13;
 $red: #DB504A;
 $gray: #4F6D7A;
 $white: #FFFFFF;
-$black: rgba(0,0,0,0.7);
+$black: rgba(0,0,0, 0.5);
 
 
 // $fancy-font: "Fascinate", system-ui;
@@ -37,8 +37,8 @@ body {
     padding: 0;
     font-size: 16px;
     line-height: 1.2;
-    color: $black;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(Img/excavator_1.jpg);
+    color: black;
+    background-image: linear-gradient(rgba(200, 200, 200, 0.5), rgba(200, 200, 200, 0.5)), url(Img/bg-plan3.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -83,7 +83,7 @@ header {
     height: $heder-height;
     display: flex;
     justify-content: center;
-    background-color: $black;
+    background-color: rgb(0, 0, 0, 0.9);
 
 
     // animation: moveDown 500ms ease-in, fastUp 200ms linear 800ms;
@@ -314,7 +314,8 @@ main {
 
 
             &__box {
-                background-color: $black;
+                background-color: rgba(87, 86, 86, 0.4);
+                backdrop-filter: blur(3px);
                 color: $yellow;
                 width: 30%;
                 height: auto;
