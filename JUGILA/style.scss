@@ -38,7 +38,7 @@ body {
     font-size: 16px;
     line-height: 1.2;
     color: black;
-    background-image: linear-gradient(rgba(200, 200, 200, 0.5), rgba(200, 200, 200, 0.5)), url(Img/bg-plan3.jpg);
+    background-image: linear-gradient(rgba(80, 80, 80, 0.025), rgba(80, 80, 80, 0.252)), url(Img/bg-excavator.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -149,7 +149,7 @@ header {
                   .dropdown-content {
                     display: none;
                     position: absolute;
-                    background-color: rgba(0, 0, 0, 0.950);
+                    background-color: rgba(0, 0, 0);
                     min-width: 160px;
                     box-shadow: 0px 8px 16px 0px $black;
                     z-index: 1;
@@ -214,7 +214,7 @@ header {
         display: none;
         position: absolute;
         z-index: 1000;
-        background-color: $black;
+        background-color: rgba(0, 0, 0, 0.9);
         width: 100%;
         right: 0;
         top: $heder-height;
@@ -225,9 +225,6 @@ header {
             display: flex;
             flex-direction: column;
             padding: $gap-max;
-
-            li {}
-
         }
     }
 
@@ -290,103 +287,136 @@ header {
 
 
 main {
-
     .hero {
+      width: 100%;
+      height: 100%;
+      padding-top: $heder-height;
+      padding-bottom: $heder-height;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+      &__bin {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: $gap;
         width: 100%;
-        // height: calc(100vh - #{$heder-height});
-        height: 100%;
-        padding-top: $heder-height;
-        padding-bottom: $heder-height;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        &__bin {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
+        max-width: $xl;
+        padding: 0 $gap;
+  
+        /* ---- KORTELĖ ---- */
+        &__box {
+          background-color: rgba(0, 0, 0, 0.775);
+          backdrop-filter: blur(3px);
+          color: $yellow;
+          border-radius: 15px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          box-shadow: 0px 8px 16px 0px $black;
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+  
+          /* --- 1 FAZĖ: įvažiuoja tuščia kortelė --- */
+          transform: translateX(-100vw);
+          animation: cardIn 1.2s ease-out forwards;
+  
+          /* --- BANGAVIMAS: kiekvienai kortelei skirtingas delay --- */
+          &:nth-child(1) { animation-delay: 2.6s; }
+          &:nth-child(2) { animation-delay: 2s; }
+          &:nth-child(3) { animation-delay: 1.4s; }
+          &:nth-child(4) { animation-delay: 0.8s; }
+          &:nth-child(5) { animation-delay: 0.2s; }
+  
+          /* kol „tuščia“ – turinys paslėptas */
+          > a, > h2, > button {
+            opacity: 0;
+            transform: translateY(8px);
+          }
+  
+          /* --- 2 FAZĖ: atsiranda turinys (su vėlavimu) --- */
+          img {
             width: 100%;
-            height: auto;
-            max-width: $xl;
-            padding: 0 $gap;
-            gap: $gap;
-
-
-            &__box {
-                background-color: rgba(87, 86, 86, 0.4);
-                backdrop-filter: blur(3px);
-                color: $yellow;
-                width: 30%;
-                height: auto;
-                gap: $gap;
-                border-radius: 15px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                box-shadow: 0px 8px 16px 0px $black;
-                transition: all 0.3s ease;
-                text-align: center;
-                align-content: center;
-
-                img {
-                    width: 100%;
-                    height: 55%;
-                    object-fit: cover;
-                    border-radius: 15px 15px 0 0;
-                    margin: 0;
-                    padding: 0;
-                }
-
-                a {
-                    font-size: 1.2rem;
-                    color: $yellow;
-                }
-
-                button {
-                    background-color: $yellow;
-                    color: $black;
-                    border: none;
-                    padding: 10px 20px;
-                    margin-bottom: 10px;
-                    border-radius: 5px;
-                    cursor: pointer;
-                    font-size: 1rem;
-                    transition: all 0.3s ease;
-
-                    &:hover {
-                        background-color: darken($yellow, 10%);
-                    }
-                }
-
+            height: 220px;
+            object-fit: cover;
+            border-radius: 15px 15px 0 0;
+            // animation: fadeUp 1.2s ease-out forwards;
+            // animation-delay: 1s; // pasirodo po kortelės
+          }
+  
+          a {
+            font-size: 1.2rem;
+            color: $yellow;
+            animation: fadeUp 1.2s ease-out forwards;
+            animation-delay: 4s;
+          }
+  
+          h2 {
+            animation: fadeUp 1.2s ease-out forwards;
+            animation-delay: 4.15s;
+            padding: 10px;
+          }
+  
+          button {
+            background-color: transparent;
+            border: #f5cd13 1px solid;
+            color: $yellow;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin-top: auto;
+            margin-bottom: 20px;
+            animation: fadeUp 1.2s ease-out forwards;
+            animation-delay: 4.30s;
+  
+            &:hover {
+              background-color: $yellow;
+              color: black;
+              border: #f5cd13 1px solid;
             }
-
-            @media (max-width: 850px) {
-
-                .hero__bin__box {
-                    width: 40%;
-                }
-            }
-
-            @media (max-width: 600px) {
-                .hero__bin__box {
-                    width: 60%;
-                }
-
-            }
-
-            @media (max-width: 450px) {
-                .hero__bin__box {
-                    width: 80%;
-                }
-            }
+          }
         }
+  
+        /* --- ANIMACIJOS --- */
+        @keyframes cardIn {
+          from {
+            transform: translateX(-100vw);
+            opacity: 1;
+          }
+          to {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+  
+        @keyframes fadeUp {
+          from {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+  
+        /* --- prieinamumo taisyklė: jei vartotojas nenori judesio --- */
+        @media (prefers-reduced-motion: reduce) {
+          &__box,
+          &__box > * {
+            animation: none !important;
+            transform: none !important;
+            opacity: 1 !important;
+          }
+        }
+      }
     }
-
-
-
-}
+  }
+    
 
 footer {
     width: 100%;
